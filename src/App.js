@@ -1,5 +1,7 @@
-import React from 'react';
-import './App.css';
+import React from "react";
+import "./App.css";
+
+import HomePage from "./containers/homePage/homePage";
 
 function App() {
   return (
@@ -8,6 +10,7 @@ function App() {
         <h2>Geckos Team 2</h2>
         <p>Let's start building!</p>
       </header>
+      <HomePage />
     </div>
   );
 }
