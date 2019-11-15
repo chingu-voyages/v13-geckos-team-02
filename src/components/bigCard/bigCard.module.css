@@ -3,7 +3,6 @@ Big Card Styles
  */
 
 .bigCard {
-  /* border: 1px solid red; */
   background-color: black;
 }
 
@@ -13,4 +12,14 @@ Big Card Styles
   letter-spacing: 0;
   opacity: 0.5;
   color: #fff;
+}
+
+.movieName {
+  text-transform: uppercase;
+  color: #fff;
+  letter-spacing: 5px;
+  font-family: "Roboto";
+  font-size: 35px;
+  width: 380px;
+  font-weight: 400;
 }
