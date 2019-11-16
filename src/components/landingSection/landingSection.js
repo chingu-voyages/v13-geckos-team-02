@@ -5,8 +5,23 @@ import BigCard from "../bigCard/bigCard";
 import SmallCard from "../smallCard/smallCard";
 
 const LandingSection = ({ imageUrl }) => {
+  const blurryStyles = {
+    background: `url(${imageUrl})`,
+    backgroundRepeat: "no-repeat",
+    backgroundPosition: "center",
+    backgroundSize: "cover",
+    position: "absolute",
+    width: "100%",
+    height: "90vh",
+    filter: "blur(10px)",
+    opacity: "1"
+  };
   return (
     <div className={styles.landingSection}>
+      {/* Background providing blurry image effect */}
+      <div className={styles.blurry} style={blurryStyles}></div>
+      {/* Backgroun providing gradient dark cover on the landing section */}
+      <div className={styles.landingCover}></div>
       {/* Container for the big card */}
       <div className={styles.bigSection}>
         <BigCard
