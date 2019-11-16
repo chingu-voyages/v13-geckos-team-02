@@ -1,0 +1,40 @@
+/* SEE ALL BUTTON STYLES */
+.buttonBox {
+  font-size: 25px;
+  transition: all 0.5s;
+  width: 180px;
+}
+
+/* Button <a href> element styles */
+.buttonLink {
+  text-decoration: none;
+  color: #fff;
+  margin: auto 0;
+}
+
+/* Button text syles */
+.buttonText {
+  font-weight: 200;
+  font-size: 20px;
+  transition: all 0.5s;
+}
+
+/* Button Arrow Icon styles */
+.buttonIcon {
+  margin-left: 0.5rem;
+  font-weight: 700;
+  color: #a13cbf;
+  transition: all 0.5s;
+}
+
+/* Hover Effect Styles */
+.buttonBox:hover span,
+.bottonBox:active span {
+  color: #a13cbf;
+  cursor: pointer;
+}
+.buttonBox:hover .buttonIcon,
+.bottonBox:active .buttonIcon {
+  cursor: pointer;
+  margin-left: 1rem;
+}
