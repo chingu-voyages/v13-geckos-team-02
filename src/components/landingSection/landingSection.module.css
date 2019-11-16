@@ -14,7 +14,6 @@
 /* Right section for the small cards styles */
 .smallSection {
   display: inline-block;
-  /* background-color: bisque; */
   width: 26%;
   height: 100%;
   margin: auto 2rem auto 1rem;
