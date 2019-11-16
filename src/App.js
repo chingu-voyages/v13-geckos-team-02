@@ -6,10 +6,10 @@ import HomePage from "./containers/homePage/homePage";
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
+      {/* <header>
         <h2>Geckos Team 2</h2>
         <p>Let's start building!</p>
-      </header>
+      </header> */}
       <HomePage />
     </div>
   );
