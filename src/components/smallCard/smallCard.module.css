@@ -1,0 +1,12 @@
+.movieName {
+  position: absolute;
+  bottom: 0.1rem;
+  left: 1rem;
+  text-transform: uppercase;
+  color: #fff;
+  width: 191px;
+  text-align: left;
+  font-size: 25px;
+  font-family: "Roboto";
+  font-weight: 300;
+}
