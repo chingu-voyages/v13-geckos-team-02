@@ -1,0 +1,10 @@
+/* LATEST MOVIE STYLES */
+
+.lastMovieText {
+  font-family: "Roboto Condensed";
+  font-size: 25px;
+  letter-spacing: 0;
+  opacity: 0.5;
+  color: #fff;
+  margin-bottom: 15px;
+}
