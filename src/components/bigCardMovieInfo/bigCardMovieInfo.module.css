@@ -1,7 +1,7 @@
 /* BIG CARD INFO STYLES */
 .bigCardInfo {
   position: absolute;
-  bottom: 5rem;
+  bottom: 2rem;
   left: 3rem;
   z-index: 10;
 }
@@ -15,7 +15,7 @@
   line-height: 1;
   font-family: "Roboto";
   font-size: 35px;
-  width: 380px;
+  width: 200px;
   font-weight: 400;
   margin-bottom: 13px;
   margin-top: 0;
