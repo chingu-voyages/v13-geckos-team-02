@@ -1,0 +1,18 @@
+.portraitCard_footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  text-align: left;
+  /* padding-left: 0.8em; */
+  background: transparent linear-gradient(180deg, #34343407 0%, #292929f7 100%)
+    0% 0% no-repeat padding-box;
+}
+
+.portraitCard_footer_name {
+  margin: 0 0.8rem;
+}
+
+.portraitCard_footer_season {
+  margin: 0 0.8rem;
+  font-size: 10px;
+}

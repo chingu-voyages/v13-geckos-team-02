@@ -1,5 +1,6 @@
 import React from "react";
 import SeeAllButton from "../see-all-button/see-all-button";
+import PortraitCard from "../portraitCard/portraitCard";
 
 import styles from "./categorySection.module.css";
 
@@ -13,7 +14,9 @@ const CategorySection = ({ heading, count }) => (
         <SeeAllButton count={count} />
       </div>
     </div>
-    <div className={styles.categoryBody}></div>
+    <div className={styles.categoryBody}>
+      <PortraitCard />
+    </div>
   </div>
 );
 
