@@ -8,12 +8,13 @@ const PortraitCard = () => {
     position: "relative",
     height: "210px",
     width: "150px",
+    display: "inline-block",
     background: `url(${imageUrl})`,
     backgroundPosition: "center",
     backgroundSize: "cover"
   };
   return (
-    <div style={portraitCardStyles}>
+    <div style={portraitCardStyles} className={styles.portraitCard}>
       <div className={styles.portraitCard_footer}>
         <div>
           <h5 className={styles.portraitCard_footer_name}>

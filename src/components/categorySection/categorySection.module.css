@@ -1,21 +1,28 @@
 .categorySection {
-  background-color: bisque;
-  margin: 4rem 3rem;
+  /* background-color: bisque; */
+  margin: 3rem 3rem;
 }
-
+/* CATEGORY HEADING STYLES */
 .categoryHeader {
   width: 100%;
-  text-align: left;
   height: 50px;
 }
 .categoryHeading {
+  text-align: left;
   float: left;
   font-size: 18px;
 }
 .categoryHeading h3 {
   margin-top: 4px;
 }
-
 .categoryButton {
   float: right;
+}
+/* CATEGORY BODY STYLES */
+.categoryBody {
+  overflow: auto;
+  white-space: nowrap;
+  height: 294px;
+  width: 100%;
+  margin: 0;
 }
