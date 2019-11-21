@@ -1,5 +1,4 @@
 .categorySection {
-  /* background-color: bisque; */
   margin: 3rem 3rem;
 }
 /* CATEGORY HEADING STYLES */
@@ -20,9 +19,10 @@
 }
 /* CATEGORY BODY STYLES */
 .categoryBody {
+  background-color: bisque;
   overflow: auto;
   white-space: nowrap;
-  height: 294px;
+  height: 360px;
   width: 100%;
   margin: 0;
 }
