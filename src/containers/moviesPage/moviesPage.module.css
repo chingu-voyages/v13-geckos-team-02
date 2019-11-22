@@ -1,4 +1,7 @@
 /* MOVIES PAGE CONTAINER STYLES */
+.moviesPage_container {
+  margin-top: 8rem;
+}
 .moviesPage_container h1 {
   margin-left: 5rem;
   text-align: left;
@@ -6,7 +9,6 @@
 /* MOVIES PAGE BODY STYLES */
 .moviesPage_body {
   margin: auto 2rem;
-  border: 1px solid #fff;
 }
 
 /* MOVIES PAGE FOOTER STYLES */
