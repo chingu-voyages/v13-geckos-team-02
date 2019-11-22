@@ -15,16 +15,18 @@
   background: #393939aa 0% 0% no-repeat padding-box;
   color: #fff;
   border: #393939aa;
+  outline: none;
 }
 .moviesPage_footer button:not(:last-child) {
   margin-right: 1rem;
 }
 .moviesPage_footer button:hover,
-.moviesPage_footer button:active {
+.moviesPage_footer button:active .moviesPage_footer button:focus {
   cursor: pointer;
   background: #7a7a7aaa 0% 0% no-repeat padding-box;
   color: #fff;
   border: #7a7a7aaa;
+  outline: none;
 }
 
 button.moviesPage_footer_button_active {
