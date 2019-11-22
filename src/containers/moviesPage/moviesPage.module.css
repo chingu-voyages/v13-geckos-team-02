@@ -1,13 +1,19 @@
-.moviesPage_container {
+/* MOVIES PAGE CONTAINER STYLES */
+.moviesPage_container h1 {
+  margin-left: 5rem;
   text-align: left;
-  margin: 2rem;
+}
+/* MOVIES PAGE BODY STYLES */
+.moviesPage_body {
+  margin: auto 2rem;
+  border: 1px solid #fff;
 }
 
+/* MOVIES PAGE FOOTER STYLES */
 .moviesPage_footer {
   margin: 3rem auto;
   text-align: center;
 }
-
 .moviesPage_footer button {
   font-size: 1.3rem;
   border-radius: 5px;
@@ -28,7 +34,6 @@
   border: #7a7a7aaa;
   outline: none;
 }
-
 button.moviesPage_footer_button_active {
   background-color: #7a7a7aaa;
   color: #fff;

@@ -3,9 +3,7 @@
   height: 210px;
   width: 150px;
   display: inline-block;
-  margin-top: 3.5rem;
-  margin-left: 2.5rem;
-  margin-right: 0.2rem;
+  margin: 3.5rem 0.2rem 0 2.5rem;
   transition: all 0.5s;
 }
 
