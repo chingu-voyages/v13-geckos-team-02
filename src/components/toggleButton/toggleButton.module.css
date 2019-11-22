@@ -1,0 +1,22 @@
+/* TOGGLE BUTTON STYLES */
+.toggleButton_enable {
+  font-size: 1.3rem;
+  padding: 5px 40px;
+  text-transform: capitalize;
+  background-color: #a13cbf;
+  border-radius: 15px;
+  margin-right: 2rem;
+  border: none;
+  color: #fff;
+}
+
+.toggleButton_disable {
+  background-color: #343434;
+  font-size: 1.3rem;
+  padding: 5px 40px;
+  text-transform: capitalize;
+  border-radius: 15px;
+  margin-right: 2rem;
+  border: none;
+  color: #fff;
+}
