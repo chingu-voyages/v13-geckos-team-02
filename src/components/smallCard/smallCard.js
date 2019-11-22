@@ -2,20 +2,20 @@ import React from "react";
 
 import styles from "./smallCard.module.css";
 
-const SmallCard = ({ imageUrl, movieName }) => {
+const SmallCard = ({ imageUrl, name }) => {
   const smallCardStyles = {
     position: "relative",
-    background: `url(${imageUrl}) #000`,
+    background: `url(${imageUrl})`,
     backgroundRepeat: "no-repeat",
-    backgroundSize: "cover",
     backgroundPosition: "center",
+    backgroundSize: "cover",
     textAlign: "left",
-    width: "400px",
-    height: "280px"
+    width: "100%",
+    height: "31%"
   };
   return (
     <div style={smallCardStyles}>
-      <h2 className={styles.movieName}>Terminator:dark fate</h2>
+      <h2 className={styles.movieName}>{name}</h2>
     </div>
   );
 };
