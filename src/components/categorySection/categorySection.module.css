@@ -1,0 +1,21 @@
+.categorySection {
+  background-color: bisque;
+  margin: 4rem 3rem;
+}
+
+.categoryHeader {
+  width: 100%;
+  text-align: left;
+  height: 50px;
+}
+.categoryHeading {
+  float: left;
+  font-size: 18px;
+}
+.categoryHeading h3 {
+  margin-top: 4px;
+}
+
+.categoryButton {
+  float: right;
+}

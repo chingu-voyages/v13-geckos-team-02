@@ -12,7 +12,7 @@ const LandingSection = ({ imageUrl }) => {
     backgroundSize: "cover",
     position: "absolute",
     width: "100%",
-    height: "95vh",
+    height: "92vh",
     filter: "blur(10px)",
     opacity: "1"
   };
