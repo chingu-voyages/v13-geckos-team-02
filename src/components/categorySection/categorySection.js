@@ -17,6 +17,12 @@ const CategorySection = ({ heading, count }) => (
     <div className={styles.categoryBody}>
       <PortraitCard />
       <PortraitCard watchlisted={true} />
+      <PortraitCard />
+      <PortraitCard watchlisted={true} />
+      <PortraitCard />
+      <PortraitCard watchlisted={true} />
+      <PortraitCard />
+      <PortraitCard watchlisted={true} />
     </div>
   </div>
 );

@@ -19,10 +19,9 @@
 }
 /* CATEGORY BODY STYLES */
 .categoryBody {
-  background-color: bisque;
   overflow: auto;
   white-space: nowrap;
-  height: 360px;
+  height: 400px;
   width: 100%;
   margin: 0;
 }
