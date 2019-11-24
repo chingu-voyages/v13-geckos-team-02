@@ -19,6 +19,32 @@
   margin: 2rem 1.2rem 0;
 }
 
+/* Movie Name Styles */
+.movieName {
+  font-weight: 300;
+  font-size: 25px;
+  text-transform: uppercase;
+}
+
+/* Movie Category Styles */
+movieCategory_box {
+  width: 100%;
+}
+.movieCategory_box h3 {
+  color: #bebebe;
+  margin-bottom: 0;
+}
+.movieCategory {
+  text-transform: capitalize;
+  border: 1px solid #5d5d5d;
+  padding: 0.2rem 1rem;
+  display: inline-block;
+  margin-top: 1rem;
+}
+.movieCategory:not(:last-child) {
+  margin-right: 1rem;
+}
+
 /* CONTENT CONTAINER STYLES */
 .moviePage_content_container {
   width: 79%;
