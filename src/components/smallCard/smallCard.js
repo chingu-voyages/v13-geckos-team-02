@@ -2,16 +2,22 @@ import React from "react";
 
 import styles from "./smallCard.module.css";
 
-const SmallCard = ({ imageUrl, name }) => {
+const SmallCard = ({
+  imageUrl,
+  name = null,
+  position = null,
+  width = "100%",
+  height = "31%"
+}) => {
   const smallCardStyles = {
-    position: "relative",
+    position: `${position}`,
     background: `url(${imageUrl})`,
     backgroundRepeat: "no-repeat",
     backgroundPosition: "center",
     backgroundSize: "cover",
     textAlign: "left",
-    width: "100%",
-    height: "31%"
+    width: `${width}`,
+    height: `${height}`
   };
   return (
     <div style={smallCardStyles}>
