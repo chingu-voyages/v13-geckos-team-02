@@ -4,6 +4,13 @@
   margin-bottom: 0;
 }
 
+/* SIDE BAR CONTAINER STYLES */
+.sideBar_container {
+  position: relative;
+  height: 50vh;
+  overflow-y: scroll;
+}
+
 /* WHERE TO WATCH STYLES */
 .whereToWatch {
   font-size: 1.2rem;

@@ -35,6 +35,9 @@ const MoviePage = () => {
               writers={writers}
               length={length}
               releaseDate={releaseDate}
+              newtworkLogo={
+                "https://www.thewrap.com/wp-content/uploads/2014/12/hbo-logo.jpg"
+              }
             />
           </div>
         </div>
