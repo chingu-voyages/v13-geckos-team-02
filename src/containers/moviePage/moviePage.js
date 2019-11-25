@@ -5,10 +5,15 @@ import styles from "./moviePage.module.css";
 // COMPONENTS
 import Overview from "../../components/overview/overview";
 import SmallCard from "../../components/smallCard/smallCard";
+import SideBarMovieInfo from "../../components/sideBarMoreInfo/sideBarMoreInfo";
 const content =
   "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodoconsequat. Duis aute irure dolor in reprehenderit";
 const name = "Terminator:dark fate";
 const categories = ["action", "sci-fi", "thriller", "drama"];
+const releaseDate = "november 25, 2019";
+const length = "2hr 40min";
+const director = "ridley mark";
+const writers = ["john doe", "jane hunt"];
 
 const MoviePage = () => {
   return (
@@ -23,15 +28,14 @@ const MoviePage = () => {
             />
             {/* Movie Name */}
             <h2 className={styles.movieName}>{name}</h2>
-            {/* Movie Category */}
-            <div className={styles.movieCategory_box}>
-              <h3>Category</h3>
-              <div>
-                {categories.map(category => (
-                  <span className={styles.movieCategory}>{category}</span>
-                ))}
-              </div>
-            </div>
+            {/* More Movie Info */}
+            <SideBarMovieInfo
+              categories={categories}
+              director={director}
+              writers={writers}
+              length={length}
+              releaseDate={releaseDate}
+            />
           </div>
         </div>
         <div className={styles.moviePage_content_container}>

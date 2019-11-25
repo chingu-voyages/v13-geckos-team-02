@@ -7,14 +7,15 @@ const SmallCard = ({
   name = null,
   position = null,
   width = "100%",
-  height = "31%"
+  height = "31%",
+  backgroundSize = "cover"
 }) => {
   const smallCardStyles = {
     position: `${position}`,
     background: `url(${imageUrl})`,
     backgroundRepeat: "no-repeat",
     backgroundPosition: "center",
-    backgroundSize: "cover",
+    backgroundSize: `${backgroundSize}`,
     textAlign: "left",
     width: `${width}`,
     height: `${height}`
