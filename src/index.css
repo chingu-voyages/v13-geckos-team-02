@@ -11,12 +11,11 @@ body {
 
 /* width */
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 7px;
 }
 
 /* Track */
 ::-webkit-scrollbar-track {
-  /* border: 1px solid #5d5d5d; */
   border-radius: 10px;
 }
 
