@@ -8,6 +8,7 @@ import { ReactComponent as WatchListed } from "../../assets/icons/watchlist-icon
 import Overview from "../../components/overview/overview";
 import SmallCard from "../../components/smallCard/smallCard";
 import SideBarMovieInfo from "../../components/sideBarMoreInfo/sideBarMoreInfo";
+import ProductionCompany from "../../components/productionCompany/productionCompany";
 const content =
   "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodoconsequat. Duis aute irure dolor in reprehenderit";
 const name = "Terminator:dark fate";
@@ -57,7 +58,7 @@ const MoviePage = () => {
         </div>
         <div className={styles.moviePage_content_container}>
           <Overview content={content} />
-          <h1>Content</h1>
+          <ProductionCompany list={["regency", "lison films"]} />
           <h1>Content</h1>
           <h1>Content</h1>
           <h1>Content</h1>

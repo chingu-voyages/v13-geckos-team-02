@@ -1,0 +1,24 @@
+/* PRODUCTIN COMPANY STYLES */
+.productionCompany {
+  margin-top: 3rem;
+}
+
+.productionCompany_heading {
+  margin-bottom: 0.2rem;
+}
+
+/* BOX OF LIST OF COMPANY STYLES */
+.company_list_menu {
+  list-style: none;
+  padding: 0;
+  margin-top: 0;
+}
+.company_list_menu li:not(:last-child) {
+  margin-right: 1rem;
+}
+
+/* LIST OF COMPANY STYLES */
+.company_list_menu_item {
+  display: inline-block;
+  text-transform: capitalize;
+}
