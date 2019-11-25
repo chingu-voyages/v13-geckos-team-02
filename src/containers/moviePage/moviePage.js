@@ -1,6 +1,8 @@
 import React from "react";
 
 import styles from "./moviePage.module.css";
+import { ReactComponent as NotWatchListed } from "../../assets/icons/watchlist-icon-empty.svg";
+import { ReactComponent as WatchListed } from "../../assets/icons/watchlist-icon-like.svg";
 
 // COMPONENTS
 import Overview from "../../components/overview/overview";
@@ -14,12 +16,14 @@ const releaseDate = "november 25, 2019";
 const length = "2hr 40min";
 const director = "ridley mark";
 const writers = ["john doe", "jane hunt"];
+const watchlisted = true;
 
 const MoviePage = () => {
   return (
     <div>
       <div className={styles.moviePage}>
         <div className={styles.moviePage_sideBar_container}>
+          {/* Container holding more infomations to movies */}
           <div className={styles.sideBar_content_container}>
             {/* Movie Poster */}
             <SmallCard
@@ -39,6 +43,16 @@ const MoviePage = () => {
                 "https://www.thewrap.com/wp-content/uploads/2014/12/hbo-logo.jpg"
               }
             />
+            {/* Footer section with watchlist button */}
+            <div className={styles.sideBar_footer}>
+              <div className={styles.sideBar_footer_watchlist_container}>
+                {watchlisted ? (
+                  <WatchListed className={styles.sideBar_footer_icon} />
+                ) : (
+                  <NotWatchListed className={styles.sideBar_footer_icon} />
+                )}
+              </div>
+            </div>
           </div>
         </div>
         <div className={styles.moviePage_content_container}>
