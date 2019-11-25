@@ -1,0 +1,45 @@
+/* SIDE BAR STYLES */
+.sideBar_title {
+  color: #bebebe;
+  margin-bottom: 0;
+}
+
+/* SIDE BAR CONTAINER STYLES */
+.sideBar_container {
+  position: relative;
+  height: 50vh;
+  overflow-y: scroll;
+}
+
+/* WHERE TO WATCH STYLES */
+.whereToWatch {
+  font-size: 1.2rem;
+  text-align: center;
+}
+.whereToWatch_container {
+  height: 140px;
+  width: 50%;
+  background-color: #393939;
+  margin: auto auto 1.5rem auto;
+  border-radius: 6px;
+  padding: 1rem;
+  transition: all 0.3s;
+}
+
+.whereToWatch_container:hover,
+.whereToWatch_container:active {
+  cursor: pointer;
+  box-shadow: 0rem 0rem 1rem rgba(192, 192, 192, 0.5);
+}
+
+/* Movie Category Styles */
+.boxInfo {
+  text-transform: capitalize;
+  border: 1px solid #5d5d5d;
+  padding: 0.2rem 1rem;
+  display: inline-block;
+  margin-top: 1rem;
+}
+.boxInfo:not(:last-child) {
+  margin-right: 1rem;
+}

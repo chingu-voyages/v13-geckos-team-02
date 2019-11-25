@@ -35,9 +35,21 @@ const LandingSection = ({ imageUrl }) => {
         </div>
         {/* Container for the small cards */}
         <div className={styles.smallSection}>
-          <SmallCard name="the king" imageUrl={imageUrl} />
-          <SmallCard name="the king" imageUrl={imageUrl} />
-          <SmallCard name="the king" imageUrl={imageUrl} />
+          <SmallCard
+            name="the king"
+            imageUrl={imageUrl}
+            position={"relative"}
+          />
+          <SmallCard
+            name="the king"
+            imageUrl={imageUrl}
+            position={"relative"}
+          />
+          <SmallCard
+            name="the king"
+            imageUrl={imageUrl}
+            position={"relative"}
+          />
         </div>
       </div>
     </div>

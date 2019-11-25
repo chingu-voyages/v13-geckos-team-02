@@ -12,6 +12,18 @@
   position: sticky;
   position: -webkit-sticky;
   top: 10%;
+  background-color: #3333335a;
+}
+
+.sideBar_content_container {
+  margin: 2rem 1.2rem 0;
+}
+
+/* Movie Name Styles */
+.movieName {
+  font-weight: 300;
+  font-size: 25px;
+  text-transform: uppercase;
 }
 
 /* CONTENT CONTAINER STYLES */
