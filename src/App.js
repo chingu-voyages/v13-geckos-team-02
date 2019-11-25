@@ -5,6 +5,7 @@ import "./App.css";
 import Header from "./components/header/header";
 import HomePage from "./containers/homePage/homePage";
 import MoviesPage from "./containers/moviesPage/moviesPage";
+import MoviePage from "./containers/moviePage/moviePage";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
       <Switch>
         <Route exact path="/" component={HomePage} />
         <Route exact path="/movies" component={MoviesPage} />
+        <Route path="/movie" component={MoviePage} />
       </Switch>
     </div>
   );

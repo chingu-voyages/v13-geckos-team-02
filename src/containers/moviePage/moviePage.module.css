@@ -1,0 +1,21 @@
+/* MOVIE PAGE STYLES */
+.moviePage {
+  text-align: left;
+  display: flex;
+  justify-content: space-between;
+}
+
+/* SIDE BAR CONTAINER STYLES */
+.moviePage_sideBar_container {
+  width: 20%;
+  height: 90vh;
+  position: sticky;
+  position: -webkit-sticky;
+  top: 10%;
+}
+
+/* CONTENT CONTAINER STYLES */
+.moviePage_content_container {
+  width: 79%;
+  margin-top: 5%;
+}
