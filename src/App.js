@@ -5,6 +5,7 @@ import "./App.css";
 // IMPORTING REDUX ACTIONS
 import { getMoviesGenresStart } from "./redux/genre/genre.action";
 import { getNowPlayingStart } from "./redux/movies/movies.action";
+import { getImageConfigStart } from "./redux/appConfig/appConfig.action";
 
 // IMPORTING COMPONENTS
 import Header from "./components/header/header";
@@ -14,9 +15,14 @@ import MoviePage from "./containers/moviePage/moviePage";
 
 class App extends React.Component {
   componentDidMount() {
-    const { getmoviesGenresStart, getNowPlayingStart } = this.props;
-    getmoviesGenresStart();
-    getNowPlayingStart();
+    const {
+      getmoviesGenresStart,
+      getNowPlayingStart,
+      getImageConfigStart
+    } = this.props;
+    getImageConfigStart();
+    // getmoviesGenresStart();
+    // getNowPlayingStart();
   }
   render() {
     return (
@@ -33,7 +39,8 @@ class App extends React.Component {
 }
 const mapDispatchToProps = dispatch => ({
   getmoviesGenresStart: () => dispatch(getMoviesGenresStart()),
-  getNowPlayingStart: () => dispatch(getNowPlayingStart())
+  getNowPlayingStart: () => dispatch(getNowPlayingStart()),
+  getImageConfigStart: () => dispatch(getImageConfigStart())
 });
 
 export default connect(null, mapDispatchToProps)(App);
