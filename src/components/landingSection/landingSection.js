@@ -9,16 +9,17 @@ import SmallCard from "../smallCard/smallCard";
 import SellAllButton from "../see-all-button/see-all-button";
 import WithSpinner from "../withSpinner/withSpinner";
 
-const LandingSection = ({ imageUrl, nowPlayingMovies }) => {
+const LandingSection = ({ imageUrl, nowPlayingMovies, imageConfig }) => {
   const { results, page, total_results, total_pages } = nowPlayingMovies;
+  const { secure_base_url, backdrop_sizes } = imageConfig;
+  const imagePath = `${secure_base_url}${backdrop_sizes[3]}`;
   return results ? (
     <div className={styles.landingSection}>
       {/* Background providing blurry image effect */}
-      {console.log(results)}
       <div
         className={styles.blurry}
         style={{
-          background: `url(${imageUrl})`,
+          background: `url(${imagePath}${results[0].backdrop_path})`,
           backgroundRepeat: "no-repeat",
           backgroundPosition: "center",
           backgroundSize: "cover"
@@ -30,7 +31,7 @@ const LandingSection = ({ imageUrl, nowPlayingMovies }) => {
       <div className={styles.cardsContainer}>
         <div className={styles.bigSection}>
           <BigCard
-            imageUrl={imageUrl}
+            imageUrl={`${imagePath}${results[0].backdrop_path}`}
             name={results[0].original_title}
             rating={results[0].vote_average}
             restriction="16+"
@@ -43,8 +44,9 @@ const LandingSection = ({ imageUrl, nowPlayingMovies }) => {
             .filter((idx, item) => (item > 0) & (item < 4))
             .map(movie => (
               <SmallCard
+                key={movie.id}
                 name={movie.original_title}
-                imageUrl={imageUrl}
+                imageUrl={`${imagePath}${movie.backdrop_path}`}
                 position={"relative"}
               />
             ))}
@@ -59,11 +61,16 @@ const LandingSection = ({ imageUrl, nowPlayingMovies }) => {
   ) : null;
 };
 
-const mapStateToProps = ({ movies, genres }) => ({
+const mapStateToProps = ({ movies, genres, configs }) => ({
+  // GET NOW PLAYING MOVIES INFORMATION
   nowPlayingMovies: movies.nowPlayingMovies,
-  isFetching: movies.gettingNowPlaying,
+  // IS fetching is either is true
+  isFetching:
+    movies.gettingNowPlaying ||
+    genres.gettingMoviesGenres ||
+    configs.gettingConfigs,
   movieGenre: genres.moviesGenres,
-  isFetchingGenre: genres.gettingMoviesGenres
+  imageConfig: configs.imageConfig
 });
 
 export default connect(mapStateToProps)(WithSpinner(LandingSection));
