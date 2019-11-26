@@ -11,9 +11,10 @@ import WithSpinner from "../withSpinner/withSpinner";
 
 const LandingSection = ({ imageUrl, nowPlayingMovies }) => {
   const { results, page, total_results, total_pages } = nowPlayingMovies;
-  return (
+  return results ? (
     <div className={styles.landingSection}>
       {/* Background providing blurry image effect */}
+      {console.log(results)}
       <div
         className={styles.blurry}
         style={{
@@ -30,39 +31,39 @@ const LandingSection = ({ imageUrl, nowPlayingMovies }) => {
         <div className={styles.bigSection}>
           <BigCard
             imageUrl={imageUrl}
-            name="Terminator:dark fate"
-            rating="7.6"
+            name={results[0].original_title}
+            rating={results[0].vote_average}
             restriction="16+"
-            genre="action, sci-fi"
+            genre={["action", "sci-fi"]}
           />
         </div>
         {/* Container for the small cards */}
         <div className={styles.smallSection}>
-          <SmallCard
-            name="the king"
-            imageUrl={imageUrl}
-            position={"relative"}
-          />
-          <SmallCard
-            name="the king"
-            imageUrl={imageUrl}
-            position={"relative"}
-          />
-          <SmallCard
-            name="the king"
-            imageUrl={imageUrl}
-            position={"relative"}
-          />
+          {results
+            .filter((idx, item) => (item > 0) & (item < 4))
+            .map(movie => (
+              <SmallCard
+                name={movie.original_title}
+                imageUrl={imageUrl}
+                position={"relative"}
+              />
+            ))}
         </div>
-        <SellAllButton position={"absolute"} />
+        <SellAllButton
+          position={"absolute"}
+          right={"3"}
+          count={results.length}
+        />
       </div>
     </div>
-  );
+  ) : null;
 };
 
-const mapStateToProps = ({ movies }) => ({
+const mapStateToProps = ({ movies, genres }) => ({
   nowPlayingMovies: movies.nowPlayingMovies,
-  isFetching: true
+  isFetching: movies.gettingNowPlaying,
+  movieGenre: genres.moviesGenres,
+  isFetchingGenre: genres.gettingMoviesGenres
 });
 
 export default connect(mapStateToProps)(WithSpinner(LandingSection));
