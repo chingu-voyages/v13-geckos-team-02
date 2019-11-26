@@ -1,6 +1,6 @@
 /* TEAM STYLES */
 .team_container {
-  margin-top: 3rem;
+  margin-top: 2rem;
 }
 
 /* TEAM HEADING STYLES */
@@ -11,11 +11,10 @@
 /* TEAM MEMBER CARD CONTAINER STYLES */
 .team_member_card_container {
   width: 98%;
-  height: 250px;
+  height: 220px;
   margin-top: 1.2rem;
   overflow-x: scroll;
   white-space: nowrap;
-  /* overflow-x: hidden; */
 }
 .team_member_card_container::-webkit-scrollbar {
   display: none;
