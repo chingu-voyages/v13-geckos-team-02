@@ -7,6 +7,7 @@ import styles from "./landingSection.module.css";
 import BigCard from "../bigCard/bigCard";
 import SmallCard from "../smallCard/smallCard";
 import SellAllButton from "../see-all-button/see-all-button";
+import WithSpinner from "../withSpinner/withSpinner";
 
 const LandingSection = ({ imageUrl, nowPlayingMovies }) => {
   const { results, page, total_results, total_pages } = nowPlayingMovies;
@@ -60,7 +61,8 @@ const LandingSection = ({ imageUrl, nowPlayingMovies }) => {
 };
 
 const mapStateToProps = ({ movies }) => ({
-  nowPlayingMovies: movies.nowPlayingMovies
+  nowPlayingMovies: movies.nowPlayingMovies,
+  isFetching: true
 });
 
-export default connect(mapStateToProps)(LandingSection);
+export default connect(mapStateToProps)(WithSpinner(LandingSection));
