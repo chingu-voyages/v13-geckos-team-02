@@ -18,14 +18,16 @@ const moviesReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         nowPlayingMovies: action.payload,
-        gettingNowPlaying: false
+        gettingNowPlaying: false,
+        error: null
       };
 
     // IN CASE OF A FAILURE FOR EITHER REDUCERS
     case MoviesTypes.GET_NOW_PLAYING_FAILURE:
       return {
         ...state,
-        error: action.payload
+        error: action.payload,
+        gettingNowPlaying: false
       };
 
     default:

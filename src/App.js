@@ -4,6 +4,7 @@ import { Switch, Route } from "react-router-dom";
 import "./App.css";
 // IMPORTING REDUX ACTIONS
 import { getMoviesGenresStart } from "./redux/genre/genre.action";
+import { getNowPlayingStart } from "./redux/movies/movies.action";
 
 // IMPORTING COMPONENTS
 import Header from "./components/header/header";
@@ -13,8 +14,9 @@ import MoviePage from "./containers/moviePage/moviePage";
 
 class App extends React.Component {
   componentDidMount() {
-    const { getmoviesGenresStart } = this.props;
+    const { getmoviesGenresStart, getNowPlayingStart } = this.props;
     getmoviesGenresStart();
+    getNowPlayingStart();
   }
   render() {
     return (
@@ -30,7 +32,8 @@ class App extends React.Component {
   }
 }
 const mapDispatchToProps = dispatch => ({
-  getmoviesGenresStart: () => dispatch(getMoviesGenresStart())
+  getmoviesGenresStart: () => dispatch(getMoviesGenresStart()),
+  getNowPlayingStart: () => dispatch(getNowPlayingStart())
 });
 
 export default connect(null, mapDispatchToProps)(App);
