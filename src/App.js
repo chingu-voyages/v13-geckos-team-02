@@ -18,11 +18,14 @@ class App extends React.Component {
     const {
       getmoviesGenresStart,
       getNowPlayingStart,
-      getImageConfigStart
+      getImageConfigStart,
+      configs,
+      movies,
+      genres
     } = this.props;
-    getImageConfigStart();
-    // getmoviesGenresStart();
-    // getNowPlayingStart();
+    if (!configs) getImageConfigStart();
+    if (!movies) getNowPlayingStart();
+    if (!genres) getmoviesGenresStart();
   }
   render() {
     return (
@@ -37,10 +40,15 @@ class App extends React.Component {
     );
   }
 }
+const mapStateToProps = ({ configs, movies, genres }) => ({
+  configs,
+  movies: movies.nowPlayingMovies,
+  genres: genres.moviesGenres
+});
 const mapDispatchToProps = dispatch => ({
   getmoviesGenresStart: () => dispatch(getMoviesGenresStart()),
   getNowPlayingStart: () => dispatch(getNowPlayingStart()),
   getImageConfigStart: () => dispatch(getImageConfigStart())
 });
 
-export default connect(null, mapDispatchToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);

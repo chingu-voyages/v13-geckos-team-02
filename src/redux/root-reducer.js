@@ -10,7 +10,7 @@ import appConfigReducer from "./appConfig/appConfig.reducer";
 const persistConfig = {
   key: "root",
   storage: storage,
-  whitelist: ["configs"]
+  whitelist: ["configs", "genres", "movies"]
 };
 
 const rootReducer = combineReducers({

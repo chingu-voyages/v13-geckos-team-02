@@ -3,7 +3,7 @@ import MoviesTypes from "./movies.types";
 const INITIAL_STATE = {
   gettingNowPlaying: false,
   error: null,
-  nowPlayingMovies: []
+  nowPlayingMovies: null
 };
 
 const moviesReducer = (state = INITIAL_STATE, action) => {

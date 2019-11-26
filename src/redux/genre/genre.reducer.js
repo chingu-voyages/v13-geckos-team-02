@@ -1,7 +1,7 @@
 import GenreTypes from "./genre.types";
 
 const INITIAL_STATE = {
-  moviesGenres: [],
+  moviesGenres: null,
   gettingMoviesGenres: false,
   seriesGenres: [],
   gettingSeriesGenres: false,
