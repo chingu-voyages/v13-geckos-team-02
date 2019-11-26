@@ -1,4 +1,5 @@
 import React from "react";
+import { withRouter } from "react-router-dom";
 
 import styles from "./bigCardMovieInfo.module.css";
 
@@ -8,11 +9,18 @@ const BigCardMovieInfo = ({
   restriction = null,
   genre = null,
   year = null,
-  children
+  children,
+  history,
+  id
 }) => (
   <div className={styles.bigCardInfo}>
     {children}
-    <h2 className={styles.movieName}>{name}</h2>
+    <h2
+      className={styles.movieName}
+      onClick={() => history.push(`/movie/${id}`)}
+    >
+      {name}
+    </h2>
     <div className={styles.movieInfo}>
       <span>{rating}</span>
       <span className={styles.movieRestriction}>{restriction}</span>
@@ -23,4 +31,4 @@ const BigCardMovieInfo = ({
   </div>
 );
 
-export default BigCardMovieInfo;
+export default withRouter(BigCardMovieInfo);

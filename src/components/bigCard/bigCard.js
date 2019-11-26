@@ -4,7 +4,7 @@ import styles from "./bigCard.module.css";
 
 import BigCardMovieInfo from "../bigCardMovieInfo/bigCardMovieInfo";
 
-const BigCard = ({ imageUrl = null, name, rating, restriction, genre }) => {
+const BigCard = ({ imageUrl = null, name, rating, restriction, genre, id }) => {
   const bigCardStyles = {
     position: "relative",
     background: `url(${imageUrl})`,
@@ -22,6 +22,7 @@ const BigCard = ({ imageUrl = null, name, rating, restriction, genre }) => {
         rating={rating}
         restriction={restriction}
         genre={genre}
+        id={id}
       >
         <h1 className={styles.lastMovieText}>LATEST MOVIE</h1>
       </BigCardMovieInfo>

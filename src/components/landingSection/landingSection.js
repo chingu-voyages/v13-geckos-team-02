@@ -36,6 +36,7 @@ const LandingSection = ({ imageUrl, nowPlayingMovies, imageConfig }) => {
             rating={results[0].vote_average}
             restriction="16+"
             genre={["action", "sci-fi"]}
+            id={results[0].id}
           />
         </div>
         {/* Container for the small cards */}
@@ -48,15 +49,17 @@ const LandingSection = ({ imageUrl, nowPlayingMovies, imageConfig }) => {
                 name={movie.original_title}
                 imageUrl={`${imagePath}${movie.backdrop_path}`}
                 position={"relative"}
+                id={movie.id}
               />
             ))}
         </div>
-        <SellAllButton
-          position={"absolute"}
-          right={"3"}
-          count={results.length}
-        />
       </div>
+      <SellAllButton
+        position={"absolute"}
+        right={"3"}
+        count={results.length}
+        link="/movies"
+      />
     </div>
   ) : null;
 };

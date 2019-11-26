@@ -1,4 +1,5 @@
 import React from "react";
+import { withRouter } from "react-router-dom";
 
 import styles from "./smallCard.module.css";
 
@@ -7,8 +8,11 @@ const SmallCard = ({
   name = null,
   position = null,
   width = "100%",
-  height = "31%",
-  backgroundSize = "cover"
+  height = "31.7%",
+  backgroundSize = "cover",
+  history,
+  match,
+  id
 }) => {
   const smallCardStyles = {
     position: `${position}`,
@@ -22,9 +26,14 @@ const SmallCard = ({
   };
   return (
     <div style={smallCardStyles}>
-      <h2 className={styles.movieName}>{name}</h2>
+      <h2
+        onClick={() => history.push(`movie/${id}`)}
+        className={styles.movieName}
+      >
+        {name}
+      </h2>
     </div>
   );
 };
 
-export default SmallCard;
+export default withRouter(SmallCard);
