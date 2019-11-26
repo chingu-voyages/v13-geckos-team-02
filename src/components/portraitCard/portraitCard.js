@@ -14,7 +14,6 @@ const PortraitCard = ({ watchlisted = null }) => {
     backgroundPosition: "center",
     backgroundSize: "cover"
   };
-  console.log(showPortrait);
   return (
     <div className={styles.portraitCardContainer}>
       {/* STATIC PORTRAIT CARD */}
