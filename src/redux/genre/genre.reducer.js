@@ -8,7 +8,7 @@ const INITIAL_STATE = {
   error: null
 };
 
-const GenreReducer = (state = INITIAL_STATE, action) => {
+const genreReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
     // GET LIST OF MOVIES GENRE
     case GenreTypes.GET_MOVIES_GENRES_START:
@@ -49,4 +49,4 @@ const GenreReducer = (state = INITIAL_STATE, action) => {
   }
 };
 
-export default GenreReducer;
+export default genreReducer;
