@@ -9,6 +9,10 @@ body {
   color: #fff;
 }
 
+h2 {
+  margin-bottom: 0.2rem;
+}
+
 /* width */
 ::-webkit-scrollbar {
   width: 7px;
