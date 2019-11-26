@@ -8,6 +8,7 @@ import { ReactComponent as WatchListed } from "../../assets/icons/watchlist-icon
 import Overview from "../../components/overview/overview";
 import SmallCard from "../../components/smallCard/smallCard";
 import SideBarMovieInfo from "../../components/sideBarMoreInfo/sideBarMoreInfo";
+import Team from "../../components/team/team";
 import ProductionCompany from "../../components/productionCompany/productionCompany";
 const content =
   "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodoconsequat. Duis aute irure dolor in reprehenderit";
@@ -18,6 +19,56 @@ const length = "2hr 40min";
 const director = "ridley mark";
 const writers = ["john doe", "jane hunt"];
 const watchlisted = true;
+const list = [
+  {
+    realName: "done right",
+    actingName: "mark song",
+    imageUrl:
+      "https://images.unsplash.com/photo-1568896597888-d674b61e7067?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1355&q=80"
+  },
+  {
+    realName: "done right",
+    actingName: "mark song",
+    imageUrl:
+      "https://images.unsplash.com/photo-1568896597888-d674b61e7067?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1355&q=80"
+  },
+  {
+    realName: "done right",
+    actingName: "mark song",
+    imageUrl:
+      "https://images.unsplash.com/photo-1568896597888-d674b61e7067?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1355&q=80"
+  },
+  {
+    realName: "done right",
+    actingName: "mark song",
+    imageUrl:
+      "https://images.unsplash.com/photo-1568896597888-d674b61e7067?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1355&q=80"
+  },
+  {
+    realName: "done right",
+    actingName: "mark song",
+    imageUrl:
+      "https://images.unsplash.com/photo-1568896597888-d674b61e7067?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1355&q=80"
+  },
+  {
+    realName: "done right",
+    actingName: "mark song",
+    imageUrl:
+      "https://images.unsplash.com/photo-1568896597888-d674b61e7067?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1355&q=80"
+  },
+  {
+    realName: "done right",
+    actingName: "mark song",
+    imageUrl:
+      "https://images.unsplash.com/photo-1568896597888-d674b61e7067?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1355&q=80"
+  },
+  {
+    realName: "done right",
+    actingName: "mark song",
+    imageUrl:
+      "https://images.unsplash.com/photo-1568896597888-d674b61e7067?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1355&q=80"
+  }
+];
 
 const MoviePage = () => {
   return (
@@ -58,8 +109,10 @@ const MoviePage = () => {
         </div>
         <div className={styles.moviePage_content_container}>
           <Overview content={content} />
+          <Team heading={"the cast"} list={list} />
+          <Team heading={"the crew"} list={list} />
+          <Team heading={"created by"} list={list} />
           <ProductionCompany list={["regency", "lison films"]} />
-          <h1>Content</h1>
           <h1>Content</h1>
           <h1>Content</h1>
           <h1>Content</h1>
