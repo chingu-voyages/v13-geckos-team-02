@@ -4,6 +4,7 @@ import storage from "redux-persist/lib/storage";
 
 // IMPORT REDUCERS
 import genreReducer from "./genre/genre.reducer";
+import moviesReducer from "./movies/movies.reducer";
 
 const persistConfig = {
   key: "root",
@@ -11,6 +12,6 @@ const persistConfig = {
   whitelist: []
 };
 
-const rootReducer = combineReducers({ genreReducer });
+const rootReducer = combineReducers({ genreReducer, moviesReducer });
 
 export default persistReducer(persistConfig, rootReducer);
