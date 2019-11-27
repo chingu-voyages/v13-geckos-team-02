@@ -3,9 +3,10 @@ import { connect } from "react-redux";
 import { Switch, Route } from "react-router-dom";
 import "./App.css";
 // IMPORTING REDUX ACTIONS
+import { getImageConfigStart } from "./redux/appConfig/appConfig.action";
 import { getMoviesGenresStart } from "./redux/genre/genre.action";
 import { getNowPlayingStart } from "./redux/movies/movies.action";
-import { getImageConfigStart } from "./redux/appConfig/appConfig.action";
+import { getOnAirSeriesStart } from "./redux/series/series.action";
 
 // IMPORTING COMPONENTS
 import Header from "./components/header/header";
@@ -19,13 +20,16 @@ class App extends React.Component {
       getmoviesGenresStart,
       getNowPlayingStart,
       getImageConfigStart,
+      getOnAirSeries,
       configs,
       movies,
-      genres
+      genres,
+      series
     } = this.props;
     if (!configs) getImageConfigStart();
     if (!movies) getNowPlayingStart();
     if (!genres) getmoviesGenresStart();
+    if (!series) getOnAirSeries();
   }
   render() {
     return (
@@ -40,15 +44,17 @@ class App extends React.Component {
     );
   }
 }
-const mapStateToProps = ({ configs, movies, genres }) => ({
+const mapStateToProps = ({ configs, movies, genres, series }) => ({
   configs,
   movies: movies.nowPlayingMovies,
-  genres: genres.moviesGenres
+  genres: genres.moviesGenres,
+  series: series.onAirSeries
 });
 const mapDispatchToProps = dispatch => ({
   getmoviesGenresStart: () => dispatch(getMoviesGenresStart()),
   getNowPlayingStart: () => dispatch(getNowPlayingStart()),
-  getImageConfigStart: () => dispatch(getImageConfigStart())
+  getImageConfigStart: () => dispatch(getImageConfigStart()),
+  getOnAirSeries: () => dispatch(getOnAirSeriesStart())
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
