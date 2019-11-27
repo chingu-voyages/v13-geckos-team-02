@@ -1,5 +1,12 @@
 import React from "react";
-
+import { connect } from "react-redux";
+import { createStructuredSelector } from "reselect";
+// IMPORTING RESELECT
+import {
+  selectGettingOnAirSeries,
+  selectOnAirSeries
+} from "../../redux/series/series.selector";
+// IMPORTING COMPONENTS
 import LandingSection from "../../components/landingSection/landingSection";
 import CategorySection from "../../components/categorySection/categorySection";
 
@@ -10,14 +17,25 @@ class HomePage extends React.Component {
   }
 
   render() {
+    const { isFetching, onAirSeries } = this.props;
     return (
       <div>
         <LandingSection />
-        <CategorySection heading={"Latest Series"} count={40} />
-        <CategorySection heading={"Movies by popularity"} count={39} />
+        <CategorySection
+          heading={"On Air Series"}
+          values={onAirSeries.results}
+          count={40}
+          isFetching={isFetching}
+        />
+        <CategorySection heading={"On Air Series"} count={39} />
       </div>
     );
   }
 }
 
-export default HomePage;
+const mapStateToProps = createStructuredSelector({
+  isFetching: selectGettingOnAirSeries,
+  onAirSeries: selectOnAirSeries
+});
+
+export default connect(mapStateToProps)(HomePage);

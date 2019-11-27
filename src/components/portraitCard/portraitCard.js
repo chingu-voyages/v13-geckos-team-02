@@ -5,9 +5,8 @@ import { ReactComponent as WatchListIconEmpty } from "../../assets/icons/watchli
 import { ReactComponent as InformationIcon } from "../../assets/icons/information-icon.svg";
 import { ReactComponent as WatchListIconLike } from "../../assets/icons/watchlist-icon-like.svg";
 
-const PortraitCard = ({ watchlisted = null }) => {
+const PortraitCard = ({ imageUrl, title, seasonCount, watchlisted = null }) => {
   const [showPortrait, setShowPortrait] = useState(null);
-  const imageUrl = `https://images.unsplash.com/photo-1568896597888-d674b61e7067?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1355&q=80`;
   const video = "https://www.youtube.com/embed/A-eobLIY-yE";
   const portraitCardStyles = {
     background: `url(${imageUrl})`,
@@ -24,11 +23,11 @@ const PortraitCard = ({ watchlisted = null }) => {
       >
         <div className={styles.portraitCard_footer}>
           <div>
-            <h5 className={styles.portraitCard_footer_name}>
-              Terminator: Dark Fate
-            </h5>
+            <h5 className={styles.portraitCard_footer_name}>{title}</h5>
           </div>
-          <span className={styles.portraitCard_footer_season}>1 season</span>
+          <span className={styles.portraitCard_footer_season}>
+            {seasonCount}
+          </span>
         </div>
       </div>
       {/* DYNAMIC PORTRAIT CARD */}
