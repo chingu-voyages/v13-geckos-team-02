@@ -13,7 +13,7 @@ const PortraitCard = ({
   imagePath,
   imageUrl,
   title,
-  seasonCount,
+  rating,
   watchlisted = null
 }) => {
   const [showPortrait, setShowPortrait] = useState(null);
@@ -35,9 +35,7 @@ const PortraitCard = ({
           <div>
             <h5 className={styles.portraitCard_footer_name}>{title}</h5>
           </div>
-          <span className={styles.portraitCard_footer_season}>
-            {seasonCount}
-          </span>
+          <span className={styles.portraitCard_footer_season}>{rating}</span>
         </div>
       </div>
       {/* DYNAMIC PORTRAIT CARD */}

@@ -24,7 +24,6 @@ class HomePage extends React.Component {
         <CategorySection
           heading={"On Air Series"}
           values={onAirSeries.results}
-          count={40}
           isFetching={isFetching}
         />
         <CategorySection heading={"On Air Series"} count={39} />
