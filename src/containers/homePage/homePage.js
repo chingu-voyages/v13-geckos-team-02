@@ -3,6 +3,10 @@ import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
 // IMPORTING RESELECT
 import {
+  selectGettingTrendingMovies,
+  selectTrendingMovies
+} from "../../redux/movies/movies.selector";
+import {
   selectGettingOnAirSeries,
   selectOnAirSeries
 } from "../../redux/series/series.selector";
@@ -17,24 +21,40 @@ class HomePage extends React.Component {
   }
 
   render() {
-    const { isFetching, onAirSeries } = this.props;
+    const {
+      gettingOnAirSeries,
+      onAirSeries,
+      gettingTrendingMovies,
+      trendingMovies
+    } = this.props;
     return (
       <div>
         <LandingSection />
         <CategorySection
           heading={"On Air Series"}
           values={onAirSeries.results}
-          isFetching={isFetching}
+          isFetching={gettingOnAirSeries}
         />
-        <CategorySection heading={"On Air Series"} count={39} />
+        <CategorySection
+          heading={"Trending Movies"}
+          values={trendingMovies.results}
+          isFetching={gettingTrendingMovies}
+        />
+        <CategorySection
+          heading={"Trending Series"}
+          values={trendingMovies.results}
+          isFetching={gettingTrendingMovies}
+        />
       </div>
     );
   }
 }
 
 const mapStateToProps = createStructuredSelector({
-  isFetching: selectGettingOnAirSeries,
-  onAirSeries: selectOnAirSeries
+  gettingOnAirSeries: selectGettingOnAirSeries,
+  onAirSeries: selectOnAirSeries,
+  gettingTrendingMovies: selectGettingTrendingMovies,
+  trendingMovies: selectTrendingMovies
 });
 
 export default connect(mapStateToProps)(HomePage);

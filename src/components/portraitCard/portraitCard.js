@@ -21,7 +21,8 @@ const PortraitCard = ({
   const portraitCardStyles = {
     background: `url(${imagePath}${imageUrl})`,
     backgroundPosition: "center",
-    backgroundSize: "cover"
+    backgroundSize: "cover",
+    backgroundRepeat: "no-repeat"
   };
   return (
     <div className={styles.portraitCardContainer}>

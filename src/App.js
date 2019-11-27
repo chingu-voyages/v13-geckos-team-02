@@ -5,8 +5,14 @@ import "./App.css";
 // IMPORTING REDUX ACTIONS
 import { getImageConfigStart } from "./redux/appConfig/appConfig.action";
 import { getMoviesGenresStart } from "./redux/genre/genre.action";
-import { getNowPlayingStart } from "./redux/movies/movies.action";
-import { getOnAirSeriesStart } from "./redux/series/series.action";
+import {
+  getNowPlayingStart,
+  getTrendingMoviesStart
+} from "./redux/movies/movies.action";
+import {
+  getOnAirSeriesStart,
+  getTrendingSeriesStart
+} from "./redux/series/series.action";
 
 // IMPORTING COMPONENTS
 import Header from "./components/header/header";
@@ -21,6 +27,8 @@ class App extends React.Component {
       getNowPlayingStart,
       getImageConfigStart,
       getOnAirSeries,
+      getTrendingMovies,
+      getTrendingSeries,
       configs,
       movies,
       genres,
@@ -30,6 +38,8 @@ class App extends React.Component {
     if (!movies) getNowPlayingStart();
     if (!genres) getmoviesGenresStart();
     if (!series) getOnAirSeries();
+    getTrendingMovies();
+    getTrendingSeries();
   }
   render() {
     return (
@@ -54,7 +64,9 @@ const mapDispatchToProps = dispatch => ({
   getmoviesGenresStart: () => dispatch(getMoviesGenresStart()),
   getNowPlayingStart: () => dispatch(getNowPlayingStart()),
   getImageConfigStart: () => dispatch(getImageConfigStart()),
-  getOnAirSeries: () => dispatch(getOnAirSeriesStart())
+  getOnAirSeries: () => dispatch(getOnAirSeriesStart()),
+  getTrendingMovies: () => dispatch(getTrendingMoviesStart()),
+  getTrendingSeries: () => dispatch(getTrendingSeriesStart())
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

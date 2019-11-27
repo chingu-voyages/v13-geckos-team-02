@@ -6,7 +6,7 @@ import WithSpinner from "../withSpinner/withSpinner";
 // STYLES
 import styles from "./categorySection.module.css";
 
-const CategorySection = ({ heading, values, count }) => (
+const CategorySection = ({ heading, values }) => (
   <div className={styles.categorySection}>
     <div className={styles.categoryHeader}>
       <div className={styles.categoryHeading}>
@@ -22,8 +22,7 @@ const CategorySection = ({ heading, values, count }) => (
         .map(tv => (
           <PortraitCard
             key={tv.id}
-            title={tv.original_name}
-            imageUrl={tv.backdrop_path}
+            imageUrl={tv.poster_path}
           />
         ))}
     </div>
