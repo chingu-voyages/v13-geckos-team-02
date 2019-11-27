@@ -25,3 +25,6 @@
   width: 100%;
   margin: 0;
 }
+.categoryBody::-webkit-scrollbar {
+  display: none;
+}
