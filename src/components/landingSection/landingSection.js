@@ -1,6 +1,5 @@
 import React from "react";
 import { connect } from "react-redux";
-// IMPORTING REDUX
 
 // IMPORTING COMPONENTS
 import styles from "./landingSection.module.css";
@@ -10,7 +9,7 @@ import SellAllButton from "../see-all-button/see-all-button";
 import WithSpinner from "../withSpinner/withSpinner";
 
 const LandingSection = ({ imageUrl, nowPlayingMovies, imageConfig }) => {
-  const { results, page, total_results, total_pages } = nowPlayingMovies;
+  const { results } = nowPlayingMovies;
   const { secure_base_url, backdrop_sizes } = imageConfig;
   const imagePath = `${secure_base_url}${backdrop_sizes[3]}`;
   return results ? (
@@ -34,8 +33,7 @@ const LandingSection = ({ imageUrl, nowPlayingMovies, imageConfig }) => {
             imageUrl={`${imagePath}${results[0].backdrop_path}`}
             name={results[0].original_title}
             rating={results[0].vote_average}
-            restriction="16+"
-            genre={["action", "sci-fi"]}
+            genreIds={results[0].genre_ids}
             id={results[0].id}
           />
         </div>
