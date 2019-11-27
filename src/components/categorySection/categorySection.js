@@ -13,14 +13,18 @@ const CategorySection = ({ heading, values, count }) => (
         <h3>{heading}</h3>
       </div>
       <div className={styles.categoryButton}>
-        <SeeAllButton count={count} />
+        <SeeAllButton count={values.length} />
       </div>
     </div>
     <div className={styles.categoryBody}>
       {values
         .filter((idx, item) => item < 10)
         .map(tv => (
-          <PortraitCard key={tv.id} title={tv.original_name} />
+          <PortraitCard
+            key={tv.id}
+            title={tv.original_name}
+            imageUrl={tv.backdrop_path}
+          />
         ))}
     </div>
   </div>

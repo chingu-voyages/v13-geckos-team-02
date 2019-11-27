@@ -1,15 +1,25 @@
 import React, { useState } from "react";
+import { connect } from "react-redux";
+import { createStructuredSelector } from "reselect";
+// IMPORTING RESELECT
+import { selectImagePath } from "../../redux/appConfig/appConfig.selector";
 
 import styles from "./portraitCard.module.css";
 import { ReactComponent as WatchListIconEmpty } from "../../assets/icons/watchlist-icon-empty.svg";
 import { ReactComponent as InformationIcon } from "../../assets/icons/information-icon.svg";
 import { ReactComponent as WatchListIconLike } from "../../assets/icons/watchlist-icon-like.svg";
 
-const PortraitCard = ({ imageUrl, title, seasonCount, watchlisted = null }) => {
+const PortraitCard = ({
+  imagePath,
+  imageUrl,
+  title,
+  seasonCount,
+  watchlisted = null
+}) => {
   const [showPortrait, setShowPortrait] = useState(null);
   const video = "https://www.youtube.com/embed/A-eobLIY-yE";
   const portraitCardStyles = {
-    background: `url(${imageUrl})`,
+    background: `url(${imagePath}${imageUrl})`,
     backgroundPosition: "center",
     backgroundSize: "cover"
   };
@@ -88,5 +98,8 @@ const PortraitCard = ({ imageUrl, title, seasonCount, watchlisted = null }) => {
     </div>
   );
 };
+const mapStateToProps = createStructuredSelector({
+  imagePath: selectImagePath
+});
 
-export default PortraitCard;
+export default connect(mapStateToProps)(PortraitCard);
