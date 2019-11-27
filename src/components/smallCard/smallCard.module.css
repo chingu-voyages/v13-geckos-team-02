@@ -5,9 +5,7 @@
   width: 400px;
   height: 280px;
 }
-/* Image styles */
-.moviePoster {
-}
+
 /* Movie name styles */
 .movieName {
   position: absolute;
@@ -15,10 +13,17 @@
   left: 1rem;
   text-transform: uppercase;
   color: #fff;
-  width: 191px;
+  width: 50%;
   text-align: left;
   font-size: 25px;
   font-family: "Roboto";
   font-weight: 300;
   z-index: 10;
+  transition: all 0.5s;
+}
+
+.movieName:hover,
+.movieName:active {
+  cursor: pointer;
+  transform: scale(1.05);
 }

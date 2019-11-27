@@ -1,6 +1,5 @@
 import React from "react";
 import { connect } from "react-redux";
-// IMPORTING REDUX
 
 // IMPORTING COMPONENTS
 import styles from "./landingSection.module.css";
@@ -9,15 +8,17 @@ import SmallCard from "../smallCard/smallCard";
 import SellAllButton from "../see-all-button/see-all-button";
 import WithSpinner from "../withSpinner/withSpinner";
 
-const LandingSection = ({ imageUrl, nowPlayingMovies }) => {
-  const { results, page, total_results, total_pages } = nowPlayingMovies;
-  return (
+const LandingSection = ({ imageUrl, nowPlayingMovies, imageConfig }) => {
+  const { results } = nowPlayingMovies;
+  const { secure_base_url, backdrop_sizes } = imageConfig;
+  const imagePath = `${secure_base_url}${backdrop_sizes[3]}`;
+  return results ? (
     <div className={styles.landingSection}>
       {/* Background providing blurry image effect */}
       <div
         className={styles.blurry}
         style={{
-          background: `url(${imageUrl})`,
+          background: `url(${imagePath}${results[0].backdrop_path})`,
           backgroundRepeat: "no-repeat",
           backgroundPosition: "center",
           backgroundSize: "cover"
@@ -29,40 +30,48 @@ const LandingSection = ({ imageUrl, nowPlayingMovies }) => {
       <div className={styles.cardsContainer}>
         <div className={styles.bigSection}>
           <BigCard
-            imageUrl={imageUrl}
-            name="Terminator:dark fate"
-            rating="7.6"
-            restriction="16+"
-            genre="action, sci-fi"
+            imageUrl={`${imagePath}${results[0].backdrop_path}`}
+            name={results[0].original_title}
+            rating={results[0].vote_average}
+            genreIds={results[0].genre_ids}
+            id={results[0].id}
           />
         </div>
         {/* Container for the small cards */}
         <div className={styles.smallSection}>
-          <SmallCard
-            name="the king"
-            imageUrl={imageUrl}
-            position={"relative"}
-          />
-          <SmallCard
-            name="the king"
-            imageUrl={imageUrl}
-            position={"relative"}
-          />
-          <SmallCard
-            name="the king"
-            imageUrl={imageUrl}
-            position={"relative"}
-          />
+          {results
+            .filter((idx, item) => (item > 0) & (item < 4))
+            .map(movie => (
+              <SmallCard
+                key={movie.id}
+                name={movie.original_title}
+                imageUrl={`${imagePath}${movie.backdrop_path}`}
+                position={"relative"}
+                id={movie.id}
+              />
+            ))}
         </div>
-        <SellAllButton position={"absolute"} />
       </div>
+      <SellAllButton
+        position={"absolute"}
+        right={"3"}
+        count={results.length}
+        link="/movies"
+      />
     </div>
-  );
+  ) : null;
 };
 
-const mapStateToProps = ({ movies }) => ({
+const mapStateToProps = ({ movies, genres, configs }) => ({
+  // GET NOW PLAYING MOVIES INFORMATION
   nowPlayingMovies: movies.nowPlayingMovies,
-  isFetching: true
+  // IS fetching is either is true
+  isFetching:
+    movies.gettingNowPlaying ||
+    genres.gettingMoviesGenres ||
+    configs.gettingConfigs,
+  movieGenre: genres.moviesGenres,
+  imageConfig: configs.imageConfig
 });
 
 export default connect(mapStateToProps)(WithSpinner(LandingSection));

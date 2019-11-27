@@ -1,12 +1,13 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 import styles from "./see-all-button.module.css";
 
 const SellAllButton = ({
   count = null,
-  link = null,
+  link = "/",
   position = null,
-  bottom = 1,
+  bottom = 0,
   right = 2,
   zIndex = 11
 }) => {
@@ -18,10 +19,10 @@ const SellAllButton = ({
   };
   return (
     <div className={styles.buttonBox} style={buttonStyles}>
-      <a href={link} className={styles.buttonLink}>
+      <Link to={link} className={styles.buttonLink}>
         <span className={styles.buttonText}>See all {count}</span>
         <span className={styles.buttonIcon}>&#10230;</span>
-      </a>
+      </Link>
     </div>
   );
 };

@@ -20,7 +20,7 @@ const PortraitCard = ({ watchlisted = null }) => {
       <div
         style={portraitCardStyles}
         className={styles.portraitCard}
-        onMouseOver={() => setShowPortrait(true)}
+        // onMouseOver={() => setShowPortrait(true)}
       >
         <div className={styles.portraitCard_footer}>
           <div>
