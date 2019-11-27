@@ -1,25 +1,28 @@
 import React from "react";
+import { connect } from "react-redux";
+// IMPORTING REDUX
 
+// IMPORTING COMPONENTS
 import styles from "./landingSection.module.css";
 import BigCard from "../bigCard/bigCard";
 import SmallCard from "../smallCard/smallCard";
+import SellAllButton from "../see-all-button/see-all-button";
+import WithSpinner from "../withSpinner/withSpinner";
 
-const LandingSection = ({ imageUrl }) => {
-  const blurryStyles = {
-    background: `url(${imageUrl})`,
-    backgroundRepeat: "no-repeat",
-    backgroundPosition: "center",
-    backgroundSize: "cover",
-    position: "absolute",
-    width: "100%",
-    height: "92vh",
-    filter: "blur(10px)",
-    opacity: "1"
-  };
+const LandingSection = ({ imageUrl, nowPlayingMovies }) => {
+  const { results, page, total_results, total_pages } = nowPlayingMovies;
   return (
     <div className={styles.landingSection}>
       {/* Background providing blurry image effect */}
-      <div className={styles.blurry} style={blurryStyles}></div>
+      <div
+        className={styles.blurry}
+        style={{
+          background: `url(${imageUrl})`,
+          backgroundRepeat: "no-repeat",
+          backgroundPosition: "center",
+          backgroundSize: "cover"
+        }}
+      ></div>
       {/* Backgroun providing gradient dark cover on the landing section */}
       <div className={styles.landingCover}></div>
       {/* Container for the big card */}
@@ -51,9 +54,15 @@ const LandingSection = ({ imageUrl }) => {
             position={"relative"}
           />
         </div>
+        <SellAllButton position={"absolute"} />
       </div>
     </div>
   );
 };
 
-export default LandingSection;
+const mapStateToProps = ({ movies }) => ({
+  nowPlayingMovies: movies.nowPlayingMovies,
+  isFetching: true
+});
+
+export default connect(mapStateToProps)(WithSpinner(LandingSection));
