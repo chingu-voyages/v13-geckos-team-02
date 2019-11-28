@@ -10,3 +10,12 @@ export const selectGettingOnAirSeries = createSelector(
   selectSeries,
   series => series.gettingOnAirSeries
 );
+// TRENDING SERIES SELECTOR
+export const selectGettingTrendingSeries = createSelector(
+  selectSeries,
+  series => series.gettingTrendingSeries
+);
+export const selectTrendingSeries = createSelector(
+  selectSeries,
+  series => series.trendingSeries
+);
