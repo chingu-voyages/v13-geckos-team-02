@@ -1,30 +1,32 @@
 import React from "react";
+// IMPORTING COMPONENTS
 import SeeAllButton from "../see-all-button/see-all-button";
 import PortraitCard from "../portraitCard/portraitCard";
-
+import WithSpinner from "../withSpinner/withSpinner";
+// STYLES
 import styles from "./categorySection.module.css";
 
-const CategorySection = ({ heading, count }) => (
+const CategorySection = ({ heading, values }) => (
   <div className={styles.categorySection}>
     <div className={styles.categoryHeader}>
       <div className={styles.categoryHeading}>
         <h3>{heading}</h3>
       </div>
       <div className={styles.categoryButton}>
-        <SeeAllButton count={count} />
+        <SeeAllButton count={values.length} />
       </div>
     </div>
     <div className={styles.categoryBody}>
-      <PortraitCard />
-      <PortraitCard watchlisted={true} />
-      <PortraitCard />
-      <PortraitCard watchlisted={true} />
-      <PortraitCard />
-      <PortraitCard watchlisted={true} />
-      <PortraitCard />
-      <PortraitCard watchlisted={true} />
+      {values
+        .filter((idx, item) => item < 10)
+        .map(tv => (
+          <PortraitCard
+            key={tv.id}
+            imageUrl={tv.poster_path}
+          />
+        ))}
     </div>
   </div>
 );
 
-export default CategorySection;
+export default WithSpinner(CategorySection);

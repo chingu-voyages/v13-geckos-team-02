@@ -3,9 +3,13 @@ import axios from "axios";
 
 // IMPORTING MOVIES ACTION TYPES
 import MoviesTypes from "./movies.types";
-
 // IMPORTING MOVIES ACTIONS
-import { getNowPlayingSuccess, getNowPlayingFailure } from "./movies.action";
+import {
+  getNowPlayingSuccess,
+  getNowPlayingFailure,
+  getTrendingMoviesSuccess,
+  getTrendingMoviesFailure
+} from "./movies.action";
 // Get api key
 const API_KEY = process.env.REACT_APP_API_VALUE_KEY;
 
@@ -20,13 +24,30 @@ export function* getNowPlayingMovies() {
     yield put(getNowPlayingFailure(error));
   }
 }
-
 // TRIGGER FUNCTION WHEN NOT PLAYING START IS TRIGGEREd
 export function* onGetNowplayingMovies() {
   yield takeLatest(MoviesTypes.GET_NOW_PLAYING_START, getNowPlayingMovies);
 }
 
+// GETTING TRENDING MOVIES
+export function* getTrendingMovies() {
+  try {
+    const response = yield axios.get(
+      `https://api.themoviedb.org/3/trending/movie/day?api_key=${API_KEY}`
+    );
+    if (response.status === 200) {
+      yield put(getTrendingMoviesSuccess(response.data));
+    }
+  } catch (error) {
+    yield put(getTrendingMoviesFailure(error));
+  }
+}
+// TRIGGER FUNCTION WHEN TRENDING MOVIES START IS TRIGGERED
+export function* onGetTrendingMovies() {
+  yield takeLatest(MoviesTypes.GET_TRENDING_MOVIES_START, getTrendingMovies);
+}
+
 // COMBINE ALL SAGAS HERE
 export function* moviesSagas() {
-  yield all([call(onGetNowplayingMovies)]);
+  yield all([call(onGetNowplayingMovies), call(onGetTrendingMovies)]);
 }

@@ -5,17 +5,19 @@ import storage from "redux-persist/lib/storage";
 // IMPORT REDUCERS
 import genreReducer from "./genre/genre.reducer";
 import moviesReducer from "./movies/movies.reducer";
+import seriesReducer from "./series/series.reducer";
 import appConfigReducer from "./appConfig/appConfig.reducer";
 
 const persistConfig = {
   key: "root",
   storage: storage,
-  whitelist: ["configs", "genres", "movies"]
+  whitelist: ["configs", "genres", "movies", "series"]
 };
 
 const rootReducer = combineReducers({
   genres: genreReducer,
   movies: moviesReducer,
+  series: seriesReducer,
   configs: appConfigReducer
 });
 

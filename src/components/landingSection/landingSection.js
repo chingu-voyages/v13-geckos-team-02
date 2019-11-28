@@ -1,5 +1,20 @@
 import React from "react";
 import { connect } from "react-redux";
+import { createStructuredSelector } from "reselect";
+
+// IMPORTING RESELECTS
+import {
+  selectGettingConfigs,
+  selectImagePath
+} from "../../redux/appConfig/appConfig.selector";
+import {
+  selectMoviesGenres,
+  selectGettingMoviesGenres
+} from "../../redux/genre/genre.selector";
+import {
+  selectGettingNowPlaying,
+  selectNowPlayingMovies
+} from "../../redux/movies/movies.selector";
 
 // IMPORTING COMPONENTS
 import styles from "./landingSection.module.css";
@@ -8,10 +23,8 @@ import SmallCard from "../smallCard/smallCard";
 import SellAllButton from "../see-all-button/see-all-button";
 import WithSpinner from "../withSpinner/withSpinner";
 
-const LandingSection = ({ imageUrl, nowPlayingMovies, imageConfig }) => {
+const LandingSection = ({ nowPlayingMovies, imagePath }) => {
   const { results } = nowPlayingMovies;
-  const { secure_base_url, backdrop_sizes } = imageConfig;
-  const imagePath = `${secure_base_url}${backdrop_sizes[3]}`;
   return results ? (
     <div className={styles.landingSection}>
       {/* Background providing blurry image effect */}
@@ -62,16 +75,14 @@ const LandingSection = ({ imageUrl, nowPlayingMovies, imageConfig }) => {
   ) : null;
 };
 
-const mapStateToProps = ({ movies, genres, configs }) => ({
-  // GET NOW PLAYING MOVIES INFORMATION
-  nowPlayingMovies: movies.nowPlayingMovies,
-  // IS fetching is either is true
+const mapStateToProps = createStructuredSelector({
+  nowPlayingMovies: selectNowPlayingMovies,
   isFetching:
-    movies.gettingNowPlaying ||
-    genres.gettingMoviesGenres ||
-    configs.gettingConfigs,
-  movieGenre: genres.moviesGenres,
-  imageConfig: configs.imageConfig
+    selectGettingNowPlaying ||
+    selectGettingMoviesGenres ||
+    selectGettingConfigs,
+  movieGenre: selectMoviesGenres,
+  imagePath: selectImagePath
 });
 
 export default connect(mapStateToProps)(WithSpinner(LandingSection));

@@ -1,6 +1,16 @@
 import React from "react";
-
-import styles from "./homePage.module.css";
+import { connect } from "react-redux";
+import { createStructuredSelector } from "reselect";
+// IMPORTING RESELECT
+import {
+  selectGettingTrendingMovies,
+  selectTrendingMovies
+} from "../../redux/movies/movies.selector";
+import {
+  selectGettingOnAirSeries,
+  selectOnAirSeries
+} from "../../redux/series/series.selector";
+// IMPORTING COMPONENTS
 import LandingSection from "../../components/landingSection/landingSection";
 import CategorySection from "../../components/categorySection/categorySection";
 
@@ -11,16 +21,40 @@ class HomePage extends React.Component {
   }
 
   render() {
+    const {
+      gettingOnAirSeries,
+      onAirSeries,
+      gettingTrendingMovies,
+      trendingMovies
+    } = this.props;
     return (
-      <div className={styles.homePage}>
-        <LandingSection
-          imageUrl={`https://images.unsplash.com/photo-1568896597888-d674b61e7067?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1355&q=80`}
+      <div>
+        <LandingSection />
+        <CategorySection
+          heading={"On Air Series"}
+          values={onAirSeries.results}
+          isFetching={gettingOnAirSeries}
         />
-        <CategorySection heading={"Latest Series"} count={40} />
-        <CategorySection heading={"Movies by popularity"} count={39} />
+        <CategorySection
+          heading={"Trending Movies"}
+          values={trendingMovies.results}
+          isFetching={gettingTrendingMovies}
+        />
+        <CategorySection
+          heading={"Trending Series"}
+          values={trendingMovies.results}
+          isFetching={gettingTrendingMovies}
+        />
       </div>
     );
   }
 }
 
-export default HomePage;
+const mapStateToProps = createStructuredSelector({
+  gettingOnAirSeries: selectGettingOnAirSeries,
+  onAirSeries: selectOnAirSeries,
+  gettingTrendingMovies: selectGettingTrendingMovies,
+  trendingMovies: selectTrendingMovies
+});
+
+export default connect(mapStateToProps)(HomePage);

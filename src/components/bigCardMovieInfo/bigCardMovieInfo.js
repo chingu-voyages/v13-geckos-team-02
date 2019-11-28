@@ -1,6 +1,9 @@
 import React from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
+import { createStructuredSelector } from "reselect";
+// IMPORT SELECTORS
+import { selectMoviesGenres } from "../../redux/genre/genre.selector";
 
 import styles from "./bigCardMovieInfo.module.css";
 
@@ -12,10 +15,12 @@ const BigCardMovieInfo = ({
   children,
   history,
   id,
-  genres,
+  movieGenres,
   genreIds
 }) => {
-  const filteredGenre = genres.filter(genre => genreIds.includes(genre.id));
+  const filteredGenre = movieGenres.filter(genre =>
+    genreIds.includes(genre.id)
+  );
   return (
     <div className={styles.bigCardInfo}>
       {children}
@@ -49,8 +54,8 @@ const BigCardMovieInfo = ({
     </div>
   );
 };
-const mapStateToProps = ({ genres }) => ({
-  genres: genres.moviesGenres
+const mapStateToProps = createStructuredSelector({
+  movieGenres: selectMoviesGenres
 });
 
 export default connect(mapStateToProps)(withRouter(BigCardMovieInfo));
