@@ -2,7 +2,6 @@ import { createSelector } from "reselect";
 
 export const selectGenres = state => state.genres;
 export const selectGenresIds = props => props.genreIds;
-console.log(selectGenresIds);
 
 // GET MOVIES STATE
 export const selectMoviesGenres = createSelector(
