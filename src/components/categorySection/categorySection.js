@@ -20,11 +20,7 @@ const CategorySection = ({ heading, values }) => (
       {values
         .filter((idx, item) => item < 10)
         .map(tv => (
-          <PortraitCard
-            key={tv.id}
-            posterUrl={tv.poster_path}
-            imageUrl={tv.backdrop_path}
-          />
+          <PortraitCard key={tv.id} movie={tv} />
         ))}
     </div>
   </div>
