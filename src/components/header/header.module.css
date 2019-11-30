@@ -15,11 +15,11 @@ Header styles
 }
 
 /* Header branch or logo styles */
-.header_branch {
+.header_brand {
   display: inline-block;
   float: left;
 }
-.header_branch h1 {
+.header_brand h1 {
   margin-top: -0.5rem;
   padding: 0;
 }
@@ -44,10 +44,42 @@ Header styles
   text-decoration: none;
   display: inline;
   text-align: left;
+  position: relative;
+}
+.header_nav_menu_link a {
+  text-decoration: none;
+  color: #fff;
 }
 
 .header_nav_menu_link:not(:last-child) {
   margin-right: 2rem;
+}
+
+/* DROPDOWN STYLES */
+.menu_link_dropdown {
+  height: 100%;
+  width: 250px;
+  padding: 0.5rem 0;
+  border-radius: 7px;
+  font-size: 17px;
+  text-align: center;
+  text-transform: capitalize;
+  position: absolute;
+  top: 2.2rem;
+}
+
+.menu_link_dropdown ul {
+  list-style: none;
+  text-align: center;
+  padding: 0.7rem 0;
+  background-color: #343434;
+}
+.menu_link_dropdown li {
+  margin: 0.5rem 0;
+}
+.menu_link_dropdown li:not(:last-child) {
+  border-bottom: 1px solid #fff;
+  padding: 0.5rem 0;
 }
 
 /* Search styles */
