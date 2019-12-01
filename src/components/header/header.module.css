@@ -18,9 +18,15 @@
   font-size: 2rem;
   margin-top: -0.5rem;
 }
-.header_brand h1 {
+.header_brand:hover,
+.header_brand:active {
+  cursor: pointer;
+}
+.header_brand a {
   margin-top: 0rem;
   padding: 0;
+  color: #fff;
+  text-decoration: none;
 }
 
 /* Header Navigation styles*/
@@ -61,6 +67,7 @@
   padding: 12px 16px;
   text-decoration: none;
   display: block;
+  text-transform: capitalize;
 }
 .dropdown_content a:hover {
   background-color: #505050;
@@ -85,8 +92,7 @@
   float: right;
   font-weight: lighter;
 }
-.utilitiesBar span {
-}
+
 .utilitiesBar span:not(:last-child) {
   margin-right: 1rem;
 }

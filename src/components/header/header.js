@@ -14,7 +14,9 @@ const Header = () => {
       <div className={styles.header_container}>
         {/* Header branch or logo */}
         <div className={styles.header_brand}>
-          <div>ScribFix</div>
+          <div>
+            <Link to="/">ScribFix</Link>
+          </div>
         </div>
         {/* Hader navigations */}
         <div className={styles.header_nav}>
@@ -22,9 +24,9 @@ const Header = () => {
           <div className={styles.dropdown}>
             <div className={styles.dropdown_button}>Movie</div>
             <div className={styles.dropdown_content}>
-              <Link>Now playing movies</Link>
-              <Link>Trending movies</Link>
-              <Link>Latest movies</Link>
+              <Link>Now playing</Link>
+              <Link>Trending</Link>
+              <Link>Latest</Link>
               <Link>Top rated</Link>
               <Link>upcoming</Link>
             </div>
@@ -33,11 +35,11 @@ const Header = () => {
           <div className={styles.dropdown}>
             <div className={styles.dropdown_button}>Series</div>
             <div className={styles.dropdown_content}>
-              <Link>Now playing movies</Link>
-              <Link>Trending movies</Link>
-              <Link>Latest movies</Link>
-              <Link>Top rated</Link>
-              <Link>upcoming</Link>
+              <Link>tv airing today</Link>
+              <Link>tv on air</Link>
+              <Link>Latest</Link>
+              <Link>popular</Link>
+              <Link>top rated</Link>
             </div>
           </div>
         </div>
