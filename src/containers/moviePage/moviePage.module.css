@@ -65,3 +65,38 @@
 .team_member_card_container::-webkit-scrollbar {
   display: none;
 }
+
+/* PRODUCTIN COMPANY STYLES */
+.productionCompany {
+  margin-top: 3rem;
+}
+
+.productionCompany_heading {
+  margin-bottom: 0.2rem;
+}
+
+/* BOX OF LIST OF COMPANY STYLES */
+.company_list_box {
+  list-style: none;
+  padding: 0;
+  margin-top: 1.5rem;
+}
+.company_list_box li:not(:last-child) {
+  margin-right: 2rem;
+}
+
+/* LIST OF COMPANY STYLES */
+.company_list {
+  display: inline-block;
+  text-transform: capitalize;
+  font-size: 1.2rem;
+}
+.company_list h6 {
+  margin: 0;
+}
+.company_logo {
+  background-color: #5d5d5d;
+  width: 180px;
+  height: 100px;
+  border-radius: 10px;
+}

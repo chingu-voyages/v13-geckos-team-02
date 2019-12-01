@@ -1,9 +1,10 @@
 import React from "react";
-
+// IMPORTING STYLES
 import styles from "./sideBarMoreInfo.module.css";
-import SmallCard from "../smallCard/smallCard";
 // IMPORTING FUNCTIONS
 import { formateDate, formateMovieLength } from "../../functions/functions";
+// IMPORTING COMPONENTS
+import SmallCard from "../smallCard/smallCard";
 
 const SideBar = ({
   categories = [],
