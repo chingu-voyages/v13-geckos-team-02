@@ -38,3 +38,13 @@ export const selectMovieCrew = createSelector(
   selectMovies,
   movie => movie.movieCredits.crew
 );
+
+// SIMILAR MOVIES
+export const selectGettingSimilarMovies = createSelector(
+  selectMovies,
+  movie => movie.gettingSimilarMovies
+);
+export const selectSimilarMovies = createSelector(
+  selectMovies,
+  movie => movie.similarMovies
+);

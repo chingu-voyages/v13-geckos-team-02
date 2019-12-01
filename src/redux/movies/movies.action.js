@@ -49,3 +49,13 @@ export const getMovieCreditsFailure = error => ({
   type: MoviesTypes.GET_MOVIE_CREDITS_FAILURE,
   payload: error
 });
+
+// GET SIMILAR MOVIES
+export const getSimilarMoviesSuccess = result => ({
+  type: MoviesTypes.GET_SIMILAR_MOVIES_SUCCESS,
+  payload: result
+});
+export const getSimilarMoviesFailure = error => ({
+  type: MoviesTypes.GET_SIMILAR_MOVIES_FAILURE,
+  payload: error
+});

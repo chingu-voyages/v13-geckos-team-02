@@ -12,7 +12,9 @@ import {
   getMovieDetailsSuccess,
   getMovieDetailsFailure,
   getMovieCreditsSuccess,
-  getMovieCreditsFailure
+  getMovieCreditsFailure,
+  getSimilarMoviesSuccess,
+  getSimilarMoviesFailure
 } from "./movies.action";
 // Get api key
 const API_KEY = process.env.REACT_APP_API_VALUE_KEY;
@@ -43,6 +45,7 @@ export function* getMovieDetails({ payload: { movie_id, extra } }) {
   let response = "";
   try {
     switch (extra) {
+      // MAKE API CALL TO GET MOVIE CREDITS
       case "credits":
         try {
           response = yield axios.get(
@@ -57,7 +60,22 @@ export function* getMovieDetails({ payload: { movie_id, extra } }) {
           yield put(getMovieCreditsFailure(error));
         }
         break;
-
+      // MAKE API CALL TO GET SIMILAR MOVIES
+      case "similar":
+        try {
+          response = yield axios.get(
+            `${movieURL}/${movie_id}/similar?api_key=${API_KEY}&language=en-US&page=1`
+          );
+          if (response.status === 200) {
+            yield put(getSimilarMoviesSuccess(response.data));
+          } else {
+            yield put(getSimilarMoviesFailure(response));
+          }
+        } catch (error) {
+          yield put(getSimilarMoviesFailure(error));
+        }
+        break;
+      // MAKE API CALL TO GET DETAILS
       default:
         try {
           response = yield axios.get(

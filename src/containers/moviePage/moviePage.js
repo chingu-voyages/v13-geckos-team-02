@@ -15,14 +15,16 @@ import {
   selectGettingMoiveDetails,
   selectMovieDetails,
   selectMovieCast,
-  selectMovieCrew
+  selectMovieCrew,
+  selectSimilarMovies,
+  selectGettingSimilarMovies
 } from "../../redux/movies/movies.selector";
 // COMPONENTS
 import Overview from "../../components/overview/overview";
 import SmallCard from "../../components/smallCard/smallCard";
 import SideBarMovieInfo from "../../components/sideBarMoreInfo/sideBarMoreInfo";
 import Team from "../../components/team/team";
-import ProductionCompany from "../../components/productionCompany/productionCompany";
+import CategorySection from "../../components/categorySection/categorySection";
 const watchlisted = true;
 
 class MoviePage extends React.Component {
@@ -30,9 +32,17 @@ class MoviePage extends React.Component {
     const { getMovieDetailsStart, movieDetails } = this.props;
     if (!movieDetails) getMovieDetailsStart({ movie_id: "330457" });
     // getMovieDetailsStart({ movie_id: "330457", extra: "credits" });
+    // getMovieDetailsStart({ movie_id: "330457", extra: "similar" });
   }
   render() {
-    const { imagePath, movieDetails, movieCast, movieCrew } = this.props;
+    const {
+      imagePath,
+      movieDetails,
+      movieCast,
+      movieCrew,
+      similarMovies,
+      isGettingSimilarMovies
+    } = this.props;
     const directors = movieCrew.filter(crew =>
       crew.department.toLowerCase().includes("directing")
     );
@@ -77,7 +87,7 @@ class MoviePage extends React.Component {
           <div className={styles.moviePage_content_container}>
             <Overview content={movieDetails.overview} />
             <div className={styles.team_container}>
-              <h1>The Cast</h1>
+              <h2>The Cast</h2>
               <div className={styles.team_member_card_container}>
                 {movieCast.map(cast => (
                   <Team
@@ -91,7 +101,7 @@ class MoviePage extends React.Component {
             </div>
             {/* CREW */}
             <div className={styles.team_container}>
-              <h1>The Crew</h1>
+              <h2>The Crew</h2>
               <div className={styles.team_member_card_container}>
                 {movieCrew.map(crew => (
                   <Team
@@ -110,7 +120,7 @@ class MoviePage extends React.Component {
               </h2>
               <ul className={styles.company_list_box}>
                 {movieDetails.production_companies.map(company => (
-                  <li key={company.key} className={styles.company_list}>
+                  <li key={company.id} className={styles.company_list}>
                     <img
                       className={styles.company_logo}
                       src={`${imagePath}/${company.logo_path}`}
@@ -120,6 +130,20 @@ class MoviePage extends React.Component {
                   </li>
                 ))}
               </ul>
+            </div>
+            {/* SIMILAR TO MOVIES */}
+            <div className={styles.team_container}>
+              {/* <h2>Related To {movieDetails.original_title}</h2>
+              <div className={styles.team_member_card_container}>
+                {similarMovies.results.map(movie => (
+                  <PortraitCard key={movie.id} movie={movie} />
+                ))}
+              </div> */}
+              <CategorySection
+                heading={`Related To ${movieDetails.original_title}`}
+                values={similarMovies.results}
+                isFetching={isGettingSimilarMovies}
+              />
             </div>
           </div>
         </div>
@@ -135,7 +159,10 @@ const mapStateToProps = createStructuredSelector({
   movieDetails: selectMovieDetails,
   // MOVIE CAST AND CREW
   movieCast: selectMovieCast,
-  movieCrew: selectMovieCrew
+  movieCrew: selectMovieCrew,
+  // SIMILAR MOVIES
+  similarMovies: selectSimilarMovies,
+  isGettingSimilarMovies: selectGettingSimilarMovies
 });
 const mapDispatchToProps = disaptch => ({
   getMovieDetailsStart: params => disaptch(getMovieDetailsStart(params))

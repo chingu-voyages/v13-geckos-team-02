@@ -13,6 +13,9 @@ const INITIAL_STATE = {
   // MOVIE CREDITS
   gettingMovieCredits: false,
   movieCredits: null,
+  // SIMILAR MOVIES
+  gettingSimilarMovies: false,
+  similarMovies: null,
   // ERROR
   error: null
 };
@@ -50,8 +53,10 @@ const moviesReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         gettingMovieDetails: true,
-        gettingMovieCredits: true
+        gettingMovieCredits: true,
+        gettingSimilarMovies: true
       };
+    // GET MOVIE DETAILS SUCCESS
     case MoviesTypes.GET_MOVIE_DETAILS_SUCCESS:
       return {
         ...state,
@@ -67,6 +72,15 @@ const moviesReducer = (state = INITIAL_STATE, action) => {
         gettingMovieCredits: false,
         error: null
       };
+    // GET SIMILAR MOVIES
+    case MoviesTypes.GET_SIMILAR_MOVIES_SUCCESS:
+      return {
+        ...state,
+        similarMovies: action.payload,
+        gettingSimilarMovies: false,
+        error: null
+      };
+
     // IN CASE OF A FAILURE FOR EITHER REDUCERS
     case MoviesTypes.GET_NOW_PLAYING_FAILURE:
       return {
@@ -92,6 +106,12 @@ const moviesReducer = (state = INITIAL_STATE, action) => {
         ...state,
         error: action.payload,
         gettingMovieCredits: false
+      };
+    case MoviesTypes.GET_SIMILAR_MOVIES_FAILURE:
+      return {
+        ...state,
+        error: action.payload,
+        gettingSimilarMovies: false
       };
 
     default:
