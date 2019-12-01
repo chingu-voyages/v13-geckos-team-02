@@ -8,41 +8,38 @@ import { ReactComponent as NotificationIcon } from "../../assets/icons/notificat
 import styles from "./header.module.css";
 
 const Header = () => {
-  const [showDropdown, setDropdown] = useState(false);
   return (
     <header className={styles.header}>
       {/* Header Container */}
       <div className={styles.header_container}>
         {/* Header branch or logo */}
         <div className={styles.header_brand}>
-          <h1>ScribFix</h1>
+          <div>ScribFix</div>
         </div>
         {/* Hader navigations */}
         <div className={styles.header_nav}>
-          <ul className={styles.header_nav_menu}>
-            <li className={styles.header_nav_menu_link}>
-              <Link to="/">Home</Link>
-            </li>
-            <li className={styles.header_nav_menu_link}>
-              <a href="#" onClick={() => setDropdown(!showDropdown)}>
-                Movie
-              </a>
-              {showDropdown ? (
-                <div className={styles.menu_link_dropdown}>
-                  <ul>
-                    <li>Now playing movies</li>
-                    <li>Trending movies</li>
-                    <li>Latest movies</li>
-                    <li>Top rated</li>
-                    <li>upcoming</li>
-                  </ul>
-                </div>
-              ) : null}
-            </li>
-            <li className={styles.header_nav_menu_link}>
-              <Link to="/series">Series</Link>
-            </li>
-          </ul>
+          <Link to="/">Home</Link>
+          <div className={styles.dropdown}>
+            <div className={styles.dropdown_button}>Movie</div>
+            <div className={styles.dropdown_content}>
+              <Link>Now playing movies</Link>
+              <Link>Trending movies</Link>
+              <Link>Latest movies</Link>
+              <Link>Top rated</Link>
+              <Link>upcoming</Link>
+            </div>
+          </div>
+          {/* <li className={styles.header_nav_menu_link}> */}
+          <div className={styles.dropdown}>
+            <div className={styles.dropdown_button}>Series</div>
+            <div className={styles.dropdown_content}>
+              <Link>Now playing movies</Link>
+              <Link>Trending movies</Link>
+              <Link>Latest movies</Link>
+              <Link>Top rated</Link>
+              <Link>upcoming</Link>
+            </div>
+          </div>
         </div>
         {/* Header search bar */}
         <div className={styles.search}>
