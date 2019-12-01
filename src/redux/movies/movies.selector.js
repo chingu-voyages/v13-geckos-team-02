@@ -20,3 +20,12 @@ export const selectGettingTrendingMovies = createSelector(
   selectMovies,
   movies => movies.gettingTrendingMovies
 );
+// MOVIE DETAILS
+export const selectGettingMoiveDetails = createSelector(
+  selectMovies,
+  movie => movie.gettingMovieDetails
+);
+export const selectMovieDetails = createSelector(
+  selectMovies,
+  movie => movie.movieDetails
+);
