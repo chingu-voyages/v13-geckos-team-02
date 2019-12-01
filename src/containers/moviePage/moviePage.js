@@ -17,66 +17,14 @@ import {
   selectMovieCast,
   selectMovieCrew
 } from "../../redux/movies/movies.selector";
-import { selectMoviesGenres } from "../../redux/genre/genre.selector";
 // COMPONENTS
 import Overview from "../../components/overview/overview";
 import SmallCard from "../../components/smallCard/smallCard";
 import SideBarMovieInfo from "../../components/sideBarMoreInfo/sideBarMoreInfo";
 import Team from "../../components/team/team";
 import ProductionCompany from "../../components/productionCompany/productionCompany";
-const director = "ridley mark";
 const writers = ["john doe", "jane hunt"];
 const watchlisted = true;
-const list = [
-  {
-    realName: "done right",
-    actingName: "mark song",
-    imageUrl:
-      "https://images.unsplash.com/photo-1568896597888-d674b61e7067?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1355&q=80"
-  },
-  {
-    realName: "done right",
-    actingName: "mark song",
-    imageUrl:
-      "https://images.unsplash.com/photo-1568896597888-d674b61e7067?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1355&q=80"
-  },
-  {
-    realName: "done right",
-    actingName: "mark song",
-    imageUrl:
-      "https://images.unsplash.com/photo-1568896597888-d674b61e7067?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1355&q=80"
-  },
-  {
-    realName: "done right",
-    actingName: "mark song",
-    imageUrl:
-      "https://images.unsplash.com/photo-1568896597888-d674b61e7067?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1355&q=80"
-  },
-  {
-    realName: "done right",
-    actingName: "mark song",
-    imageUrl:
-      "https://images.unsplash.com/photo-1568896597888-d674b61e7067?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1355&q=80"
-  },
-  {
-    realName: "done right",
-    actingName: "mark song",
-    imageUrl:
-      "https://images.unsplash.com/photo-1568896597888-d674b61e7067?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1355&q=80"
-  },
-  {
-    realName: "done right",
-    actingName: "mark song",
-    imageUrl:
-      "https://images.unsplash.com/photo-1568896597888-d674b61e7067?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1355&q=80"
-  },
-  {
-    realName: "done right",
-    actingName: "mark song",
-    imageUrl:
-      "https://images.unsplash.com/photo-1568896597888-d674b61e7067?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1355&q=80"
-  }
-];
 
 class MoviePage extends React.Component {
   componentDidMount() {
@@ -86,7 +34,12 @@ class MoviePage extends React.Component {
   }
   render() {
     const { imagePath, movieDetails, movieCast, movieCrew } = this.props;
-    const filterMovieGenres = movieDetails.genres.map(genre => genre.name);
+    const directors = movieCrew.filter(crew =>
+      crew.department.toLowerCase().includes("directing")
+    );
+    const writers = movieCrew.filter(crew =>
+      crew.department.toLowerCase().includes("writing")
+    );
     return (
       <div>
         <div className={styles.moviePage}>
@@ -104,8 +57,8 @@ class MoviePage extends React.Component {
               </h2>
               {/* More Movie Info */}
               <SideBarMovieInfo
-                categories={filterMovieGenres}
-                director={director}
+                categories={movieDetails.genres}
+                directors={directors}
                 writers={writers}
                 length={movieDetails.runtime}
                 releaseDate={movieDetails.release_date}
@@ -125,7 +78,7 @@ class MoviePage extends React.Component {
           <div className={styles.moviePage_content_container}>
             <Overview content={movieDetails.overview} />
             <div className={styles.team_container}>
-              <h1>The cast</h1>
+              <h1>The Cast</h1>
               <div className={styles.team_member_card_container}>
                 {movieCast.map(cast => (
                   <Team
@@ -139,7 +92,7 @@ class MoviePage extends React.Component {
             </div>
             {/* CREW */}
             <div className={styles.team_container}>
-              <h1>The cast</h1>
+              <h1>The Crew</h1>
               <div className={styles.team_member_card_container}>
                 {movieCrew.map(crew => (
                   <Team
@@ -151,7 +104,7 @@ class MoviePage extends React.Component {
                 ))}
               </div>
             </div>
-            <Team heading={"created by"} list={list} />
+            {/* <Team heading={"created by"} list={list} /> */}
             {/* <ProductionCompany list={movieDetails.production_companies} /> */}
           </div>
         </div>

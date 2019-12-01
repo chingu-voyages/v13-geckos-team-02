@@ -27,10 +27,8 @@
 }
 /* SIDE BAR FOOTER STYLES */
 .sideBar_footer {
-  /* background-color: red; */
   border: 1px solid #fff;
   width: 80%;
-  /* height: 100%; */
   text-align: center;
   position: absolute;
   bottom: 1rem;

@@ -27,6 +27,8 @@
   background: transparent linear-gradient(180deg, #34343407 0%, #292929f7 70%);
   box-shadow: 0px 3px 6px #393939aa;
   opacity: 1;
+  width: 100%;
+  white-space: pre-wrap;
 }
 
 .team_member_card_footer_realName {
