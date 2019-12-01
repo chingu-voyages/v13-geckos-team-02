@@ -29,3 +29,12 @@ export const selectMovieDetails = createSelector(
   selectMovies,
   movie => movie.movieDetails
 );
+// MOVIE CAST AND CREW
+export const selectMovieCast = createSelector(
+  selectMovies,
+  movie => movie.movieCredits.cast
+);
+export const selectMovieCrew = createSelector(
+  selectMovies,
+  movie => movie.movieCredits.crew
+);

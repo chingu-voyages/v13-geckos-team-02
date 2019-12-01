@@ -14,7 +14,8 @@ import { selectImagePath } from "../../redux/appConfig/appConfig.selector";
 import {
   selectGettingMoiveDetails,
   selectMovieDetails,
-  selectmo
+  selectMovieCast,
+  selectMovieCrew
 } from "../../redux/movies/movies.selector";
 import { selectMoviesGenres } from "../../redux/genre/genre.selector";
 // COMPONENTS
@@ -81,10 +82,10 @@ class MoviePage extends React.Component {
   componentDidMount() {
     const { getMovieDetailsStart, movieDetails } = this.props;
     if (!movieDetails) getMovieDetailsStart({ movie_id: "330457" });
-    getMovieDetailsStart({ movie_id: "330457", extra: "credits" });
+    // getMovieDetailsStart({ movie_id: "330457", extra: "credits" });
   }
   render() {
-    const { imagePath, movieDetails } = this.props;
+    const { imagePath, movieDetails, movieCast, movieCrew } = this.props;
     const filterMovieGenres = movieDetails.genres.map(genre => genre.name);
     return (
       <div>
@@ -123,8 +124,33 @@ class MoviePage extends React.Component {
           </div>
           <div className={styles.moviePage_content_container}>
             <Overview content={movieDetails.overview} />
-            <Team heading={"the cast"} list={list} />
-            <Team heading={"the crew"} list={list} />
+            <div className={styles.team_container}>
+              <h1>The cast</h1>
+              <div className={styles.team_member_card_container}>
+                {movieCast.map(cast => (
+                  <Team
+                    key={cast.credit_id}
+                    imageUrl={`${imagePath}/${cast.profile_path}`}
+                    name={cast.name}
+                    job={cast.character}
+                  />
+                ))}
+              </div>
+            </div>
+            {/* CREW */}
+            <div className={styles.team_container}>
+              <h1>The cast</h1>
+              <div className={styles.team_member_card_container}>
+                {movieCrew.map(crew => (
+                  <Team
+                    key={crew.credit_id}
+                    imageUrl={`${imagePath}/${crew.profile_path}`}
+                    name={crew.name}
+                    job={crew.job}
+                  />
+                ))}
+              </div>
+            </div>
             <Team heading={"created by"} list={list} />
             {/* <ProductionCompany list={movieDetails.production_companies} /> */}
           </div>
@@ -136,10 +162,12 @@ class MoviePage extends React.Component {
 
 const mapStateToProps = createStructuredSelector({
   imagePath: selectImagePath,
-  movieGenres: selectMoviesGenres,
   // MOVIE DETAILS
   isFetching: selectGettingMoiveDetails,
-  movieDetails: selectMovieDetails
+  movieDetails: selectMovieDetails,
+  // MOVIE CAST AND CREW
+  movieCast: selectMovieCast,
+  movieCrew: selectMovieCrew
 });
 const mapDispatchToProps = disaptch => ({
   getMovieDetailsStart: params => disaptch(getMovieDetailsStart(params))

@@ -44,3 +44,26 @@
   width: 79%;
   margin-top: 5%;
 }
+/* TEAM STYLES */
+.team_container {
+  margin-top: 2rem;
+}
+
+/* TEAM HEADING STYLES */
+.team_heading {
+  text-transform: capitalize;
+}
+
+/* TEAM MEMBER CARD CONTAINER STYLES */
+.team_member_card_container {
+  width: 98%;
+  height: 220px;
+  margin-top: 1.2rem;
+  padding-right: 1rem;
+  padding-left: 0.3rem;
+  overflow-x: scroll;
+  white-space: nowrap;
+}
+.team_member_card_container::-webkit-scrollbar {
+  display: none;
+}
