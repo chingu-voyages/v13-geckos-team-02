@@ -29,10 +29,15 @@ const watchlisted = true;
 
 class MoviePage extends React.Component {
   componentDidMount() {
-    const { getMovieDetailsStart, movieDetails } = this.props;
-    if (!movieDetails) getMovieDetailsStart({ movie_id: "330457" });
-    // getMovieDetailsStart({ movie_id: "330457", extra: "credits" });
-    // getMovieDetailsStart({ movie_id: "330457", extra: "similar" });
+    const {
+      getMovieDetailsStart,
+      movieDetails,
+      match: { params }
+    } = this.props;
+    // if (!movieDetails)
+    getMovieDetailsStart({ movie_id: params.movie_id });
+    getMovieDetailsStart({ movie_id: params.movie_id, extra: "credits" });
+    getMovieDetailsStart({ movie_id: params.movie_id, extra: "similar" });
   }
   render() {
     const {
@@ -59,6 +64,7 @@ class MoviePage extends React.Component {
               <SmallCard
                 imageUrl={`${imagePath}/${movieDetails.backdrop_path}`}
                 height={"150px"}
+                backgroundSize={"cover"}
               />
               {/* Movie Name */}
               <h2 className={styles.movieName}>
@@ -133,12 +139,6 @@ class MoviePage extends React.Component {
             </div>
             {/* SIMILAR TO MOVIES */}
             <div className={styles.team_container}>
-              {/* <h2>Related To {movieDetails.original_title}</h2>
-              <div className={styles.team_member_card_container}>
-                {similarMovies.results.map(movie => (
-                  <PortraitCard key={movie.id} movie={movie} />
-                ))}
-              </div> */}
               <CategorySection
                 heading={`Related To ${movieDetails.original_title}`}
                 values={similarMovies.results}

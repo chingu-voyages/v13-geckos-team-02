@@ -90,6 +90,7 @@
   display: inline-block;
   text-transform: capitalize;
   font-size: 1.2rem;
+  margin-bottom: 2rem;
 }
 .company_list h6 {
   margin: 0;
