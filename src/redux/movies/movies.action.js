@@ -25,3 +25,37 @@ export const getTrendingMoviesFailure = error => ({
   type: MoviesTypes.GET_TRENDING_MOVIES_FAILURE,
   payload: error
 });
+
+// GET MOVIE DETAILS
+export const getMovieDetailsStart = payload => ({
+  type: MoviesTypes.GET_MOVIE_DETAILS_START,
+  payload
+});
+export const getMovieDetailsSuccess = result => ({
+  type: MoviesTypes.GET_MOVIE_DETAILS_SUCCESS,
+  payload: result
+});
+export const getMovieDetailsFailure = error => ({
+  type: MoviesTypes.GET_MOVIE_DETAILS_FAILRUE,
+  payload: error
+});
+
+// GET MOVIE CAST AND CREWS
+export const getMovieCreditsSuccess = result => ({
+  type: MoviesTypes.GET_MOVIE_CREDITS_SUCCESS,
+  payload: result
+});
+export const getMovieCreditsFailure = error => ({
+  type: MoviesTypes.GET_MOVIE_CREDITS_FAILURE,
+  payload: error
+});
+
+// GET SIMILAR MOVIES
+export const getSimilarMoviesSuccess = result => ({
+  type: MoviesTypes.GET_SIMILAR_MOVIES_SUCCESS,
+  payload: result
+});
+export const getSimilarMoviesFailure = error => ({
+  type: MoviesTypes.GET_SIMILAR_MOVIES_FAILURE,
+  payload: error
+});

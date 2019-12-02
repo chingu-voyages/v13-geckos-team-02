@@ -20,3 +20,31 @@ export const selectGettingTrendingMovies = createSelector(
   selectMovies,
   movies => movies.gettingTrendingMovies
 );
+// MOVIE DETAILS
+export const selectGettingMoiveDetails = createSelector(
+  selectMovies,
+  movie => movie.gettingMovieDetails
+);
+export const selectMovieDetails = createSelector(
+  selectMovies,
+  movie => movie.movieDetails
+);
+// MOVIE CAST AND CREW
+export const selectMovieCast = createSelector(
+  selectMovies,
+  movie => movie.movieCredits.cast
+);
+export const selectMovieCrew = createSelector(
+  selectMovies,
+  movie => movie.movieCredits.crew
+);
+
+// SIMILAR MOVIES
+export const selectGettingSimilarMovies = createSelector(
+  selectMovies,
+  movie => movie.gettingSimilarMovies
+);
+export const selectSimilarMovies = createSelector(
+  selectMovies,
+  movie => movie.similarMovies
+);

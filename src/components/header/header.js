@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 // IMPORTING SVGS
 import { ReactComponent as SearchIcon } from "../../assets/icons/search-icon.svg";
@@ -24,22 +24,22 @@ const Header = () => {
           <div className={styles.dropdown}>
             <div className={styles.dropdown_button}>Movie</div>
             <div className={styles.dropdown_content}>
-              <Link>Now playing</Link>
-              <Link>Trending</Link>
-              <Link>Latest</Link>
-              <Link>Top rated</Link>
-              <Link>upcoming</Link>
+              <Link to="/">Now playing</Link>
+              <Link to="/">Trending</Link>
+              <Link to="/">Latest</Link>
+              <Link to="/">Top rated</Link>
+              <Link to="/">upcoming</Link>
             </div>
           </div>
           {/* <li className={styles.header_nav_menu_link}> */}
           <div className={styles.dropdown}>
             <div className={styles.dropdown_button}>Series</div>
             <div className={styles.dropdown_content}>
-              <Link>tv airing today</Link>
-              <Link>tv on air</Link>
-              <Link>Latest</Link>
-              <Link>popular</Link>
-              <Link>top rated</Link>
+              <Link to="/">tv airing today</Link>
+              <Link to="/">tv on air</Link>
+              <Link to="/">Latest</Link>
+              <Link to="/">popular</Link>
+              <Link to="/">top rated</Link>
             </div>
           </div>
         </div>
