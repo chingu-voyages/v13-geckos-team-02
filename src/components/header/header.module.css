@@ -1,6 +1,4 @@
-/* 
-Header styles
- */
+/* Header styles */
 .header {
   background-color: rgba(0, 0, 0, 0.025);
   position: fixed;
@@ -15,39 +13,68 @@ Header styles
 }
 
 /* Header branch or logo styles */
-.header_branch {
-  display: inline-block;
+.header_brand {
   float: left;
-}
-.header_branch h1 {
+  font-size: 2rem;
   margin-top: -0.5rem;
+}
+.header_brand:hover,
+.header_brand:active {
+  cursor: pointer;
+}
+.header_brand a {
+  margin-top: 0rem;
   padding: 0;
+  color: #fff;
+  text-decoration: none;
 }
 
 /* Header Navigation styles*/
 .header_nav {
-  display: inline-block;
   float: left;
+  margin-top: 0;
+  margin-left: 2.5rem;
+  font-size: 1.5rem;
 }
-
-/* Header Navigation Menu */
-.header_nav_menu {
+.header_nav a {
   text-decoration: none;
-  list-style: none;
-  display: inline;
-  text-transform: uppercase;
-  font-size: 21px;
-  margin: auto 0;
+  color: #fff;
+  margin: 0;
 }
 
-.header_nav_menu_link {
+/* DROPDOWN STYLES */
+.dropdown {
+  position: relative;
+  display: inline-block;
+  margin-left: 1.5rem;
+}
+.dropdown_button {
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+.dropdown_content {
+  display: block;
+  visibility: hidden;
+  position: absolute;
+  background-color: #343434;
+  width: 250px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+.dropdown_content a {
+  color: #fff;
+  padding: 12px 16px;
   text-decoration: none;
-  display: inline;
-  text-align: left;
+  display: block;
+  text-transform: capitalize;
 }
-
-.header_nav_menu_link:not(:last-child) {
-  margin-right: 2rem;
+.dropdown_content a:hover {
+  background-color: #505050;
+}
+.dropdown:hover .dropdown_content {
+  display: block;
+  visibility: visible;
 }
 
 /* Search styles */
@@ -56,19 +83,16 @@ Header styles
   padding-top: 7px;
   display: inline-block;
   text-align: right;
-  /* float: right; */
 }
 
 /* ICONS STYLES */
 
 .utilitiesBar {
   font-size: 25px;
-  display: inline-block;
   float: right;
   font-weight: lighter;
 }
-.utilitiesBar span {
-}
+
 .utilitiesBar span:not(:last-child) {
   margin-right: 1rem;
 }

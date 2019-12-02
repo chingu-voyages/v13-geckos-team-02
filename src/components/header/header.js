@@ -1,44 +1,67 @@
-import React from "react";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+// IMPORTING SVGS
 import { ReactComponent as SearchIcon } from "../../assets/icons/search-icon.svg";
 import { ReactComponent as WatchListIcon } from "../../assets/icons/watchlist-icon.svg";
 import { ReactComponent as NotificationIcon } from "../../assets/icons/notification-icon.svg";
 
 import styles from "./header.module.css";
 
-const Header = () => (
-  <header className={styles.header}>
-    {/* Header Container */}
-    <div className={styles.header_container}>
-      {/* Header branch or logo */}
-      <div className={styles.header_branch}>
-        <h1>ScribFix</h1>
+const Header = () => {
+  return (
+    <header className={styles.header}>
+      {/* Header Container */}
+      <div className={styles.header_container}>
+        {/* Header branch or logo */}
+        <div className={styles.header_brand}>
+          <div>
+            <Link to="/">ScribFix</Link>
+          </div>
+        </div>
+        {/* Hader navigations */}
+        <div className={styles.header_nav}>
+          <Link to="/">Home</Link>
+          <div className={styles.dropdown}>
+            <div className={styles.dropdown_button}>Movie</div>
+            <div className={styles.dropdown_content}>
+              <Link>Now playing</Link>
+              <Link>Trending</Link>
+              <Link>Latest</Link>
+              <Link>Top rated</Link>
+              <Link>upcoming</Link>
+            </div>
+          </div>
+          {/* <li className={styles.header_nav_menu_link}> */}
+          <div className={styles.dropdown}>
+            <div className={styles.dropdown_button}>Series</div>
+            <div className={styles.dropdown_content}>
+              <Link>tv airing today</Link>
+              <Link>tv on air</Link>
+              <Link>Latest</Link>
+              <Link>popular</Link>
+              <Link>top rated</Link>
+            </div>
+          </div>
+        </div>
+        {/* Header search bar */}
+        <div className={styles.search}>
+          {/* <input placeholder="Search for movies" name="search" /> */}
+          <SearchIcon className={styles.icon} />
+        </div>
+        {/* Header Watchlist, notification, and user*/}
+        <div className={styles.utilitiesBar}>
+          <span>
+            <WatchListIcon />
+            Watchlist
+          </span>
+          <span>
+            <NotificationIcon className={styles.icon} />
+          </span>
+          <span>User, John</span>
+        </div>
       </div>
-      {/* Hader navigations */}
-      <div className={styles.header_nav}>
-        <ul className={styles.header_nav_menu}>
-          <li className={styles.header_nav_menu_link}>Home</li>
-          <li className={styles.header_nav_menu_link}>Movie</li>
-          <li className={styles.header_nav_menu_link}>Series</li>
-        </ul>
-      </div>
-      {/* Header search bar */}
-      <div className={styles.search}>
-        {/* <input placeholder="Search for movies" name="search" /> */}
-        <SearchIcon className={styles.icon} />
-      </div>
-      {/* Header Watchlist, notification, and user*/}
-      <div className={styles.utilitiesBar}>
-        <span>
-          <WatchListIcon />
-          Watchlist
-        </span>
-        <span>
-          <NotificationIcon className={styles.icon} />
-        </span>
-        <span>User, John</span>
-      </div>
-    </div>
-  </header>
-);
+    </header>
+  );
+};
 
 export default Header;

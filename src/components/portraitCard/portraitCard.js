@@ -10,20 +10,13 @@ import { ReactComponent as InformationIcon } from "../../assets/icons/informatio
 import { ReactComponent as WatchListIconLike } from "../../assets/icons/watchlist-icon-like.svg";
 import { ReactComponent as PlayButton } from "../../assets/icons/play-button.svg";
 
-const PortraitCard = ({
-  imagePath,
-  posterUrl,
-  imageUrl,
-  title,
-  rating,
-  watchlisted = null
-}) => (
+const PortraitCard = ({ imagePath, movie, watchlisted = null }) => (
   <div className={styles.portraitCardContainer}>
     {/* STATIC PORTRAIT CARD */}
     <div className={styles.portraitCardBox}>
       <div
         style={{
-          background: `url(${imagePath}${posterUrl})`,
+          background: `url(${imagePath}${movie.poster_path})`,
           backgroundPosition: "center",
           backgroundSize: "cover",
           backgroundRepeat: "no-repeat"
@@ -34,7 +27,7 @@ const PortraitCard = ({
       <div className={styles.portraitCardDynamic}>
         <div
           style={{
-            background: `url(${imagePath}${imageUrl})`,
+            background: `url(${imagePath}${movie.backdrop_path})`,
             backgroundPosition: "center",
             backgroundSize: "cover",
             backgroundRepeat: "no-repeat"
