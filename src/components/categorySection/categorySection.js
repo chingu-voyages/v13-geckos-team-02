@@ -22,7 +22,8 @@ const CategorySection = ({ heading, values }) => (
         .map(tv => (
           <PortraitCard
             key={tv.id}
-            imageUrl={tv.poster_path}
+            posterUrl={tv.poster_path}
+            imageUrl={tv.backdrop_path}
           />
         ))}
     </div>

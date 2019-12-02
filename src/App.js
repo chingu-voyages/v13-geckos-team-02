@@ -35,11 +35,17 @@ class App extends React.Component {
       series
     } = this.props;
     if (!configs) getImageConfigStart();
-    if (!movies) getNowPlayingStart();
-    if (!genres) getmoviesGenresStart();
-    if (!series) getOnAirSeries();
-    getTrendingMovies();
-    getTrendingSeries();
+    if (!movies) {
+      getNowPlayingStart();
+      getTrendingMovies();
+    }
+    if (!genres) {
+      getmoviesGenresStart();
+    }
+    if (!series) {
+      getOnAirSeries();
+      getTrendingSeries();
+    }
   }
   render() {
     return (
@@ -57,8 +63,8 @@ class App extends React.Component {
 const mapStateToProps = ({ configs, movies, genres, series }) => ({
   configs,
   movies: movies.nowPlayingMovies,
-  genres: genres.moviesGenres,
-  series: series.onAirSeries
+  genres: genres,
+  series: series
 });
 const mapDispatchToProps = dispatch => ({
   getmoviesGenresStart: () => dispatch(getMoviesGenresStart()),

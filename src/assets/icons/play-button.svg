@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="91.252" height="90.918" viewBox="0 0 91.252 90.918">
+  <g id="Play_Button" data-name="Play Button" transform="translate(434 -1571.957)">
+    <ellipse id="Ellipse_3" data-name="Ellipse 3" cx="39.5" cy="37.5" rx="39.5" ry="37.5" transform="translate(-428 1579)" fill="#fff"/>
+    <path id="Icon_awesome-play-circle" data-name="Icon awesome-play-circle" d="M46.189.563A45.46,45.46,0,1,0,91.815,46.022,45.535,45.535,0,0,0,46.189.563ZM67.475,50.421,35.095,68.935a4.423,4.423,0,0,1-6.568-3.849V26.958a4.426,4.426,0,0,1,6.568-3.849l32.38,19.613A4.405,4.405,0,0,1,67.475,50.421Z" transform="translate(-434.563 1571.394)" fill="#a13cbf"/>
+  </g>
+</svg>
