@@ -4,6 +4,16 @@
   height: 100vh;
   background: #000000d0 0% 0%;
 }
+.modal__close__button {
+  position: absolute;
+  top: 0.1rem;
+  right: 0.3rem;
+  font-size: 1.5rem;
+}
+.modal__close__button:hover,
+.modal__close__button:active {
+  cursor: pointer;
+}
 .modal__page {
   position: absolute;
   left: 50%;

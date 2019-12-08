@@ -1,9 +1,18 @@
 import React from "react";
+import { connect } from "react-redux";
+// IMPORTING REDUX ACTIONS
+import { toggleModalWindow } from "../../redux/person/person.action";
 
 import styles from "./teamModalWindow.module.css";
-const TeamModalWindow = () => (
+const TeamModalWindow = ({ toggleModalWindow }) => (
   <div className={styles.teamModalWindow}>
     <div className={styles.modal__page}>
+      <span
+        className={styles.modal__close__button}
+        onClick={() => toggleModalWindow()}
+      >
+        &#x2715;
+      </span>
       <div className={styles.modal__top}>
         <div
           className={styles.modal__top__image}
@@ -32,4 +41,7 @@ const TeamModalWindow = () => (
     </div>
   </div>
 );
-export default TeamModalWindow;
+const mapDispatchToProps = disaptch => ({
+  toggleModalWindow: () => disaptch(toggleModalWindow())
+});
+export default connect(null, mapDispatchToProps)(TeamModalWindow);
