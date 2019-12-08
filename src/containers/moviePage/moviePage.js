@@ -19,6 +19,7 @@ import {
   selectSimilarMovies,
   selectGettingSimilarMovies
 } from "../../redux/movies/movies.selector";
+import { selectToggleModalWindow } from "../../redux/person/person.selector";
 // COMPONENTS
 import Overview from "../../components/overview/overview";
 import SmallCard from "../../components/smallCard/smallCard";
@@ -46,7 +47,8 @@ class MoviePage extends React.Component {
       movieCast,
       movieCrew,
       similarMovies,
-      isGettingSimilarMovies
+      isGettingSimilarMovies,
+      toggleModalWindow
     } = this.props;
     const directors = movieCrew.filter(crew =>
       crew.department.toLowerCase().includes("directing")
@@ -143,7 +145,7 @@ class MoviePage extends React.Component {
             />
           </div>
         </div>
-        <TeamModalWindow />
+        {toggleModalWindow ? <TeamModalWindow /> : null}
       </div>
     );
   }
@@ -159,7 +161,9 @@ const mapStateToProps = createStructuredSelector({
   movieCrew: selectMovieCrew,
   // SIMILAR MOVIES
   similarMovies: selectSimilarMovies,
-  isGettingSimilarMovies: selectGettingSimilarMovies
+  isGettingSimilarMovies: selectGettingSimilarMovies,
+  // MODAL WINDOW
+  toggleModalWindow: selectToggleModalWindow
 });
 const mapDispatchToProps = disaptch => ({
   getMovieDetailsStart: params => disaptch(getMovieDetailsStart(params))
