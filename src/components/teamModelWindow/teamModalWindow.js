@@ -1,10 +1,22 @@
 import React from "react";
 import { connect } from "react-redux";
+import { createStructuredSelector } from "reselect";
+// IMPORTING SELECTORS
+import {
+  selectGettingPerson,
+  selectPersonDetails
+} from "../../redux/person/person.selector";
+import { selectImagePath } from "../../redux/appConfig/appConfig.selector";
+// IMPORTING FUNCTIONS
+import { formateDate } from "../../functions/functions";
 // IMPORTING REDUX ACTIONS
 import { toggleModalWindow } from "../../redux/person/person.action";
-
+// IMPORTING SPINNER
+import WithSpinner from "../withSpinner/withSpinner";
+// IMPORTING STYLES
 import styles from "./teamModalWindow.module.css";
-const TeamModalWindow = ({ toggleModalWindow }) => (
+
+const TeamModalWindow = ({ toggleModalWindow, imagePath, personDetails }) => (
   <div className={styles.teamModalWindow}>
     <div className={styles.modal__page}>
       <span
@@ -17,31 +29,35 @@ const TeamModalWindow = ({ toggleModalWindow }) => (
         <div
           className={styles.modal__top__image}
           style={{
-            backgroundImage: `url(https://www.wikihow.com/images/f/ff/Draw-a-Cute-Cartoon-Person-Step-14.jpg)`
+            backgroundImage: `url(${imagePath}/${personDetails.profile_path})`
           }}
         />
         <div className={styles.modal__top__details}>
-          <h3>john doe</h3>
-          <p>June 25, 1986</p>
-          <p>Shawn, California, USA</p>
+          <h3>{personDetails.name}</h3>
+          <p>
+            {personDetails.birthday
+              ? formateDate(personDetails.birthday)
+              : null}
+          </p>
+          <p>{personDetails.place_of_birth}</p>
         </div>
       </div>
-      <h4>Know for Acting</h4>
+      <h4>Know for {personDetails.known_for_department}</h4>
       <div className={styles.modal__body}>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-          culpa qui officia deserunt mollit anim id est laborum.
-        </p>
+        <p>{personDetails.biography}</p>
       </div>
     </div>
   </div>
 );
+const mapStateToProps = createStructuredSelector({
+  isFetching: selectGettingPerson,
+  personDetails: selectPersonDetails,
+  imagePath: selectImagePath
+});
 const mapDispatchToProps = disaptch => ({
   toggleModalWindow: () => disaptch(toggleModalWindow())
 });
-export default connect(null, mapDispatchToProps)(TeamModalWindow);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(WithSpinner(TeamModalWindow));

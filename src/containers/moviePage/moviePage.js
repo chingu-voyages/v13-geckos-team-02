@@ -97,6 +97,7 @@ class MoviePage extends React.Component {
               {movieCast.map(cast => (
                 <Team
                   key={cast.credit_id}
+                  id={cast.id}
                   imageUrl={`${imagePath}/${cast.profile_path}`}
                   name={cast.name}
                   job={cast.character}
@@ -111,6 +112,7 @@ class MoviePage extends React.Component {
               {movieCrew.map(crew => (
                 <Team
                   key={crew.credit_id}
+                  id={crew.id}
                   imageUrl={`${imagePath}/${crew.profile_path}`}
                   name={crew.name}
                   job={crew.job}

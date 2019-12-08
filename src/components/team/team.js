@@ -3,13 +3,26 @@ import { connect } from "react-redux";
 
 import styles from "./team.module.css";
 // IMPORTING REDUX ACTION
-import { toggleModalWindow } from "../../redux/person/person.action";
+import {
+  toggleModalWindow,
+  getPersonDetailsStart
+} from "../../redux/person/person.action";
 
-const Team = ({ imageUrl, job, name, toggleModalWindow }) => (
+const Team = ({
+  id,
+  imageUrl,
+  job,
+  name,
+  toggleModalWindow,
+  getPersonDetails
+}) => (
   <div
     className={styles.team_member_card}
     style={{ backgroundImage: `url(${imageUrl})` }}
-    onClick={() => toggleModalWindow()}
+    onClick={() => {
+      getPersonDetails(id);
+      toggleModalWindow();
+    }}
   >
     {/* CARD CONTAINER FOR REAL NAME OR AKA */}
     <div className={styles.team_member_card_footer}>
@@ -22,7 +35,8 @@ const Team = ({ imageUrl, job, name, toggleModalWindow }) => (
 );
 
 const mapDispatchToProps = disaptch => ({
-  toggleModalWindow: () => disaptch(toggleModalWindow())
+  toggleModalWindow: () => disaptch(toggleModalWindow()),
+  getPersonDetails: id => disaptch(getPersonDetailsStart(id))
 });
 
 export default connect(null, mapDispatchToProps)(Team);

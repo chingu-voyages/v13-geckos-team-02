@@ -1,7 +1,8 @@
 import PersonTypes from "./person.types";
 
-export const getPersonDetailsStart = () => ({
-  type: PersonTypes.FETCH_PERSON_DETAILS_START
+export const getPersonDetailsStart = id => ({
+  type: PersonTypes.FETCH_PERSON_DETAILS_START,
+  id
 });
 export const getPersonDetailsSuccess = result => ({
   type: PersonTypes.FETCH_PERSON_DETAILS_SUCCESS,
