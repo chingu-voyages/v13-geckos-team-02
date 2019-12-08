@@ -1,0 +1,32 @@
+.teamModalWindow {
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  background: #000000d0 0% 0%;
+}
+.modal__page {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 40%;
+  background: #141414f7;
+  border-radius: 2px;
+  padding: 2rem;
+  color: #fff;
+  text-align: left;
+}
+.modal__top {
+  display: flex;
+}
+.modal__top__image {
+  height: 150px;
+  width: 150px;
+  border-radius: 2px;
+  background-position: center;
+  background-size: cover;
+}
+.modal__top__details {
+  margin-left: 1.5rem;
+  text-transform: capitalize;
+}
