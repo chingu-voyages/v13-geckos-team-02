@@ -11,12 +11,11 @@ const SmallCard = ({
   height = "31.7%",
   backgroundSize = "cover",
   history,
-  match,
   id
 }) => {
   const smallCardStyles = {
     position: `${position}`,
-    background: `url(${imageUrl})`,
+    backgroundImage: `url(${imageUrl})`,
     backgroundRepeat: "no-repeat",
     backgroundPosition: "center",
     backgroundSize: `${backgroundSize}`,
