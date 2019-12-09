@@ -11,54 +11,15 @@ import { ReactComponent as WatchListIconLike } from "../../assets/icons/watchlis
 import { ReactComponent as PlayButton } from "../../assets/icons/play-button.svg";
 
 const PortraitCard = ({ imagePath, movie, watchlisted = null }) => (
-  <div className={styles.portraitCardContainer}>
-    {/* STATIC PORTRAIT CARD */}
-    <div className={styles.portraitCardBox}>
-      <div
-        style={{
-          background: `url(${imagePath}${movie.poster_path})`,
-          backgroundPosition: "center",
-          backgroundSize: "cover",
-          backgroundRepeat: "no-repeat"
-        }}
-        className={styles.portraitCard}
-      ></div>
-      {/* DYNAMIC PORTRAIT CARD */}
-      <div className={styles.portraitCardDynamic}>
-        <div
-          style={{
-            background: `url(${imagePath}${movie.backdrop_path})`,
-            backgroundPosition: "center",
-            backgroundSize: "cover",
-            backgroundRepeat: "no-repeat"
-          }}
-          className={styles.portraitCardDynamicCard}
-        >
-          <PlayButton className={styles.playButton} />
-        </div>
-        <div className={styles.portraitCardDynamic_footer_sub}>
-          <div className={styles.portraitCardDynamic_footer_sub_details}>
-            <div className={styles.portraitCardDynamic_footer_sub_details_1}>
-              <span>2019</span>
-              <span>&#8226;</span>
-              <span>2 episodes</span>
-            </div>
-            <div>
-              <span>drama, satire, newsroom</span>
-            </div>
-          </div>
-          <div className={styles.portraitCardDynamic_footer_sub_icons}>
-            <span>
-              {watchlisted ? <WatchListIconLike /> : <WatchListIconEmptyDark />}
-            </span>
-            <span>
-              <InformationIcon />
-            </span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+  <div
+    style={{
+      background: `url(${imagePath}${movie.poster_path})`,
+      backgroundPosition: "center",
+      backgroundSize: "cover",
+      backgroundRepeat: "no-repeat"
+    }}
+    className={styles.portraitCard}
+  ></div>
 );
 const mapStateToProps = createStructuredSelector({
   imagePath: selectImagePath
