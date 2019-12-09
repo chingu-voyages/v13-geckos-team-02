@@ -16,9 +16,9 @@ import {
 
 // IMPORTING COMPONENTS
 import Header from "./components/header/header";
-import HomePage from "./containers/homePage/homePage";
-import MoviesPage from "./containers/moviesPage/moviesPage";
-import MoviePage from "./containers/moviePage/moviePage";
+import HomePage from "./pages/homePage/homePage";
+import MoviesPage from "./pages/moviesPage/moviesPage";
+import MoviePage from "./pages/moviePage/moviePage";
 
 class App extends React.Component {
   componentDidMount() {
