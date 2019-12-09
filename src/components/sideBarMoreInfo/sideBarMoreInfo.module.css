@@ -10,6 +10,21 @@
   height: 50vh;
   overflow-y: scroll;
 }
+/* width */
+.sideBar_container::-webkit-scrollbar {
+  width: 7px;
+}
+
+/* Track */
+.sideBar_container::-webkit-scrollbar-track {
+  border-radius: 10px;
+}
+
+/* Handle */
+.sideBar_container::-webkit-scrollbar-thumb {
+  background: #a13cbf;
+  border-radius: 10px;
+}
 
 /* WHERE TO WATCH STYLES */
 .whereToWatch {

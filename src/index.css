@@ -12,19 +12,3 @@ body {
 h2 {
   margin-bottom: 0.2rem;
 }
-
-/* width */
-::-webkit-scrollbar {
-  width: 7px;
-}
-
-/* Track */
-::-webkit-scrollbar-track {
-  border-radius: 10px;
-}
-
-/* Handle */
-::-webkit-scrollbar-thumb {
-  background: #a13cbf;
-  border-radius: 10px;
-}
