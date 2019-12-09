@@ -21,7 +21,7 @@
 .categoryBody {
   overflow: auto;
   white-space: nowrap;
-  height: 400px;
+  background-color: red;
   width: 100%;
   margin: 0;
 }
