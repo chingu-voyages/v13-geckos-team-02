@@ -8,7 +8,6 @@ import styles from "./categorySection.module.css";
 
 const CategorySection = ({ heading, values, toPage, isFetching }) => (
   <div className={styles.categorySection}>
-    {console.log(isFetching)}
     <div className={styles.categoryHeader}>
       <div className={styles.categoryHeading}>
         <h3>{heading}</h3>

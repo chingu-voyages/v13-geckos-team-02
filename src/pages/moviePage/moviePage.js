@@ -112,6 +112,7 @@ const MoviePage = ({
                 imageUrl={`${imagePath}/${crew.profile_path}`}
                 name={crew.name}
                 job={crew.job}
+                as={false}
               />
             ))}
           </div>

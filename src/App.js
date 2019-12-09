@@ -35,10 +35,10 @@ class App extends React.Component {
       series
     } = this.props;
     if (!configs) getImageConfigStart();
-    if (!movies) {
-      getNowPlayingStart();
-      getTrendingMovies();
-    }
+    // if (!movies) {
+    getNowPlayingStart();
+    getTrendingMovies();
+    // }
     if (!genres) {
       getmoviesGenresStart();
     }

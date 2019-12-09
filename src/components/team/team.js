@@ -14,7 +14,8 @@ const Team = ({
   job,
   name,
   toggleModalWindow,
-  getPersonDetails
+  getPersonDetails,
+  as = true
 }) => (
   <div
     className={styles.team_member_card}
@@ -28,7 +29,7 @@ const Team = ({
     <div className={styles.team_member_card_footer}>
       <h5 className={styles.team_member_card_footer_realName}>{name}</h5>
       <h6 className={styles.team_member_card_footer_actingName}>
-        <span>as</span> {job}
+        {as ? <span>as</span> : null} {job}
       </h6>
     </div>
   </div>
