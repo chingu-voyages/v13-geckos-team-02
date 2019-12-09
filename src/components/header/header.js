@@ -1,5 +1,14 @@
 import React from "react";
+import { connect } from "react-redux";
 import { Link } from "react-router-dom";
+// IMPORTING REDUX ACTIONS
+import {
+  getNowPlayingStart,
+  getTrendingMoviesStart,
+  getPopularMoviesStart,
+  getTopRatedMoviesStart,
+  getUpcomingMoviesStart
+} from "../../redux/movies/movies.action";
 // IMPORTING SVGS
 import { ReactComponent as SearchIcon } from "../../assets/icons/search-icon.svg";
 import { ReactComponent as WatchListIcon } from "../../assets/icons/watchlist-icon.svg";
@@ -7,7 +16,13 @@ import { ReactComponent as NotificationIcon } from "../../assets/icons/notificat
 
 import styles from "./header.module.css";
 
-const Header = () => {
+const Header = ({
+  getNowPlaying,
+  getTrendingMovies,
+  getPopularMovies,
+  getTopRatedMovies,
+  getUpcomingMovies
+}) => {
   return (
     <header className={styles.header}>
       {/* Header Container */}
@@ -24,11 +39,21 @@ const Header = () => {
           <div className={styles.dropdown}>
             <div className={styles.dropdown_button}>Movie</div>
             <div className={styles.dropdown_content}>
-              <Link to="/">Now playing</Link>
-              <Link to="/">Trending</Link>
-              <Link to="/">Latest</Link>
-              <Link to="/">Top rated</Link>
-              <Link to="/">upcoming</Link>
+              <Link to="/movies/now_playing" onClick={() => getNowPlaying()}>
+                Now playing
+              </Link>
+              <Link to="/movies/trending" onClick={() => getTrendingMovies()}>
+                Trending
+              </Link>
+              <Link to="/movies/popular" onClick={() => getPopularMovies()}>
+                popular
+              </Link>
+              <Link to="/movies/top_rated" onClick={() => getTopRatedMovies()}>
+                Top rated
+              </Link>
+              <Link to="/movies/upcoming" onClick={() => getUpcomingMovies()}>
+                upcoming
+              </Link>
             </div>
           </div>
           {/* <li className={styles.header_nav_menu_link}> */}
@@ -64,4 +89,12 @@ const Header = () => {
   );
 };
 
-export default Header;
+const mapDispatchToProps = dispatch => ({
+  getNowPlaying: () => dispatch(getNowPlayingStart()),
+  getTrendingMovies: () => dispatch(getTrendingMoviesStart()),
+  getPopularMovies: () => dispatch(getPopularMoviesStart()),
+  getTopRatedMovies: () => dispatch(getTopRatedMoviesStart()),
+  getUpcomingMovies: () => dispatch(getUpcomingMoviesStart())
+});
+
+export default connect(null, mapDispatchToProps)(Header);

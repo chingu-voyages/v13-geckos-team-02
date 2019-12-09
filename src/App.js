@@ -35,10 +35,10 @@ class App extends React.Component {
       series
     } = this.props;
     if (!configs) getImageConfigStart();
-    // if (!movies) {
-    getNowPlayingStart();
-    getTrendingMovies();
-    // }
+    if (!movies) {
+      getNowPlayingStart();
+      getTrendingMovies();
+    }
     if (!genres) {
       getmoviesGenresStart();
     }
@@ -53,7 +53,7 @@ class App extends React.Component {
         <Header />
         <Switch>
           <Route exact path="/" component={HomePage} />
-          <Route exact path="/movies" component={MoviesPage} />
+          <Route exact path="/movies/:type_path" component={MoviesPage} />
           <Route path="/movie/:movie_id" component={MoviePage} />
         </Switch>
       </div>

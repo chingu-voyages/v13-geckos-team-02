@@ -20,6 +20,33 @@ export const selectGettingTrendingMovies = createSelector(
   selectMovies,
   movies => movies.gettingTrendingMovies
 );
+// POPULAR MOVIES
+export const selectGettingPopularMovies = createSelector(
+  selectMovies,
+  movies => movies.gettingPopularMovies
+);
+export const selectPopularMovies = createSelector(
+  selectMovies,
+  movies => movies.popularMovies
+);
+// TOP RATED MOVIES
+export const selectGettingTopRatedMovies = createSelector(
+  selectMovies,
+  movies => movies.gettingTopRatedMovies
+);
+export const selectTopRatedMovies = createSelector(
+  selectMovies,
+  movies => movies.topRatedMovies
+);
+// UPCOMING MOVIES
+export const selectGettingUpcomingMovies = createSelector(
+  selectMovies,
+  movies => movies.gettingUpcomingMovies
+);
+export const selectUpcomingMovies = createSelector(
+  selectMovies,
+  movies => movies.upcomingMovies
+);
 // MOVIE DETAILS
 export const selectGettingMoiveDetails = createSelector(
   selectMovies,
@@ -38,7 +65,6 @@ export const selectMovieCrew = createSelector(
   selectMovies,
   movie => movie.movieCredits.crew
 );
-
 // SIMILAR MOVIES
 export const selectGettingSimilarMovies = createSelector(
   selectMovies,
