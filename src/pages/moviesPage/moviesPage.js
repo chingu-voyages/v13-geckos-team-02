@@ -35,7 +35,7 @@ class MoviesPage extends React.Component {
         </div>
         <div className={styles.moviesPage_body}>
           {nowPlayingMovies.results.map(movie => (
-            <PortraitCard key={movie.id} movie={movie} />
+            <PortraitCard key={movie.id} movie={movie} toPage={"movie"} />
           ))}
         </div>
         <div className={styles.moviesPage_footer}>
