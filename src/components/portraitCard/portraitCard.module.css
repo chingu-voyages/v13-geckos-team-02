@@ -1,10 +1,16 @@
 /* STATIC PORTRAIT CARD STYLES */
 .portraitCard {
+  position: relative;
   display: inline-block;
-  margin: 2.5rem 0.2rem 0 2.5rem;
+  margin: 1.5rem 0.2rem 1rem 2.5rem;
   transition: all 0.5s;
   height: 400px;
   width: 265px;
+  border-radius: 5px;
+}
+.portraitCard:hover,
+.portraitCard:active {
+  cursor: pointer;
 }
 /* PORTRAIT CARD FOOTER SYLES */
 .portraitCard_footer {
@@ -12,35 +18,17 @@
   bottom: 0;
   width: 100%;
   text-align: left;
-  background: transparent linear-gradient(180deg, #34343407 0%, #292929f7 100%)
-    0% 0% no-repeat padding-box;
+  background: transparent linear-gradient(180deg, #34343407 0%, #292929f7 100%);
+  transition: all 0.5s;
+  white-space: pre-wrap;
+  opacity: 0;
 }
-.portraitCardDynamic_footer_name {
-  margin: 0 0.8rem;
+.portraitCard_footer_name {
+  margin: 0.8rem 0.8rem;
 }
-.portraitCardDynamic_footer_season {
-  margin: 0 0.8rem;
-  font-size: 10px;
-}
-.portraitCardDynamic_footer_sub {
-  color: #000;
-  font-size: 0.65rem;
-  margin-top: 0.5rem;
-  position: absolute;
-  bottom: 0.2rem;
-  width: 100%;
-}
-.portraitCardDynamic_footer_sub_details {
-  text-align: left;
-  display: inline-block;
-}
-.portraitCardDynamic_footer_sub_details_1 span:not(:last-child) {
-  margin-right: 0.2rem;
-}
-.portraitCardDynamic_footer_sub_icons {
-  display: inline-block;
-  text-align: right;
-  margin-left: 0.5rem;
+.portraitCard:hover .portraitCard_footer {
+  cursor: pointer;
+  opacity: 1;
 }
 
 /* Extra small devices (phones, 600px and down) */

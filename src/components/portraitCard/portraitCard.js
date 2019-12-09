@@ -19,7 +19,11 @@ const PortraitCard = ({ imagePath, movie, watchlisted = null }) => (
       backgroundRepeat: "no-repeat"
     }}
     className={styles.portraitCard}
-  ></div>
+  >
+    <div className={styles.portraitCard_footer}>
+      <h3 className={styles.portraitCard_footer_name}>{movie.title}</h3>
+    </div>
+  </div>
 );
 const mapStateToProps = createStructuredSelector({
   imagePath: selectImagePath
