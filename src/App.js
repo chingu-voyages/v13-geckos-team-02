@@ -16,9 +16,9 @@ import {
 
 // IMPORTING COMPONENTS
 import Header from "./components/header/header";
-import HomePage from "./containers/homePage/homePage";
-import MoviesPage from "./containers/moviesPage/moviesPage";
-import MoviePage from "./containers/moviePage/moviePage";
+import HomePage from "./pages/homePage/homePage";
+import MoviesPage from "./pages/moviesPage/moviesPage";
+import MoviePage from "./pages/moviePage/moviePage";
 
 class App extends React.Component {
   componentDidMount() {
@@ -53,7 +53,7 @@ class App extends React.Component {
         <Header />
         <Switch>
           <Route exact path="/" component={HomePage} />
-          <Route exact path="/movies" component={MoviesPage} />
+          <Route exact path="/movies/:type_path" component={MoviesPage} />
           <Route path="/movie/:movie_id" component={MoviePage} />
         </Switch>
       </div>

@@ -1,4 +1,5 @@
 import React from "react";
+import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
 // IMPORTING RESELECT
@@ -10,58 +11,30 @@ import { ReactComponent as InformationIcon } from "../../assets/icons/informatio
 import { ReactComponent as WatchListIconLike } from "../../assets/icons/watchlist-icon-like.svg";
 import { ReactComponent as PlayButton } from "../../assets/icons/play-button.svg";
 
-const PortraitCard = ({ imagePath, movie, watchlisted = null }) => (
-  <div className={styles.portraitCardContainer}>
-    {/* STATIC PORTRAIT CARD */}
-    <div className={styles.portraitCardBox}>
-      <div
-        style={{
-          background: `url(${imagePath}${movie.poster_path})`,
-          backgroundPosition: "center",
-          backgroundSize: "cover",
-          backgroundRepeat: "no-repeat"
-        }}
-        className={styles.portraitCard}
-      ></div>
-      {/* DYNAMIC PORTRAIT CARD */}
-      <div className={styles.portraitCardDynamic}>
-        <div
-          style={{
-            background: `url(${imagePath}${movie.backdrop_path})`,
-            backgroundPosition: "center",
-            backgroundSize: "cover",
-            backgroundRepeat: "no-repeat"
-          }}
-          className={styles.portraitCardDynamicCard}
-        >
-          <PlayButton className={styles.playButton} />
-        </div>
-        <div className={styles.portraitCardDynamic_footer_sub}>
-          <div className={styles.portraitCardDynamic_footer_sub_details}>
-            <div className={styles.portraitCardDynamic_footer_sub_details_1}>
-              <span>2019</span>
-              <span>&#8226;</span>
-              <span>2 episodes</span>
-            </div>
-            <div>
-              <span>drama, satire, newsroom</span>
-            </div>
-          </div>
-          <div className={styles.portraitCardDynamic_footer_sub_icons}>
-            <span>
-              {watchlisted ? <WatchListIconLike /> : <WatchListIconEmptyDark />}
-            </span>
-            <span>
-              <InformationIcon />
-            </span>
-          </div>
-        </div>
+const PortraitCard = ({ imagePath, movie, toPage, history }) => {
+  const mediaType =
+    (movie.mediaType !== undefined) & (movie.mediaType === "tv")
+      ? "series"
+      : toPage;
+  return (
+    <div
+      style={{
+        background: `url(${imagePath}${movie.poster_path})`,
+        backgroundPosition: "center",
+        backgroundSize: "cover",
+        backgroundRepeat: "no-repeat"
+      }}
+      className={styles.portraitCard}
+      onClick={() => history.push(`/${mediaType}/${movie.id}`)}
+    >
+      <div className={styles.portraitCard_footer}>
+        <h3 className={styles.portraitCard_footer_name}>{movie.title}</h3>
       </div>
     </div>
-  </div>
-);
+  );
+};
 const mapStateToProps = createStructuredSelector({
   imagePath: selectImagePath
 });
 
-export default connect(mapStateToProps)(PortraitCard);
+export default connect(mapStateToProps)(withRouter(PortraitCard));

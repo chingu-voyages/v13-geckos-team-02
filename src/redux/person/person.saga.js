@@ -13,7 +13,6 @@ const movieURL = "https://api.themoviedb.org/3/person";
 
 //  MAKE API CALL TO GET ALL NOW PLAYING MOVIES
 export function* getPersonDetails({ id }) {
-  console.log(id);
   try {
     const response = yield axios.get(`${movieURL}/${id}?api_key=${API_KEY}`);
     if (response.status === 200) {

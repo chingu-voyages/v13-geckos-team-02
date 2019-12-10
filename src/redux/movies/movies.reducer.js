@@ -7,6 +7,15 @@ const INITIAL_STATE = {
   // TRENDING MOVIES
   gettingTrendingMovies: false,
   trendingMovies: null,
+  // POPULAR MOVIES
+  gettingPoularMoives: false,
+  popularMovies: null,
+  // TOP RATED MOVIES
+  gettingTopRatedMovies: false,
+  topRatedMovies: null,
+  // UPCOMING MOVIES
+  gettingUpcomingMoives: false,
+  upcomingMovies: null,
   // MOVIE DETAILS
   gettingMovieDetails: false,
   movieDetails: null,
@@ -22,7 +31,7 @@ const INITIAL_STATE = {
 
 const moviesReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    // GET NOW PLAYING REDUCERS
+    // GET NOW PLAYING
     case MoviesTypes.GET_NOW_PLAYING_START:
       return {
         ...state,
@@ -35,7 +44,7 @@ const moviesReducer = (state = INITIAL_STATE, action) => {
         gettingNowPlaying: false,
         error: null
       };
-    // GET TRENDING MOVIES REDUCERS
+    // GET TRENDING MOVIES
     case MoviesTypes.GET_TRENDING_MOVIES_START:
       return {
         ...state,
@@ -46,6 +55,45 @@ const moviesReducer = (state = INITIAL_STATE, action) => {
         ...state,
         trendingMovies: action.payload,
         gettingTrendingMovies: false,
+        error: null
+      };
+    // GET POPULAR MOVIES
+    case MoviesTypes.GET_POPULAR_MOVIES_START:
+      return {
+        ...state,
+        gettingPoularMoives: true
+      };
+    case MoviesTypes.GET_POPULAR_MOVIES_SUCCESS:
+      return {
+        ...state,
+        popularMovies: action.payload,
+        gettingPoularMoives: false,
+        error: null
+      };
+    // GET TOP RATED MOVIES
+    case MoviesTypes.GET_TOP_RATED_MOVIES_START:
+      return {
+        ...state,
+        gettingTopRatedMovies: true
+      };
+    case MoviesTypes.GET_TOP_RATED_MOVIES_SUCCESS:
+      return {
+        ...state,
+        topRatedMovies: action.payload,
+        gettingTopRatedMovies: false,
+        error: null
+      };
+    // GET UPCOMING MOVIES
+    case MoviesTypes.GET_UPCOMING_MOVIES_START:
+      return {
+        ...state,
+        gettingUpcomingMoives: true
+      };
+    case MoviesTypes.GET_UPCOMING_MOVIES_SUCCESS:
+      return {
+        ...state,
+        upcomingMovies: action.payload,
+        gettingUpcomingMoives: false,
         error: null
       };
     // GET MOVIES DETAILS
@@ -94,6 +142,24 @@ const moviesReducer = (state = INITIAL_STATE, action) => {
         ...state,
         error: action.payload,
         gettingTrendingMovies: false
+      };
+    case MoviesTypes.GET_POPULAR_MOVIES_FAILURE:
+      return {
+        ...state,
+        error: action.payload,
+        gettingPoularMoives: false
+      };
+    case MoviesTypes.GET_TOP_RATED_MOVIES_FAILURE:
+      return {
+        ...state,
+        error: action.payload,
+        gettingTopRatedMovies: false
+      };
+    case MoviesTypes.GET_UPCOMING_MOVIES_FAILURE:
+      return {
+        ...state,
+        error: action.payload,
+        gettingUpcomingMoives: false
       };
     case MoviesTypes.GET_MOVIE_DETAILS_FAILRUE:
       return {

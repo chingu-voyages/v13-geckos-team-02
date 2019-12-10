@@ -25,7 +25,42 @@ export const getTrendingMoviesFailure = error => ({
   type: MoviesTypes.GET_TRENDING_MOVIES_FAILURE,
   payload: error
 });
-
+// GET POPULAR MOVIES
+export const getPopularMoviesStart = () => ({
+  type: MoviesTypes.GET_POPULAR_MOVIES_START
+});
+export const getPopularMoviesSuccess = payload => ({
+  type: MoviesTypes.GET_POPULAR_MOVIES_SUCCESS,
+  payload
+});
+export const getPopularMoviesFailure = error => ({
+  type: MoviesTypes.GET_POPULAR_MOVIES_FAILURE,
+  payload: error
+});
+// GET TOP RATED MOVIES
+export const getTopRatedMoviesStart = () => ({
+  type: MoviesTypes.GET_TOP_RATED_MOVIES_START
+});
+export const getTopRatedMoviesSuccess = payload => ({
+  type: MoviesTypes.GET_TOP_RATED_MOVIES_SUCCESS,
+  payload
+});
+export const getTopRatedMoviesFailure = error => ({
+  type: MoviesTypes.GET_TOP_RATED_MOVIES_FAILURE,
+  payload: error
+});
+// GET UPCOMING MOVIES
+export const getUpcomingMoviesStart = () => ({
+  type: MoviesTypes.GET_UPCOMING_MOVIES_START
+});
+export const getUpcomingMoviesSuccess = payload => ({
+  type: MoviesTypes.GET_UPCOMING_MOVIES_SUCCESS,
+  payload
+});
+export const getUpcomingMoviesFailure = error => ({
+  typep: MoviesTypes.GET_UPCOMING_MOVIES_FAILURE,
+  payload: error
+});
 // GET MOVIE DETAILS
 export const getMovieDetailsStart = payload => ({
   type: MoviesTypes.GET_MOVIE_DETAILS_START,

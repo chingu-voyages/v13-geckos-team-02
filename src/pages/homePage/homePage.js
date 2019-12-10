@@ -38,16 +38,19 @@ class HomePage extends React.Component {
           heading={"On Air Series"}
           values={onAirSeries.results}
           isFetching={gettingOnAirSeries}
+          toPage={"series"}
         />
         <CategorySection
           heading={"Trending Movies"}
           values={trendingMovies.results}
           isFetching={gettingTrendingMovies}
+          toPage={"movie"}
         />
         <CategorySection
           heading={"Trending Series"}
           values={trendingSeries.results}
           isFetching={gettingTrendingSeries}
+          toPage={"series"}
         />
       </div>
     );
