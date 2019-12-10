@@ -1,14 +1,27 @@
 import React from "react";
+import { connect } from "react-redux";
 
 import styles from "./team.module.css";
+// IMPORTING REDUX ACTION
+import {
+  toggleModalWindow,
+  getPersonDetailsStart
+} from "../../redux/person/person.action";
 
-const Team = ({ imageUrl, job, name }) => (
+const Team = ({
+  id,
+  imageUrl,
+  job,
+  name,
+  toggleModalWindow,
+  getPersonDetails
+}) => (
   <div
     className={styles.team_member_card}
-    style={{
-      background: `url(${imageUrl})`,
-      backgroundPosition: "center",
-      backgroundSize: "cover"
+    style={{ backgroundImage: `url(${imageUrl})` }}
+    onClick={() => {
+      getPersonDetails(id);
+      toggleModalWindow();
     }}
   >
     {/* CARD CONTAINER FOR REAL NAME OR AKA */}
@@ -21,4 +34,9 @@ const Team = ({ imageUrl, job, name }) => (
   </div>
 );
 
-export default Team;
+const mapDispatchToProps = disaptch => ({
+  toggleModalWindow: () => disaptch(toggleModalWindow()),
+  getPersonDetails: id => disaptch(getPersonDetailsStart(id))
+});
+
+export default connect(null, mapDispatchToProps)(Team);

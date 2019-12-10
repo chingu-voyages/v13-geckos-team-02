@@ -7,6 +7,7 @@ import genreReducer from "./genre/genre.reducer";
 import moviesReducer from "./movies/movies.reducer";
 import seriesReducer from "./series/series.reducer";
 import appConfigReducer from "./appConfig/appConfig.reducer";
+import personReducer from "./person/people.reducer";
 
 const persistConfig = {
   key: "root",
@@ -18,7 +19,8 @@ const rootReducer = combineReducers({
   genres: genreReducer,
   movies: moviesReducer,
   series: seriesReducer,
-  configs: appConfigReducer
+  configs: appConfigReducer,
+  person: personReducer
 });
 
 export default persistReducer(persistConfig, rootReducer);

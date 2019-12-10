@@ -75,7 +75,7 @@ const SideBar = ({
         <div>
           <h3 className={styles.info_title}>Writers</h3>
           {writers.map(writer => (
-            <p key={writer.id} className={styles.info_detail}>
+            <p key={writer.credit_id} className={styles.info_detail}>
               {writer.name}
             </p>
           ))}
@@ -86,7 +86,7 @@ const SideBar = ({
         <div>
           <h3 className={styles.info_title}>Directors</h3>
           {directors.map(director => (
-            <p key={director.id} className={styles.info_detail}>
+            <p key={director.credit_id} className={styles.info_detail}>
               {director.name}
             </p>
           ))}
