@@ -13,7 +13,11 @@ export const getImageConfigFailure = error => ({
   payload: error
 });
 // GET PAGINATION
-export const setPagination = (currentPage, totalPage) => ({
-  type: AppConfigTypes.SET_PAGINATION,
+export const setPaginationStart = (currentPage, totalPage) => ({
+  type: AppConfigTypes.SET_PAGINATION_START,
   payload: { currentPage, totalPage }
+});
+export const setPaginationSuccess = (currentPage, range) => ({
+  type: AppConfigTypes.SET_PAGINATION_SUCCESS,
+  payload: { currentPage, range }
 });

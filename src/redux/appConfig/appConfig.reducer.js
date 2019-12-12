@@ -2,8 +2,6 @@ import AppConfigTypes from "./appConfig.types";
 
 const INITIAL_STATE = {
   // PAGINATION
-  paginationStart: 1,
-  paginationStop: 5,
   currentPage: 1,
   paginationRange: [1, 2, 3, 4, 5],
   gettingConfigs: false,
@@ -35,36 +33,12 @@ const appConfigReducer = (state = INITIAL_STATE, action) => {
         gettingConfigs: false
       };
     // PAGGINATION
-    case AppConfigTypes.SET_PAGINATION:
-      if (action.payload.currentPage <= 1) {
-        return {
-          ...state,
-          currentPage: 1
-        };
-      } else if (action.payload.currentPage >= action.payload.totalPage) {
-        return {
-          ...state,
-          currentPage: action.payload.totalPage
-        };
-      } else {
-        if (action.payload.currentPage % 5 === 0) {
-          state.paginationStart = state.paginationStop;
-          state.paginationStop = state.paginationStop + 5;
-        }
-        state.paginationRange = [];
-        for (
-          let i = state.paginationStart;
-          i <= action.payload.totalPage;
-          i++
-        ) {
-          state.paginationRange.push(i);
-          if (i === state.paginationStop) break;
-        }
-        return {
-          ...state,
-          currentPage: action.payload.currentPage
-        };
-      }
+    case AppConfigTypes.SET_PAGINATION_SUCCESS:
+      return {
+        ...state,
+        currentPage: action.payload.currentPage,
+        paginationRange: action.payload.range
+      };
 
     default:
       return state;

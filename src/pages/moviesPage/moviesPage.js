@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
 
 // IMPORTING REDUX ACTIONS
-import { setPagination } from "../../redux/appConfig/appConfig.action";
+import { setPaginationStart } from "../../redux/appConfig/appConfig.action";
 
 // IMPORTING RESELECTS
 import {
@@ -31,6 +31,7 @@ import styles from "./moviesPage.module.css";
 import PortraitCard from "../../components/portraitCard/portraitCard";
 import ToggleButton from "../../components/toggleButton/toggleButton";
 import withSpinner from "../../components/withSpinner/withSpinner";
+import Pagination from "../../components/pagination/pagination";
 
 const MoviesPage = ({
   movies,
@@ -78,6 +79,12 @@ const MoviesPage = ({
         <ToggleButton name={"thriller"} />
         <ToggleButton name={"drama"} />
       </div>
+      <Pagination
+        currentPage={currentPage}
+        paginationRange={paginationRange}
+        totalPages={newMovies.total_pages}
+        setPagination={setPagination}
+      />
       <div className={styles.moviesPage_body}>
         {newMovies.length !== 0
           ? newMovies.results.map(movie => (
@@ -85,36 +92,12 @@ const MoviesPage = ({
             ))
           : null}
       </div>
-      <div className={styles.moviesPage_footer}>
-        <button
-          onClick={() => setPagination(currentPage - 1, newMovies.total_pages)}
-        >
-          Prev
-        </button>
-        <button>{currentPage}</button>
-        <span>...</span>
-        {paginationRange.map(number => (
-          <button
-            key={number}
-            className={
-              number === currentPage
-                ? styles.moviesPage_footer_button_active
-                : null
-            }
-            onClick={() => setPagination(number, newMovies.total_pages)}
-          >
-            {number}
-          </button>
-        ))}
-
-        <span>...</span>
-        <button>{newMovies.total_pages}</button>
-        <button
-          onClick={() => setPagination(currentPage + 1, newMovies.total_pages)}
-        >
-          Next
-        </button>
-      </div>
+      <Pagination
+        currentPage={currentPage}
+        paginationRange={paginationRange}
+        totalPages={newMovies.total_pages}
+        setPagination={setPagination}
+      />
     </div>
   );
 };
@@ -135,7 +118,7 @@ const mapStateToProps = createStructuredSelector({
 });
 
 const mapDispatchToProps = dispatch => ({
-  setPagination: (number, total) => dispatch(setPagination(number, total))
+  setPagination: (number, total) => dispatch(setPaginationStart(number, total))
 });
 
 export default compose(

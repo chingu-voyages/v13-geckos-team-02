@@ -1,0 +1,30 @@
+/* MOVIES PAGE FOOTER STYLES */
+.pagination {
+  margin: 3rem auto;
+  text-align: center;
+}
+.pagination button {
+  font-size: 1.3rem;
+  border-radius: 5px;
+  padding: 5px 10px;
+  background: #393939aa 0% 0% no-repeat padding-box;
+  color: #fff;
+  border: #393939aa;
+  outline: none;
+}
+.pagination button:not(:last-child) {
+  margin-right: 1rem;
+}
+.pagination button:hover,
+.pagination button:active .pagination button:focus {
+  cursor: pointer;
+  background: #7a7a7aaa 0% 0% no-repeat padding-box;
+  color: #fff;
+  border: #7a7a7aaa;
+  outline: none;
+}
+button.pagination_button_active {
+  background-color: #7a7a7aaa;
+  color: #fff;
+  border: #7a7a7aaa;
+}

@@ -1,6 +1,15 @@
 import React from "react";
 import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
+// IMPORTING REDUX ACTIONS
+import {
+  getNowPlayingStart,
+  getTrendingMoviesStart
+} from "../../redux/movies/movies.action";
+import {
+  getOnAirSeriesStart,
+  getTrendingSeriesStart
+} from "../../redux/series/series.action";
 // IMPORTING RESELECT
 import {
   selectGettingTrendingMovies,
@@ -17,9 +26,23 @@ import LandingSection from "../../components/landingSection/landingSection";
 import CategorySection from "../../components/categorySection/categorySection";
 
 class HomePage extends React.Component {
-  constructor() {
-    super();
-    this.state = {};
+  componentDidMount() {
+    const {
+      getNowPlayingStart,
+      getOnAirSeries,
+      getTrendingMovies,
+      getTrendingSeries,
+      movies,
+      series
+    } = this.props;
+    if (!movies) {
+      getNowPlayingStart();
+      getTrendingMovies();
+    }
+    if (!series) {
+      getOnAirSeries();
+      getTrendingSeries();
+    }
   }
 
   render() {
@@ -69,4 +92,11 @@ const mapStateToProps = createStructuredSelector({
   trendingSeries: selectTrendingSeries
 });
 
-export default connect(mapStateToProps)(HomePage);
+const mapDispatchToProps = dispatch => ({
+  getNowPlayingStart: () => dispatch(getNowPlayingStart()),
+  getOnAirSeries: () => dispatch(getOnAirSeriesStart()),
+  getTrendingMovies: () => dispatch(getTrendingMoviesStart()),
+  getTrendingSeries: () => dispatch(getTrendingSeriesStart())
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(HomePage);
