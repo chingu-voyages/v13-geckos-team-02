@@ -1,9 +1,9 @@
 import SeriesTypes from "./series.types";
 
 // ACTIONS FOR SERIES AIRING TODAY
-export const getSeriesAiringTodayStart = (type, page) => ({
+export const getSeriesAiringTodayStart = page => ({
   type: SeriesTypes.GET_SERIES_AIRING_TODAY_START,
-  payload: { type, page }
+  page
 });
 export const getSeriesAiringTodaySuccess = payload => ({
   type: SeriesTypes.GET_SERIES_AIRING_TODAY_SUCCESS,
@@ -15,9 +15,9 @@ export const getSeriesAiringTodayFailure = error => ({
 });
 
 // ACTIONS FOR SERIES ON THE AIR
-export const getOnTheAirSeriesStart = (type, page) => ({
+export const getOnTheAirSeriesStart = page => ({
   type: SeriesTypes.GET_ON_THE_AIR_SERIES_START,
-  payload: { type, page }
+  page
 });
 export const getOnTheAirSeriesSuccess = result => ({
   type: SeriesTypes.GET_ON_THE_AIR_SERIES_SUCCESS,
@@ -29,9 +29,9 @@ export const getOnTheAirSeriesFailure = error => ({
 });
 
 // ACTIONS FOR TOP RATED SERIES
-export const getTopRatedSeriesStart = (type, page) => ({
+export const getTopRatedSeriesStart = page => ({
   type: SeriesTypes.GET_TOP_RATED_SERIES_START,
-  payload: { type, page }
+  page
 });
 export const getTopRatedSeriesSuccess = payload => ({
   type: SeriesTypes.GET_TOP_RATED_SERIES_SUCCESS,
@@ -43,9 +43,9 @@ export const getTopRatedSeriesFailure = error => ({
 });
 
 // GET TRENDING SERIES
-export const getTrendingSeriesStart = (type, page) => ({
+export const getTrendingSeriesStart = page => ({
   type: SeriesTypes.GET_TRENDING_SERIES_START,
-  payload: { type, page }
+  page
 });
 export const getTrendingSeriesSuccess = result => ({
   type: SeriesTypes.GET_TRENDING_SERIES_SUCCESS,
@@ -57,9 +57,9 @@ export const getTrendingSeriesFailure = error => ({
 });
 
 // ACTIONS FOR POPULAR SERIES
-export const getPopularSeriesStart = (type, page) => ({
+export const getPopularSeriesStart = page => ({
   type: SeriesTypes.GET_POPULAR_SERIES_START,
-  payload: { type, page }
+  page
 });
 export const getPopularSeriesSuccess = result => ({
   type: SeriesTypes.GET_POPULAR_SERIES_SUCCESS,

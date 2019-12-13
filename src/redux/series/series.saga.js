@@ -51,7 +51,7 @@ export function* getSeriesAPICall(
 }
 
 // MAKE API CALL TO GET MOVIES DEPENING ON PATH
-export function* getSeries({ payload: { page }, type }) {
+export function* getSeries({ type, page }) {
   let seriesCategory;
   let trending = false;
   const pageNumber = yield page || 1;

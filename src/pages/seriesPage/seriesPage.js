@@ -16,8 +16,6 @@ import { selectSeries } from "../../redux/series/series.selector";
 import { selectCurrentPage } from "../../redux/appConfig/appConfig.selector";
 // IMPORTING COMPONENTS
 import PortraitCard from "../../components/portraitCard/portraitCard";
-// import ToggleButton from "../../components/toggleButton/toggleButton";
-// import withSpinner from "../../components/withSpinner/withSpinner";
 import Pagination from "../../components/pagination/pagination";
 // IMPORTING STYLES
 import styles from "./seriesPage.module.css";
@@ -28,21 +26,21 @@ class SeriesPage extends React.Component {
     this.state = {
       seriesCategoryTitle: "Now Playing Movies",
       seriesCategory: "airingTodaySeries",
-      url: this.props.match.params.category
+      url: this.props.match.params.category,
+      page: this.props.currentPage
     };
   }
   componentDidMount() {
-    this.handleDataFetching();
+    const { match } = this.props;
+    console.log(match);
+    this.handleDataFetching(this.props.currentPage);
   }
   async shouldComponentUpdate(nextProps, nextState) {
-    const {
-      match: {
-        params: { category }
-      }
-    } = await nextProps;
-    const { url } = await nextState;
-    if (category !== url) {
-      await this.setState({ url: category });
+    const { match, currentPage } = await nextProps;
+    const { url, page } = await nextState;
+    if (match.params.category !== url || page !== currentPage) {
+      await this.setState({ url: match.params.category });
+      await this.setState({ page: currentPage });
       await this.handleDataFetching();
       return await true;
     } else {
@@ -51,49 +49,46 @@ class SeriesPage extends React.Component {
   }
   handleDataFetching = () => {
     const {
-      history,
       fetchSeriesAiringToday,
       fetchOnTheAirSeries,
       fetchTopRatedSeries,
       fetchTrendingSeries,
       fetchPopularSeries,
-      match: { params },
+      match,
       currentPage
     } = this.props;
-    // history.push(`/${match.url}/${currentPage}`);
-    console.log(currentPage);
-
-    switch (params.category) {
+    const { category } = match.params;
+    switch (category) {
       case "airing_today":
-        fetchSeriesAiringToday();
+        fetchSeriesAiringToday(currentPage);
         this.setState({
           seriesCategoryTitle: "Series Airing Today",
           seriesCategory: "airingTodaySeries"
         });
         break;
       case "on_the_air":
-        fetchOnTheAirSeries();
+        fetchOnTheAirSeries(currentPage);
         this.setState({
           seriesCategoryTitle: "Series On The Air",
           seriesCategory: "onTheAirSeries"
         });
         break;
       case "top_rated":
-        fetchTopRatedSeries();
+        fetchTopRatedSeries(currentPage);
         this.setState({
           seriesCategoryTitle: "Top Rated Series",
           seriesCategory: "topRatedSeries"
         });
         break;
       case "trending":
-        fetchTrendingSeries();
+        fetchTrendingSeries(currentPage);
         this.setState({
           seriesCategoryTitle: "Trending Series",
           seriesCategory: "trendingSeries"
         });
         break;
       case "popular":
-        fetchPopularSeries();
+        fetchPopularSeries(currentPage);
         this.setState({
           seriesCategoryTitle: "Popular Series",
           seriesCategory: "popularSeries"

@@ -45,7 +45,13 @@ const Pagination = ({
     >
       Next
     </button>
-    <button onClick={() => setPagination(totalPages, totalPages)}>Last</button>
+    <button
+      onClick={() => {
+        setPagination(totalPages, totalPages);
+      }}
+    >
+      Last
+    </button>
   </div>
 );
 const mapStateToProps = createStructuredSelector({

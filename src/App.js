@@ -31,7 +31,7 @@ class App extends React.Component {
           <Route exact path="/" component={HomePage} />
           <Route path="/movies/:category" component={MoviesPage} />
           <Route path="/movie/:movie_id" component={MoviePage} />
-          <Route path="/series/:category" component={SeriesPage} />
+          <Route exact path="/series/:category" component={SeriesPage} />
         </Switch>
       </div>
     );
