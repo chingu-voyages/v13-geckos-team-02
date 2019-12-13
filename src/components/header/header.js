@@ -39,8 +39,12 @@ const Header = ({
           <div className={styles.dropdown}>
             <div className={styles.dropdown_button}>Movie</div>
             <div className={styles.dropdown_content}>
-              <Link to="/movies/now_playing" onClick={() => getNowPlaying()}>
-                Now playing
+              <Link to="/movies/now_playing">Now playing</Link>
+              <Link to="/movies/upcoming" onClick={() => getUpcomingMovies()}>
+                upcoming
+              </Link>
+              <Link to="/movies/top_rated" onClick={() => getTopRatedMovies()}>
+                Top rated
               </Link>
               <Link to="/movies/trending" onClick={() => getTrendingMovies()}>
                 Trending
@@ -48,23 +52,17 @@ const Header = ({
               <Link to="/movies/popular" onClick={() => getPopularMovies()}>
                 popular
               </Link>
-              <Link to="/movies/top_rated" onClick={() => getTopRatedMovies()}>
-                Top rated
-              </Link>
-              <Link to="/movies/upcoming" onClick={() => getUpcomingMovies()}>
-                upcoming
-              </Link>
             </div>
           </div>
           {/* <li className={styles.header_nav_menu_link}> */}
           <div className={styles.dropdown}>
             <div className={styles.dropdown_button}>Series</div>
             <div className={styles.dropdown_content}>
-              <Link to="/">tv airing today</Link>
-              <Link to="/">tv on air</Link>
-              <Link to="/">Latest</Link>
-              <Link to="/">popular</Link>
-              <Link to="/">top rated</Link>
+              <Link to="/series/airing_today">airing today</Link>
+              <Link to="/series/on_the_air">on the air </Link>
+              <Link to="/series/top_rated">top rated</Link>
+              <Link to="/series/trending">trending</Link>
+              <Link to="/series/popular">popular</Link>
             </div>
           </div>
         </div>

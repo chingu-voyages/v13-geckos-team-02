@@ -1,13 +1,15 @@
 import React from "react";
 import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
+// IMPORTING TYPES
+import SeriesTypes from "../../redux/series/series.types";
 // IMPORTING REDUX ACTIONS
 import {
   getNowPlayingStart,
   getTrendingMoviesStart
 } from "../../redux/movies/movies.action";
 import {
-  getOnAirSeriesStart,
+  getOnTheAirSeriesStart,
   getTrendingSeriesStart
 } from "../../redux/series/series.action";
 // IMPORTING RESELECT
@@ -16,8 +18,8 @@ import {
   selectTrendingMovies
 } from "../../redux/movies/movies.selector";
 import {
-  selectGettingOnAirSeries,
-  selectOnAirSeries,
+  selectGettingOnTheAirSeries,
+  selectOnTheAirSeries,
   selectGettingTrendingSeries,
   selectTrendingSeries
 } from "../../redux/series/series.selector";
@@ -29,7 +31,7 @@ class HomePage extends React.Component {
   componentDidMount() {
     const {
       getNowPlayingStart,
-      getOnAirSeries,
+      getOnTheAirSeries,
       getTrendingMovies,
       getTrendingSeries,
       movies,
@@ -39,42 +41,49 @@ class HomePage extends React.Component {
       getNowPlayingStart();
       getTrendingMovies();
     }
-    if (!series) {
-      getOnAirSeries();
-      getTrendingSeries();
-    }
+    // if (!series) {
+    getOnTheAirSeries();
+    getTrendingSeries();
+    // }
   }
 
   render() {
     const {
-      gettingOnAirSeries,
-      onAirSeries,
+      gettingOnTheAirSeries,
+      onTheAirSeries,
       gettingTrendingMovies,
       trendingMovies,
       gettingTrendingSeries,
       trendingSeries
     } = this.props;
+    console.log(gettingOnTheAirSeries);
     return (
       <div>
         <LandingSection />
-        <CategorySection
-          heading={"On Air Series"}
-          values={onAirSeries.results}
-          isFetching={gettingOnAirSeries}
-          toPage={"series"}
-        />
-        <CategorySection
-          heading={"Trending Movies"}
-          values={trendingMovies.results}
-          isFetching={gettingTrendingMovies}
-          toPage={"movie"}
-        />
-        <CategorySection
-          heading={"Trending Series"}
-          values={trendingSeries.results}
-          isFetching={gettingTrendingSeries}
-          toPage={"series"}
-        />
+        {onTheAirSeries ? (
+          <CategorySection
+            heading={"On Air Series"}
+            values={onTheAirSeries.results}
+            isFetching={gettingOnTheAirSeries}
+            toPage={"series"}
+          />
+        ) : null}
+        {trendingMovies ? (
+          <CategorySection
+            heading={"Trending Movies"}
+            values={trendingMovies.results}
+            isFetching={gettingTrendingMovies}
+            toPage={"movie"}
+          />
+        ) : null}
+        {trendingSeries ? (
+          <CategorySection
+            heading={"Trending Series"}
+            values={trendingSeries.results}
+            isFetching={gettingTrendingSeries}
+            toPage={"series"}
+          />
+        ) : null}
       </div>
     );
   }
@@ -82,8 +91,8 @@ class HomePage extends React.Component {
 
 const mapStateToProps = createStructuredSelector({
   // On Air Series
-  gettingOnAirSeries: selectGettingOnAirSeries,
-  onAirSeries: selectOnAirSeries,
+  gettingOnTheAirSeries: selectGettingOnTheAirSeries,
+  onTheAirSeries: selectOnTheAirSeries,
   // Trending Movies
   gettingTrendingMovies: selectGettingTrendingMovies,
   trendingMovies: selectTrendingMovies,
@@ -94,9 +103,9 @@ const mapStateToProps = createStructuredSelector({
 
 const mapDispatchToProps = dispatch => ({
   getNowPlayingStart: () => dispatch(getNowPlayingStart()),
-  getOnAirSeries: () => dispatch(getOnAirSeriesStart()),
+  getOnTheAirSeries: page => dispatch(getOnTheAirSeriesStart(page)),
   getTrendingMovies: () => dispatch(getTrendingMoviesStart()),
-  getTrendingSeries: () => dispatch(getTrendingSeriesStart())
+  getTrendingSeries: page => dispatch(getTrendingSeriesStart(page))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(HomePage);

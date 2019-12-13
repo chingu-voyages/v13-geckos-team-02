@@ -3,10 +3,8 @@ import { compose } from "redux";
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
-
 // IMPORTING REDUX ACTIONS
 import { setPaginationStart } from "../../redux/appConfig/appConfig.action";
-
 // IMPORTING RESELECTS
 import {
   selectGettingConfigs,
@@ -25,6 +23,8 @@ import {
   selectGettingTopRatedMovies,
   selectGettingUpcomingMovies
 } from "../../redux/movies/movies.selector";
+// IMPORTING REDUX ACTIONS
+import { getNowPlayingStart } from "../../redux/movies/movies.action";
 // IMPORTING STYLES
 import styles from "./moviesPage.module.css";
 // IMPORTING COMPONENTS
@@ -35,39 +35,45 @@ import Pagination from "../../components/pagination/pagination";
 
 const MoviesPage = ({
   movies,
-  match: { params },
+  match,
+  history,
   currentPage,
   paginationRange,
-  setPagination
+  setPagination,
+  fetchNowPlayingMovies
 }) => {
   const [moviesType, setMoviesType] = useState("nowPlayingMovies");
   const [moviesTypeTitle, setMoviesTypeTitle] = useState("Now Playing Movies");
   useEffect(() => {
-    switch (params.type_path) {
-      case "now_playing":
-        setMoviesType("nowPlayingMovies");
-        setMoviesTypeTitle("Now Playing Movies");
-        break;
-      case "trending":
-        setMoviesType("trendingMovies");
-        setMoviesTypeTitle("Trending Movies");
-        break;
-      case "popular":
-        setMoviesType("popularMovies");
-        setMoviesTypeTitle("Popular Movies");
-        break;
-      case "top_rated":
-        setMoviesType("topRatedMovies");
-        setMoviesTypeTitle("Top Rated Movies");
-        break;
-      case "upcoming":
-        setMoviesType("upcomingMovies");
-        setMoviesTypeTitle("Upcoming Movies");
-        break;
-      default:
-        return;
-    }
-  }, [params.type_path]);
+    console.log(match.params);
+    history.push(`/${match.url}/${currentPage}`);
+    // fetchNowPlayingMovies();
+    // switch (params.type_path) {
+    //   case "now_playing":
+    //     setMoviesType("nowPlayingMovies");
+    //     fetchNowPlayingMovies();
+    //     setMoviesTypeTitle("Now Playing Movies");
+    //     break;
+    //   case "trending":
+    //     setMoviesType("trendingMovies");
+    //     setMoviesTypeTitle("Trending Movies");
+    //     break;
+    //   case "popular":
+    //     setMoviesType("popularMovies");
+    //     setMoviesTypeTitle("Popular Movies");
+    //     break;
+    //   case "top_rated":
+    //     setMoviesType("topRatedMovies");
+    //     setMoviesTypeTitle("Top Rated Movies");
+    //     break;
+    //   case "upcoming":
+    //     setMoviesType("upcomingMovies");
+    //     setMoviesTypeTitle("Upcoming Movies");
+    //     break;
+    //   default:
+    //     return;
+    // }
+  }, [match.params, match.url, currentPage, history]);
   const newMovies = movies[moviesType] ? movies[moviesType] : [];
   return (
     <div className={styles.moviesPage_container}>
@@ -96,7 +102,6 @@ const MoviesPage = ({
         currentPage={currentPage}
         paginationRange={paginationRange}
         totalPages={newMovies.total_pages}
-        setPagination={setPagination}
       />
     </div>
   );
@@ -118,7 +123,7 @@ const mapStateToProps = createStructuredSelector({
 });
 
 const mapDispatchToProps = dispatch => ({
-  setPagination: (number, total) => dispatch(setPaginationStart(number, total))
+  fetchNowPlayingMovies: page => dispatch(getNowPlayingStart(page))
 });
 
 export default compose(

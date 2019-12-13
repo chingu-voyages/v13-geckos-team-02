@@ -5,30 +5,19 @@ import "./App.css";
 // IMPORTING REDUX ACTIONS
 import { getImageConfigStart } from "./redux/appConfig/appConfig.action";
 import { getMoviesGenresStart } from "./redux/genre/genre.action";
-import {
-  getNowPlayingStart,
-  getTrendingMoviesStart
-} from "./redux/movies/movies.action";
-import {
-  getOnAirSeriesStart,
-  getTrendingSeriesStart
-} from "./redux/series/series.action";
 
 // IMPORTING COMPONENTS
 import Header from "./components/header/header";
 import HomePage from "./pages/homePage/homePage";
+// movies
 import MoviesPage from "./pages/moviesPage/moviesPage";
 import MoviePage from "./pages/moviePage/moviePage";
+// series
+import SeriesPage from "./pages/seriesPage/seriesPage";
 
 class App extends React.Component {
   componentDidMount() {
-    const {
-      getmoviesGenresStart,
-      getImageConfigStart,
-      configs,
-      genres
-    } = this.props;
-    // if (!configs)
+    const { getmoviesGenresStart, getImageConfigStart, genres } = this.props;
     getImageConfigStart();
     if (!genres) {
       getmoviesGenresStart();
@@ -40,8 +29,9 @@ class App extends React.Component {
         <Header />
         <Switch>
           <Route exact path="/" component={HomePage} />
-          <Route exact path="/movies/:type_path" component={MoviesPage} />
+          <Route path="/movies/:category" component={MoviesPage} />
           <Route path="/movie/:movie_id" component={MoviePage} />
+          <Route path="/series/:category" component={SeriesPage} />
         </Switch>
       </div>
     );

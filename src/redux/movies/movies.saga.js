@@ -130,7 +130,7 @@ export function* getTrendingMovies() {
   }
 }
 // MAKE API CALL TO GET MOVIES DEPENING ON PATH
-export function* getMovies({ type, page }) {
+export function* getMovies({ type, page, category }) {
   let movieTypePath;
   const pageNumber = yield page || 1;
   switch (type) {
