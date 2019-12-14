@@ -7,7 +7,6 @@
 /* SIDE BAR CONTAINER STYLES */
 .sideBar_container {
   position: relative;
-  height: 50vh;
   overflow-y: scroll;
 }
 /* width */

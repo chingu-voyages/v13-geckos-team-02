@@ -149,7 +149,6 @@ const MoviePage = ({
           </div>
         ) : null}
       </div>
-      {toggleModalWindow ? <TeamModalWindow /> : null}
     </div>
   );
 };

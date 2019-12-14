@@ -21,6 +21,19 @@
   margin-top: 0;
   transition: all 0.5s;
 }
+.seriesName {
+  text-transform: uppercase;
+  color: #fff;
+  letter-spacing: 4px;
+  line-height: 1;
+  font-family: "Roboto";
+  font-size: 35px;
+  width: 300px;
+  font-weight: 400;
+  margin-bottom: 13px;
+  margin-top: 0;
+  transition: all 0.5s;
+}
 .movieName:hover,
 .movieName:active {
   cursor: pointer;

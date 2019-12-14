@@ -20,13 +20,28 @@ import {
   getTrendingSeriesFailure,
   // POPULAR
   getPopularSeriesSuccess,
-  getPopularSeriesFailure
+  getPopularSeriesFailure,
+  // DETAILS
+  getSeriesDetailsSuccess,
+  getSeriesDetailsFailure,
+  // CREDITS
+  getSeriesCreditsSuccess,
+  getSeriesCreditsFailure,
+  // SIMILAR
+  getSimilarSeriesSuccess,
+  getSimilarSeriesFailure
 } from "./series.action";
 // Get api key
 const API_KEY = process.env.REACT_APP_API_VALUE_KEY;
 // SERIES URL
 const SERIES_URL = "https://api.themoviedb.org/3/tv";
 
+/*****
+ AIRING TODAY
+ ON THE AIR
+ TOP RATED, TRENDING, POPULAR
+ API CALL
+ */
 // MAKE API CALL TO EITHER PATH
 export function* getSeriesAPICall(
   trending = false,
@@ -49,11 +64,10 @@ export function* getSeriesAPICall(
     yield put(failureFunction(error));
   }
 }
-
 // MAKE API CALL TO GET MOVIES DEPENING ON PATH
 export function* getSeries({ type, page }) {
   let seriesCategory;
-  let trending = false;
+  let trending = yield false;
   const pageNumber = yield page || 1;
   switch (type) {
     case SeriesTypes.GET_SERIES_AIRING_TODAY_START:
@@ -111,6 +125,7 @@ export function* getSeries({ type, page }) {
       return;
   }
 }
+
 export function* onGetSeriesAiringToday() {
   yield takeLatest(SeriesTypes.GET_SERIES_AIRING_TODAY_START, getSeries);
 }
@@ -126,6 +141,83 @@ export function* onGetTrendingSeries() {
 export function* onGetPopularSeries() {
   yield takeLatest(SeriesTypes.GET_POPULAR_SERIES_START, getSeries);
 }
+/*****
+ * DETAILS
+ * CREDITS
+ * SIMILAR
+ * ...API CALL
+ *
+ */
+// MAKE API CALL TO EITHER PATH
+export function* getSeriesDetailsAndMoreAPICALL(
+  NewUrl,
+  successFunction,
+  failureFunction
+) {
+  try {
+    const URL = `${NewUrl}?api_key=${API_KEY}&language=en-US`;
+    const response = yield axios.get(URL);
+    if (response.status === 200) {
+      yield put(successFunction(response.data));
+    } else {
+      yield put(failureFunction(response));
+    }
+  } catch (error) {
+    yield put(failureFunction(error));
+  }
+}
+// MAKE API CALL TO GET MOVIES DEPENING ON PATH
+export function* getSeriesDetailsAndMore({ type, id }) {
+  let NewUrl;
+  switch (type) {
+    case SeriesTypes.GET_SERIES_DETAILS_START:
+      NewUrl = yield `${SERIES_URL}/${id}`;
+      console.log(NewUrl);
+      yield getSeriesDetailsAndMoreAPICALL(
+        NewUrl,
+        getSeriesDetailsSuccess,
+        getSeriesDetailsFailure
+      );
+      break;
+    case SeriesTypes.GET_SERIES_CREDITS_START:
+      NewUrl = yield `${SERIES_URL}/${id}/credits`;
+      yield getSeriesDetailsAndMoreAPICALL(
+        NewUrl,
+        getSeriesCreditsSuccess,
+        getSeriesCreditsFailure
+      );
+      break;
+    case SeriesTypes.GET_SIMILAR_SERIES_START:
+      NewUrl = yield `${SERIES_URL}/${id}/similar`;
+      yield getSeriesDetailsAndMoreAPICALL(
+        NewUrl,
+        getSimilarSeriesSuccess,
+        getSimilarSeriesFailure
+      );
+      break;
+    default:
+      return;
+  }
+}
+
+export function* onGetSeriesDetails() {
+  yield takeLatest(
+    SeriesTypes.GET_SERIES_DETAILS_START,
+    getSeriesDetailsAndMore
+  );
+}
+export function* onGetSeriesCredits() {
+  yield takeLatest(
+    SeriesTypes.GET_SERIES_CREDITS_START,
+    getSeriesDetailsAndMore
+  );
+}
+export function* onGetSimilarSeries() {
+  yield takeLatest(
+    SeriesTypes.GET_SIMILAR_SERIES_START,
+    getSeriesDetailsAndMore
+  );
+}
 
 // COMBINE ALL SAGAS HERE
 export function* seriesSaga() {
@@ -134,6 +226,9 @@ export function* seriesSaga() {
     call(onGetOnTheAirSeries),
     call(onGetTopRatedSeries),
     call(onGetTrendingSeries),
-    call(onGetPopularSeries)
+    call(onGetPopularSeries),
+    call(onGetSeriesDetails),
+    call(onGetSeriesCredits),
+    call(onGetSimilarSeries)
   ]);
 }

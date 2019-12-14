@@ -1,8 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
-// IMPORTING TYPES
-import SeriesTypes from "../../redux/series/series.types";
 // IMPORTING REDUX ACTIONS
 import {
   getNowPlayingStart,
@@ -34,17 +32,14 @@ class HomePage extends React.Component {
       getOnTheAirSeries,
       getTrendingMovies,
       getTrendingSeries,
-      movies,
-      series
+      movies
     } = this.props;
     if (!movies) {
       getNowPlayingStart();
       getTrendingMovies();
     }
-    // if (!series) {
     getOnTheAirSeries();
     getTrendingSeries();
-    // }
   }
 
   render() {

@@ -16,6 +16,15 @@ const INITIAL_STATE = {
   // POPULAR
   gettingPopularSeries: false,
   popularSeries: null,
+  // DETAILS
+  gettingSeriesDetails: false,
+  seriesDetails: null,
+  // CREDITS
+  gettingSeriesCredits: false,
+  seriesCredits: null,
+  // SIMILAR
+  gettingSimilarSeries: false,
+  similarSeries: null,
   // ERROR
   error: null
 };
@@ -113,6 +122,63 @@ const seriesReducer = (state = INITIAL_STATE, action) => {
         ...state,
         error: action.payload,
         gettingPopularSeries: false
+      };
+    // DETAILS
+    case SeriesTypes.GET_SERIES_DETAILS_START:
+      return {
+        ...state,
+        gettingSeriesDetails: true
+      };
+    case SeriesTypes.GET_SERIES_DETAILS_SUCCESS:
+      return {
+        ...state,
+        seriesDetails: action.payload,
+        gettingSeriesDetails: false,
+        error: null
+      };
+    case SeriesTypes.GET_SERIES_DETAILS_FAILRUE:
+      return {
+        ...state,
+        error: action.payload,
+        gettingSeriesDetails: false
+      };
+    // CREDITS
+    case SeriesTypes.GET_SERIES_CREDITS_START:
+      return {
+        ...state,
+        gettingSeriesCredits: true
+      };
+    case SeriesTypes.GET_SERIES_CREDITS_SUCCESS:
+      return {
+        ...state,
+        seriesCredits: action.payload,
+        gettingSeriesCredits: false,
+        error: null
+      };
+    case SeriesTypes.GET_SERIES_CREDITS_FAILRUE:
+      return {
+        ...state,
+        error: action.payload,
+        gettingSeriesCredits: false
+      };
+    // SIMILAR
+    case SeriesTypes.GET_SIMILAR_SERIES_START:
+      return {
+        ...state,
+        gettingSimilarSeries: true
+      };
+    case SeriesTypes.GET_SIMILAR_SERIES_SUCCESS:
+      return {
+        ...state,
+        similarSeries: action.payload,
+        gettingSimilarSeries: false,
+        error: null
+      };
+    case SeriesTypes.GET_SIMILAR_SERIES_FAILRUE:
+      return {
+        ...state,
+        error: action.payload,
+        gettingSimilarSeries: false
       };
 
     default:

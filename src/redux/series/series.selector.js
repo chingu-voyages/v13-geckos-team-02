@@ -51,3 +51,37 @@ export const selectPopularSeries = createSelector(
   selectSeries,
   series => series.popularSeries
 );
+
+// SERIES DETAILS SELECTOR
+export const selectGettingSeriesDetails = createSelector(
+  selectSeries,
+  series => series.gettingSeriesDetails
+);
+export const selectSeriesDetails = createSelector(
+  selectSeries,
+  series => series.seriesDetails
+);
+
+// SERIES CREDITS SELECTOR
+export const selectGettingSeriesCredits = createSelector(
+  selectSeries,
+  series => series.gettingSeriesCredits
+);
+export const selectSeriesCast = createSelector(
+  selectSeries,
+  series => series.seriesCredits.cast
+);
+export const selectSeriesCrew = createSelector(
+  selectSeries,
+  series => series.seriesCredits.crew
+);
+
+// SIMILAR SERIES SELECTOR
+export const selectGettingSimilarSeries = createSelector(
+  selectSeries,
+  series => series.gettingSimilarSeries
+);
+export const selectSimilarSeries = createSelector(
+  selectSeries,
+  series => series.similarSeries
+);

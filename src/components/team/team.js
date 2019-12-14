@@ -7,6 +7,7 @@ import {
   toggleModalWindow,
   getPersonDetailsStart
 } from "../../redux/person/person.action";
+import WithSpinner from "../withSpinner/withSpinner";
 
 const Team = ({
   id,
@@ -40,4 +41,4 @@ const mapDispatchToProps = disaptch => ({
   getPersonDetails: id => disaptch(getPersonDetailsStart(id))
 });
 
-export default connect(null, mapDispatchToProps)(Team);
+export default connect(null, mapDispatchToProps)(WithSpinner(Team));
