@@ -37,22 +37,21 @@ export function* settingPagination({ payload: { currentPage, totalPage } }) {
   let range = yield state.paginationRange;
   let start = 1;
   if (currentPage <= 1) {
-    currentPage = 1;
-    start = 1;
+    currentPage = yield 1;
+    start = yield 1;
   } else if (currentPage >= totalPage) {
-    start = totalPage - 5;
+    start = yield totalPage - 5;
   }
   if (currentPage > 2) {
-    start = currentPage - 2;
+    start = yield currentPage - 2;
     if (currentPage >= totalPage) {
-      start = totalPage - 4;
-      currentPage = totalPage;
+      start = yield totalPage - 4;
+      currentPage = yield totalPage;
     }
   }
   range.splice(0, range.length);
-  let count = 1;
+  let count = yield 1;
   while (start <= totalPage) {
-    console.log(start);
     yield range.push(start);
     if (count === 5) {
       break;

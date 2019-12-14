@@ -1,0 +1,9 @@
+/* SERIES PAGE CONTAINER STYLES */
+.seriesPage_container {
+  margin-top: 8rem;
+}
+.seriesPage_container h1 {
+  margin-left: 5rem;
+  text-align: left;
+}
+/* SERIES PAGE BODY STYLES */
