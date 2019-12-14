@@ -66,22 +66,6 @@ const Header = ({
             </div>
           </div>
         </div>
-        {/* Header search bar */}
-        <div className={styles.search}>
-          {/* <input placeholder="Search for movies" name="search" /> */}
-          <SearchIcon className={styles.icon} />
-        </div>
-        {/* Header Watchlist, notification, and user*/}
-        <div className={styles.utilitiesBar}>
-          <span>
-            <WatchListIcon />
-            Watchlist
-          </span>
-          <span>
-            <NotificationIcon className={styles.icon} />
-          </span>
-          <span>User, John</span>
-        </div>
       </div>
     </header>
   );
