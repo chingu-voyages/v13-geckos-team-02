@@ -31,8 +31,6 @@ class SeriesPage extends React.Component {
     };
   }
   componentDidMount() {
-    const { match } = this.props;
-    console.log(match);
     this.handleDataFetching(this.props.currentPage);
   }
   async shouldComponentUpdate(nextProps, nextState) {

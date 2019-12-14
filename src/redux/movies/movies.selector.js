@@ -57,6 +57,10 @@ export const selectMovieDetails = createSelector(
   movie => movie.movieDetails
 );
 // MOVIE CAST AND CREW
+export const selectGettingMovieCredits = createSelector(
+  selectMovies,
+  movie => movie.gettingMovieCredits
+);
 export const selectMovieCast = createSelector(
   selectMovies,
   movie => movie.movieCredits.cast

@@ -6,21 +6,26 @@ import WithSpinner from "../withSpinner/withSpinner";
 // STYLES
 import styles from "./categorySection.module.css";
 
-const CategorySection = ({ heading, values, toPage, isFetching }) => (
+const CategorySection = ({
+  heading,
+  values,
+  toPageforCard,
+  toPageForButton
+}) => (
   <div className={styles.categorySection}>
     <div className={styles.categoryHeader}>
       <div className={styles.categoryHeading}>
         <h3>{heading}</h3>
       </div>
       <div className={styles.categoryButton}>
-        <SeeAllButton count={values.length} />
+        <SeeAllButton count={values.length} link={toPageForButton} />
       </div>
     </div>
     <div className={styles.categoryBody}>
       {values
         .filter((idx, item) => item < 10)
         .map(tv => (
-          <PortraitCard key={tv.id} movie={tv} toPage={toPage} />
+          <PortraitCard key={tv.id} movie={tv} toPage={toPageforCard} />
         ))}
     </div>
   </div>

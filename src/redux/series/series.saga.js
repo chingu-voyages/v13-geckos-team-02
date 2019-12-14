@@ -172,7 +172,6 @@ export function* getSeriesDetailsAndMore({ type, id }) {
   switch (type) {
     case SeriesTypes.GET_SERIES_DETAILS_START:
       NewUrl = yield `${SERIES_URL}/${id}`;
-      console.log(NewUrl);
       yield getSeriesDetailsAndMoreAPICALL(
         NewUrl,
         getSeriesDetailsSuccess,

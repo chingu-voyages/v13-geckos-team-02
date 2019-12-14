@@ -1,10 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { compose } from "redux";
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
 // IMPORTING REDUX ACTIONS
-import { setPaginationStart } from "../../redux/appConfig/appConfig.action";
 // IMPORTING RESELECTS
 import {
   selectGettingConfigs,
@@ -24,110 +23,132 @@ import {
   selectGettingUpcomingMovies
 } from "../../redux/movies/movies.selector";
 // IMPORTING REDUX ACTIONS
-import { getNowPlayingStart } from "../../redux/movies/movies.action";
+import {
+  getNowPlayingStart,
+  getTrendingMoviesStart,
+  getTopRatedMoviesStart,
+  getPopularMoviesStart,
+  getUpcomingMoviesStart
+} from "../../redux/movies/movies.action";
 // IMPORTING STYLES
 import styles from "./moviesPage.module.css";
 // IMPORTING COMPONENTS
 import PortraitCard from "../../components/portraitCard/portraitCard";
-import ToggleButton from "../../components/toggleButton/toggleButton";
-import withSpinner from "../../components/withSpinner/withSpinner";
 import Pagination from "../../components/pagination/pagination";
 
-const MoviesPage = ({
-  movies,
-  match,
-  history,
-  currentPage,
-  paginationRange,
-  setPagination,
-  fetchNowPlayingMovies
-}) => {
-  const [moviesType, setMoviesType] = useState("nowPlayingMovies");
-  const [moviesTypeTitle, setMoviesTypeTitle] = useState("Now Playing Movies");
-  useEffect(() => {
-    console.log(match.params);
-    history.push(`/${match.url}/${currentPage}`);
-    // fetchNowPlayingMovies();
-    // switch (params.type_path) {
-    //   case "now_playing":
-    //     setMoviesType("nowPlayingMovies");
-    //     fetchNowPlayingMovies();
-    //     setMoviesTypeTitle("Now Playing Movies");
-    //     break;
-    //   case "trending":
-    //     setMoviesType("trendingMovies");
-    //     setMoviesTypeTitle("Trending Movies");
-    //     break;
-    //   case "popular":
-    //     setMoviesType("popularMovies");
-    //     setMoviesTypeTitle("Popular Movies");
-    //     break;
-    //   case "top_rated":
-    //     setMoviesType("topRatedMovies");
-    //     setMoviesTypeTitle("Top Rated Movies");
-    //     break;
-    //   case "upcoming":
-    //     setMoviesType("upcomingMovies");
-    //     setMoviesTypeTitle("Upcoming Movies");
-    //     break;
-    //   default:
-    //     return;
-    // }
-  }, [match.params, match.url, currentPage, history]);
-  const newMovies = movies[moviesType] ? movies[moviesType] : [];
-  return (
-    <div className={styles.moviesPage_container}>
-      <h1>{moviesTypeTitle}</h1>
-      <div className={styles.moviesPage_genrebar}>
-        <ToggleButton name={"Action"} active />
-        <ToggleButton name={"comedy"} />
-        <ToggleButton name={"documentry"} active />
-        <ToggleButton name={"thriller"} />
-        <ToggleButton name={"drama"} />
+class MoviesPage extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      moviesCategoryTitle: "Now Playing Movies",
+      moviesCategory: "nowPlayingMovies",
+      url: this.props.match.params.category,
+      page: this.props.currentPage
+    };
+  }
+  componentDidMount() {
+    this.handleDataFetching();
+  }
+  async shouldComponentUpdate(nextProps, nextState) {
+    const { match, currentPage } = await nextProps;
+    const { url, page } = await nextState;
+    if (match.params.category !== url || page !== currentPage) {
+      await this.setState({ url: match.params.category });
+      await this.setState({ page: currentPage });
+      await this.handleDataFetching();
+      return await true;
+    } else {
+      return await false;
+    }
+  }
+  handleDataFetching = () => {
+    const {
+      match,
+      currentPage,
+      fetchNowPlayingMovies,
+      fetchTrendingMovies,
+      fetchPopularMovies,
+      fetchTopRatedMovies,
+      fetchUpcomingMovies
+    } = this.props;
+    const { category } = match.params;
+    switch (category) {
+      case "now_playing":
+        fetchNowPlayingMovies(currentPage);
+        this.setState({
+          moviesCategoryTitle: "Now Playing Movies",
+          moviesCategory: "nowPlayingMovies"
+        });
+        break;
+      case "trending":
+        fetchTrendingMovies(currentPage);
+        this.setState({
+          moviesCategoryTitle: "Trending Movies",
+          moviesCategory: "trendingMovies"
+        });
+        break;
+      case "popular":
+        fetchPopularMovies(currentPage);
+        this.setState({
+          moviesCategoryTitle: "Popular Movies",
+          moviesCategory: "popularMovies"
+        });
+        break;
+      case "top_rated":
+        fetchTopRatedMovies(currentPage);
+        this.setState({
+          moviesCategoryTitle: "Top Rated Movies",
+          moviesCategory: "topRatedMovies"
+        });
+        break;
+      case "upcoming":
+        fetchUpcomingMovies(currentPage);
+        this.setState({
+          moviesCategoryTitle: "Upcoming Movies",
+          moviesCategory: "upcomingMovies"
+        });
+        break;
+      default:
+        return;
+    }
+  };
+  render() {
+    const newMovies = this.props.movies[this.state.moviesCategory]
+      ? this.props.movies[this.state.moviesCategory]
+      : [];
+    const { moviesCategoryTitle } = this.state;
+    return newMovies ? (
+      <div className={styles.moviesPage_container}>
+        <h1>{moviesCategoryTitle}</h1>
+        <Pagination totalPages={newMovies.total_pages} />
+        <div className={styles.moviesPage_body}>
+          {newMovies.length !== 0
+            ? newMovies.results.map(movie => (
+                <PortraitCard key={movie.id} movie={movie} toPage={"movie"} />
+              ))
+            : null}
+        </div>
+        <Pagination totalPages={newMovies.total_pages} />
       </div>
-      <Pagination
-        currentPage={currentPage}
-        paginationRange={paginationRange}
-        totalPages={newMovies.total_pages}
-        setPagination={setPagination}
-      />
-      <div className={styles.moviesPage_body}>
-        {newMovies.length !== 0
-          ? newMovies.results.map(movie => (
-              <PortraitCard key={movie.id} movie={movie} toPage={"movie"} />
-            ))
-          : null}
-      </div>
-      <Pagination
-        currentPage={currentPage}
-        paginationRange={paginationRange}
-        totalPages={newMovies.total_pages}
-      />
-    </div>
-  );
-};
+    ) : null;
+  }
+}
 const mapStateToProps = createStructuredSelector({
   movies: selectMovies,
-  isFetching:
-    selectGettingNowPlaying ||
-    selectGettingMoviesGenres ||
-    selectGettingTopRatedMovies ||
-    selectGettingPopularMovies ||
-    selectGettingUpcomingMovies ||
-    selectGettingTrendingMovies ||
-    selectGettingConfigs,
   movieGenre: selectMoviesGenres,
   // PAGINATION
-  currentPage: selectCurrentPage,
-  paginationRange: selectPaginationRange
+  currentPage: selectCurrentPage
 });
 
 const mapDispatchToProps = dispatch => ({
-  fetchNowPlayingMovies: page => dispatch(getNowPlayingStart(page))
+  fetchNowPlayingMovies: page => dispatch(getNowPlayingStart(page)),
+  fetchTrendingMovies: page => dispatch(getTrendingMoviesStart(page)),
+  fetchTopRatedMovies: page => dispatch(getTopRatedMoviesStart(page)),
+  fetchPopularMovies: page => dispatch(getPopularMoviesStart(page)),
+  fetchUpcomingMovies: page => dispatch(getUpcomingMoviesStart(page))
 });
 
 export default compose(
   connect(mapStateToProps, mapDispatchToProps),
-  withRouter,
-  withSpinner
+  withRouter
 )(MoviesPage);

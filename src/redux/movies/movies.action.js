@@ -1,8 +1,9 @@
 import MoviesTypes from "./movies.types";
 
 // GET NOW PLAYING ACTIONS
-export const getNowPlayingStart = () => ({
-  type: MoviesTypes.GET_NOW_PLAYING_START
+export const getNowPlayingStart = page => ({
+  type: MoviesTypes.GET_NOW_PLAYING_START,
+  page
 });
 export const getNowPlayingSuccess = result => ({
   type: MoviesTypes.GET_NOW_PLAYING_SUCCESS,
@@ -14,8 +15,9 @@ export const getNowPlayingFailure = error => ({
 });
 
 // GET TRENDING MOVIES
-export const getTrendingMoviesStart = () => ({
-  type: MoviesTypes.GET_TRENDING_MOVIES_START
+export const getTrendingMoviesStart = page => ({
+  type: MoviesTypes.GET_TRENDING_MOVIES_START,
+  page
 });
 export const getTrendingMoviesSuccess = result => ({
   type: MoviesTypes.GET_TRENDING_MOVIES_SUCCESS,
@@ -26,8 +28,9 @@ export const getTrendingMoviesFailure = error => ({
   payload: error
 });
 // GET POPULAR MOVIES
-export const getPopularMoviesStart = () => ({
-  type: MoviesTypes.GET_POPULAR_MOVIES_START
+export const getPopularMoviesStart = page => ({
+  type: MoviesTypes.GET_POPULAR_MOVIES_START,
+  page
 });
 export const getPopularMoviesSuccess = payload => ({
   type: MoviesTypes.GET_POPULAR_MOVIES_SUCCESS,
@@ -38,8 +41,9 @@ export const getPopularMoviesFailure = error => ({
   payload: error
 });
 // GET TOP RATED MOVIES
-export const getTopRatedMoviesStart = () => ({
-  type: MoviesTypes.GET_TOP_RATED_MOVIES_START
+export const getTopRatedMoviesStart = page => ({
+  type: MoviesTypes.GET_TOP_RATED_MOVIES_START,
+  page
 });
 export const getTopRatedMoviesSuccess = payload => ({
   type: MoviesTypes.GET_TOP_RATED_MOVIES_SUCCESS,
@@ -50,8 +54,9 @@ export const getTopRatedMoviesFailure = error => ({
   payload: error
 });
 // GET UPCOMING MOVIES
-export const getUpcomingMoviesStart = () => ({
-  type: MoviesTypes.GET_UPCOMING_MOVIES_START
+export const getUpcomingMoviesStart = page => ({
+  type: MoviesTypes.GET_UPCOMING_MOVIES_START,
+  page
 });
 export const getUpcomingMoviesSuccess = payload => ({
   type: MoviesTypes.GET_UPCOMING_MOVIES_SUCCESS,
