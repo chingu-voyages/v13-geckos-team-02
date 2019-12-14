@@ -4,8 +4,6 @@ import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
 // IMPORTING STYLES
 import styles from "./singleSeriesPage.module.css";
-import { ReactComponent as NotWatchListed } from "../../assets/icons/watchlist-icon-empty.svg";
-import { ReactComponent as WatchListed } from "../../assets/icons/watchlist-icon-like.svg";
 // IMPORTING REDUX ACTION
 import {
   getSeriesDetailsStart,
@@ -29,7 +27,6 @@ import Overview from "../../components/overview/overview";
 import SideBarMovieInfo from "../../components/sideBarMoreInfo/sideBarMoreInfo";
 import Team from "../../components/team/team";
 import CategorySection from "../../components/categorySection/categorySection";
-import TeamModalWindow from "../../components/teamModelWindow/teamModalWindow";
 import BigCard from "../../components/bigCard/bigCard";
 
 const SingleSeries = ({
@@ -43,7 +40,6 @@ const SingleSeries = ({
   gettingSeriesCredits,
   seriesCast,
   seriesCrew,
-  toggleModalWindow,
   match: { params }
 }) => {
   useEffect(() => {
@@ -73,7 +69,7 @@ const SingleSeries = ({
           usedBySeries={true}
           width={"95%"}
         />
-        <div className={styles.landingCover}></div>
+        <div className={styles.seriesLandingCover}></div>
       </div>
       {/* PAGE CONTENTS */}
       <div className={styles.seriesPage}>

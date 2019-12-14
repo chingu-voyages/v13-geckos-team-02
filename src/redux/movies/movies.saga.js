@@ -100,7 +100,6 @@ export function* getMoviesAPICall(
   successFunction,
   failureFunction
 ) {
-  // console.log(path);
   try {
     const response = yield axios.get(
       `${MOVIE_URL}/${path}?api_key=${API_KEY}&language=en-US&page=${pageNumber}`

@@ -5,8 +5,6 @@ import { createStructuredSelector } from "reselect";
 
 // IMPORTING STYLES AND SVGS
 import styles from "./moviePage.module.css";
-import { ReactComponent as NotWatchListed } from "../../assets/icons/watchlist-icon-empty.svg";
-import { ReactComponent as WatchListed } from "../../assets/icons/watchlist-icon-like.svg";
 // IMPORTING REDUX ACTION
 import { getMovieDetailsStart } from "../../redux/movies/movies.action";
 // IMPORT SELECTORS
@@ -14,6 +12,7 @@ import { selectImagePath } from "../../redux/appConfig/appConfig.selector";
 import {
   selectGettingMoiveDetails,
   selectMovieDetails,
+  selectGettingMovieCredits,
   selectMovieCast,
   selectMovieCrew,
   selectSimilarMovies,
@@ -26,22 +25,19 @@ import SmallCard from "../../components/smallCard/smallCard";
 import SideBarMovieInfo from "../../components/sideBarMoreInfo/sideBarMoreInfo";
 import Team from "../../components/team/team";
 import CategorySection from "../../components/categorySection/categorySection";
-import TeamModalWindow from "../../components/teamModelWindow/teamModalWindow";
-const watchlisted = true;
 
 const MoviePage = ({
   getMovieDetailsStart,
   match: { params },
   imagePath,
   movieDetails,
+  gettingMovieCredits,
   movieCast,
   movieCrew,
   similarMovies,
-  isGettingSimilarMovies,
-  toggleModalWindow
+  isGettingSimilarMovies
 }) => {
   useEffect(() => {
-    // if (!movieDetails)
     getMovieDetailsStart({ movie_id: params.movie_id });
     getMovieDetailsStart({ movie_id: params.movie_id, extra: "credits" });
     getMovieDetailsStart({ movie_id: params.movie_id, extra: "similar" });
@@ -73,16 +69,6 @@ const MoviePage = ({
             length={movieDetails.runtime}
             releaseDate={movieDetails.release_date}
           />
-          {/* Footer section with watchlist button */}
-          <div className={styles.sideBar_footer}>
-            <div className={styles.sideBar_footer_watchlist_container}>
-              {watchlisted ? (
-                <WatchListed className={styles.sideBar_footer_icon} />
-              ) : (
-                <NotWatchListed className={styles.sideBar_footer_icon} />
-              )}
-            </div>
-          </div>
         </div>
       </div>
       <div className={styles.moviePage_content_container}>
@@ -97,6 +83,7 @@ const MoviePage = ({
                 imageUrl={`${imagePath}/${cast.profile_path}`}
                 name={cast.name}
                 job={cast.character}
+                isFetching={gettingMovieCredits}
               />
             ))}
           </div>
@@ -113,6 +100,7 @@ const MoviePage = ({
                 name={crew.name}
                 job={crew.job}
                 as={false}
+                isFetching={gettingMovieCredits}
               />
             ))}
           </div>
@@ -156,9 +144,10 @@ const MoviePage = ({
 const mapStateToProps = createStructuredSelector({
   imagePath: selectImagePath,
   // MOVIE DETAILS
-  isFetching: selectGettingMoiveDetails,
+  getingMovieDetails: selectGettingMoiveDetails,
   movieDetails: selectMovieDetails,
   // MOVIE CAST AND CREW
+  gettingMovieCredits: selectGettingMovieCredits,
   movieCast: selectMovieCast,
   movieCrew: selectMovieCrew,
   // SIMILAR MOVIES

@@ -51,7 +51,6 @@ class HomePage extends React.Component {
       gettingTrendingSeries,
       trendingSeries
     } = this.props;
-    console.log(gettingOnTheAirSeries);
     return (
       <div>
         <LandingSection />
@@ -60,7 +59,8 @@ class HomePage extends React.Component {
             heading={"On Air Series"}
             values={onTheAirSeries.results}
             isFetching={gettingOnTheAirSeries}
-            toPage={"series"}
+            toPageforCard={"series/details"}
+            toPageForButton={"series/on_the_air"}
           />
         ) : null}
         {trendingMovies ? (
@@ -68,7 +68,8 @@ class HomePage extends React.Component {
             heading={"Trending Movies"}
             values={trendingMovies.results}
             isFetching={gettingTrendingMovies}
-            toPage={"movie"}
+            toPageforCard={"movie"}
+            toPageForButton={"movies/trending"}
           />
         ) : null}
         {trendingSeries ? (
@@ -76,7 +77,8 @@ class HomePage extends React.Component {
             heading={"Trending Series"}
             values={trendingSeries.results}
             isFetching={gettingTrendingSeries}
-            toPage={"series"}
+            toPageforCard={"series/details"}
+            toPageForButton={"series/trending"}
           />
         ) : null}
       </div>

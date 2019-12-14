@@ -69,7 +69,7 @@ const LandingSection = ({ nowPlayingMovies, imagePath }) => {
         position={"absolute"}
         right={"3"}
         count={results.length}
-        link="/movies"
+        link="/movies/now_playing"
       />
     </div>
   ) : null;
