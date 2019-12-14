@@ -16,6 +16,7 @@ import MoviePage from "./pages/moviePage/moviePage";
 import SeriesPage from "./pages/seriesPage/seriesPage";
 import SingleSeriesPage from "./pages/singleSeriesPage/singleSeriesPage";
 import TeamModalWindow from "./components/teamModelWindow/teamModalWindow";
+import ErrorBoundary from "./components/errorBoundary/errorBoundary";
 
 class App extends React.Component {
   componentDidMount() {
@@ -29,18 +30,20 @@ class App extends React.Component {
     return (
       <div className="App">
         <Header />
-        <Switch>
-          <Route exact path="/" component={HomePage} />
-          <Route path="/movies/:category" component={MoviesPage} />
-          <Route path="/movie/:movie_id" component={MoviePage} />
-          <Route exact path="/series/:category" component={SeriesPage} />
-          <Route
-            exact
-            path="/series/details/:series_id"
-            component={SingleSeriesPage}
-          />
-        </Switch>
-        {this.props.toggleModalWindow ? <TeamModalWindow /> : null}
+        <ErrorBoundary>
+          <Switch>
+            <Route exact path="/" component={HomePage} />
+            <Route path="/movies/:category" component={MoviesPage} />
+            <Route path="/movie/:movie_id" component={MoviePage} />
+            <Route exact path="/series/:category" component={SeriesPage} />
+            <Route
+              exact
+              path="/series/details/:series_id"
+              component={SingleSeriesPage}
+            />
+          </Switch>
+          {this.props.toggleModalWindow ? <TeamModalWindow /> : null}
+        </ErrorBoundary>
       </div>
     );
   }
