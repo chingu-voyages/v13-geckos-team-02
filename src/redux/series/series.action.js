@@ -69,3 +69,45 @@ export const getPopularSeriesFailure = error => ({
   type: SeriesTypes.GET_POPULAR_SERIES_FAILURE,
   payload: error
 });
+
+// GET SERIES DETAILS
+export const getSeriesDetailsStart = id => ({
+  type: SeriesTypes.GET_SERIES_DETAILS_START,
+  id
+});
+export const getSeriesDetailsSuccess = result => ({
+  type: SeriesTypes.GET_SERIES_DETAILS_SUCCESS,
+  payload: result
+});
+export const getSeriesDetailsFailure = error => ({
+  type: SeriesTypes.GET_SERIES_DETAILS_FAILRUE,
+  payload: error
+});
+
+// GET SERIES CAST AND CREWS
+export const getSeriesCreditsStart = id => ({
+  type: SeriesTypes.GET_SERIES_CREDITS_START,
+  id
+});
+export const getSeriesCreditsSuccess = result => ({
+  type: SeriesTypes.GET_SERIES_CREDITS_SUCCESS,
+  payload: result
+});
+export const getSeriesCreditsFailure = error => ({
+  type: SeriesTypes.GET_SERIES_CREDITS_FAILURE,
+  payload: error
+});
+
+// GET SIMILAR SERIESS
+export const getSimilarSeriesStart = id => ({
+  type: SeriesTypes.GET_SIMILAR_SERIES_START,
+  id
+});
+export const getSimilarSeriesSuccess = result => ({
+  type: SeriesTypes.GET_SIMILAR_SERIES_SUCCESS,
+  payload: result
+});
+export const getSimilarSeriesFailure = error => ({
+  type: SeriesTypes.GET_SIMILAR_SERIES_FAILURE,
+  payload: error
+});

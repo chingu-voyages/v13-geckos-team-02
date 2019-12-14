@@ -16,41 +16,48 @@ const BigCardMovieInfo = ({
   history,
   id,
   movieGenres,
-  genreIds
+  genreIds = null,
+  usedBySeries = false
 }) => {
-  const filteredGenre = movieGenres.filter(genre =>
-    genreIds.includes(genre.id)
-  );
+  const filteredGenre = genreIds
+    ? movieGenres.filter(genre => genreIds.includes(genre.id))
+    : [];
   return (
     <div className={styles.bigCardInfo}>
       {children}
       {/* Title section */}
-      <h2
-        className={styles.movieName}
-        onClick={() => history.push(`/movie/${id}`)}
-      >
-        {name}
-      </h2>
-      <div className={styles.movieInfo}>
-        {/* Rating section */}
-        <span>{rating.toFixed(1)}</span>
+      {usedBySeries ? (
+        <h2 className={styles.seriesName}>{name}</h2>
+      ) : (
+        <h2
+          className={styles.movieName}
+          onClick={() => history.push(`/movie/${id}`)}
+        >
+          {name}
+        </h2>
+      )}
+      {!usedBySeries ? (
+        <div className={styles.movieInfo}>
+          {/* Rating section */}
+          {rating ? <span>{rating.toFixed(1)}</span> : null}
 
-        {/* Age Restriction section */}
-        {restriction ? (
-          <span className={styles.movieRestriction}>{restriction}</span>
-        ) : null}
-        {/* Genre Section */}
-        <ul className={styles.movieGenre}>
-          {filteredGenre
-            ? filteredGenre
-                .filter((idx, item) => item < 3)
-                .map(genre => <li key={genre.id}>{genre.name}</li>)
-            : null}
-        </ul>
-        {/* Release date section */}
-        {year ? <span>&#8226;</span> : null}
-        <span>{year}</span>
-      </div>
+          {/* Age Restriction section */}
+          {restriction ? (
+            <span className={styles.movieRestriction}>{restriction}</span>
+          ) : null}
+          {/* Genre Section */}
+          <ul className={styles.movieGenre}>
+            {filteredGenre.length !== 0
+              ? filteredGenre
+                  .filter((idx, item) => item < 3)
+                  .map(genre => <li key={genre.id}>{genre.name}</li>)
+              : null}
+          </ul>
+          {/* Release date section */}
+          {year ? <span>&#8226;</span> : null}
+          <span>{year}</span>
+        </div>
+      ) : null}
     </div>
   );
 };

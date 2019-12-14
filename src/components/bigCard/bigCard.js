@@ -11,17 +11,21 @@ const BigCard = ({
   restriction,
   genre,
   id,
-  genreIds
+  genreIds,
+  backgroundPosition = "center",
+  usedBySeries = false,
+  width = "100%"
 }) => {
   const bigCardStyles = {
     position: "relative",
-    background: `url(${imageUrl})`,
+    backgroundImage: `url(${imageUrl})`,
     textAlign: "left",
     height: "100%",
-    width: "100%",
+    width: `${width}`,
     backgroundRepeat: "no-repeat",
-    backgroundPosition: "center",
-    backgroundSize: "cover"
+    backgroundPosition: `${backgroundPosition}`,
+    backgroundSize: "cover",
+    margin: "auto"
   };
   return (
     <div className={styles.bigCard} style={bigCardStyles}>
@@ -32,8 +36,11 @@ const BigCard = ({
         genre={genre}
         id={id}
         genreIds={genreIds}
+        usedBySeries={usedBySeries}
       >
-        <h1 className={styles.lastMovieText}>LATEST MOVIE</h1>
+        {usedBySeries ? null : (
+          <h1 className={styles.lastMovieText}>LATEST MOVIE</h1>
+        )}
       </BigCardMovieInfo>
     </div>
   );

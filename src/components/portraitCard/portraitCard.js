@@ -8,10 +8,6 @@ import { selectImagePath } from "../../redux/appConfig/appConfig.selector";
 import styles from "./portraitCard.module.css";
 
 const PortraitCard = ({ imagePath, movie, toPage, history }) => {
-  const mediaType =
-    (movie.mediaType !== undefined) & (movie.mediaType === "tv")
-      ? "series"
-      : toPage;
   return (
     <div
       style={{
@@ -21,7 +17,7 @@ const PortraitCard = ({ imagePath, movie, toPage, history }) => {
         backgroundRepeat: "no-repeat"
       }}
       className={styles.portraitCard}
-      onClick={() => history.push(`/${mediaType}/${movie.id}`)}
+      onClick={() => history.push(`/${toPage}/${movie.id}`)}
     >
       <div className={styles.portraitCard_footer}>
         <h3 className={styles.portraitCard_footer_name}>{movie.title}</h3>

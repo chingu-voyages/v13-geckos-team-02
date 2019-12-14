@@ -38,9 +38,9 @@ const LandingSection = ({ nowPlayingMovies, imagePath }) => {
         }}
       ></div>
       {/* Backgroun providing gradient dark cover on the landing section */}
-      <div className={styles.landingCover}></div>
       {/* Container for the big card */}
       <div className={styles.cardsContainer}>
+        <div className={styles.landingCover}></div>
         <div className={styles.bigSection}>
           <BigCard
             imageUrl={`${imagePath}${results[0].backdrop_path}`}

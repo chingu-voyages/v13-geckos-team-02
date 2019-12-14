@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { compose } from "redux";
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
@@ -116,7 +116,11 @@ class SeriesPage extends React.Component {
         <div className={styles.seriesPage_body}>
           {newSeries.length !== 0
             ? newSeries.results.map(movie => (
-                <PortraitCard key={movie.id} movie={movie} toPage={"series"} />
+                <PortraitCard
+                  key={movie.id}
+                  movie={movie}
+                  toPage={"series/details"}
+                />
               ))
             : null}
         </div>
