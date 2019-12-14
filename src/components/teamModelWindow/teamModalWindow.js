@@ -16,39 +16,41 @@ import WithSpinner from "../withSpinner/withSpinner";
 // IMPORTING STYLES
 import styles from "./teamModalWindow.module.css";
 
-const TeamModalWindow = ({ toggleModalWindow, imagePath, personDetails }) => (
-  <div className={styles.teamModalWindow}>
-    <div className={styles.modal__page}>
-      <span
-        className={styles.modal__close__button}
-        onClick={() => toggleModalWindow()}
-      >
-        &#x2715;
-      </span>
-      <div className={styles.modal__top}>
-        <div
-          className={styles.modal__top__image}
-          style={{
-            backgroundImage: `url(${imagePath}/${personDetails.profile_path})`
-          }}
-        />
-        <div className={styles.modal__top__details}>
-          <h3>{personDetails.name}</h3>
-          <p>
-            {personDetails.birthday
-              ? formateDate(personDetails.birthday)
-              : null}
-          </p>
-          <p>{personDetails.place_of_birth}</p>
+const TeamModalWindow = ({ toggleModalWindow, imagePath, personDetails }) => {
+  return personDetails ? (
+    <div className={styles.teamModalWindow}>
+      <div className={styles.modal__page}>
+        <span
+          className={styles.modal__close__button}
+          onClick={() => toggleModalWindow()}
+        >
+          &#x2715;
+        </span>
+        <div className={styles.modal__top}>
+          <div
+            className={styles.modal__top__image}
+            style={{
+              backgroundImage: `url(${imagePath}/${personDetails.profile_path})`
+            }}
+          />
+          <div className={styles.modal__top__details}>
+            <h3>{personDetails.name}</h3>
+            <p>
+              {personDetails.birthday
+                ? formateDate(personDetails.birthday)
+                : null}
+            </p>
+            <p>{personDetails.place_of_birth}</p>
+          </div>
+        </div>
+        <h4>Know for {personDetails.known_for_department}</h4>
+        <div className={styles.modal__body}>
+          <p>{personDetails.biography}</p>
         </div>
       </div>
-      <h4>Know for {personDetails.known_for_department}</h4>
-      <div className={styles.modal__body}>
-        <p>{personDetails.biography}</p>
-      </div>
     </div>
-  </div>
-);
+  ) : null;
+};
 const mapStateToProps = createStructuredSelector({
   isFetching: selectGettingPerson,
   personDetails: selectPersonDetails,

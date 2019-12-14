@@ -14,6 +14,8 @@ import MoviesPage from "./pages/moviesPage/moviesPage";
 import MoviePage from "./pages/moviePage/moviePage";
 // series
 import SeriesPage from "./pages/seriesPage/seriesPage";
+import SingleSeriesPage from "./pages/singleSeriesPage/singleSeriesPage";
+import TeamModalWindow from "./components/teamModelWindow/teamModalWindow";
 
 class App extends React.Component {
   componentDidMount() {
@@ -32,14 +34,21 @@ class App extends React.Component {
           <Route path="/movies/:category" component={MoviesPage} />
           <Route path="/movie/:movie_id" component={MoviePage} />
           <Route exact path="/series/:category" component={SeriesPage} />
+          <Route
+            exact
+            path="/series/details/:series_id"
+            component={SingleSeriesPage}
+          />
         </Switch>
+        {this.props.toggleModalWindow ? <TeamModalWindow /> : null}
       </div>
     );
   }
 }
-const mapStateToProps = ({ configs, genres }) => ({
+const mapStateToProps = ({ configs, genres, person }) => ({
   configs,
-  genres: genres
+  genres: genres,
+  toggleModalWindow: person.toggleModalWindow
 });
 const mapDispatchToProps = dispatch => ({
   getmoviesGenresStart: () => dispatch(getMoviesGenresStart()),
