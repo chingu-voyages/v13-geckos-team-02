@@ -24,27 +24,14 @@ class App extends React.Component {
   componentDidMount() {
     const {
       getmoviesGenresStart,
-      getNowPlayingStart,
       getImageConfigStart,
-      getOnAirSeries,
-      getTrendingMovies,
-      getTrendingSeries,
       configs,
-      movies,
-      genres,
-      series
+      genres
     } = this.props;
-    if (!configs) getImageConfigStart();
-    if (!movies) {
-      getNowPlayingStart();
-      getTrendingMovies();
-    }
+    // if (!configs)
+    getImageConfigStart();
     if (!genres) {
       getmoviesGenresStart();
-    }
-    if (!series) {
-      getOnAirSeries();
-      getTrendingSeries();
     }
   }
   render() {
@@ -60,19 +47,13 @@ class App extends React.Component {
     );
   }
 }
-const mapStateToProps = ({ configs, movies, genres, series }) => ({
+const mapStateToProps = ({ configs, genres }) => ({
   configs,
-  movies: movies.nowPlayingMovies,
-  genres: genres,
-  series: series
+  genres: genres
 });
 const mapDispatchToProps = dispatch => ({
   getmoviesGenresStart: () => dispatch(getMoviesGenresStart()),
-  getNowPlayingStart: () => dispatch(getNowPlayingStart()),
-  getImageConfigStart: () => dispatch(getImageConfigStart()),
-  getOnAirSeries: () => dispatch(getOnAirSeriesStart()),
-  getTrendingMovies: () => dispatch(getTrendingMoviesStart()),
-  getTrendingSeries: () => dispatch(getTrendingSeriesStart())
+  getImageConfigStart: () => dispatch(getImageConfigStart())
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

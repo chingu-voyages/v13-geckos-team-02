@@ -4,8 +4,15 @@ import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
 
+// IMPORTING REDUX ACTIONS
+import { setPaginationStart } from "../../redux/appConfig/appConfig.action";
+
 // IMPORTING RESELECTS
-import { selectGettingConfigs } from "../../redux/appConfig/appConfig.selector";
+import {
+  selectGettingConfigs,
+  selectCurrentPage,
+  selectPaginationRange
+} from "../../redux/appConfig/appConfig.selector";
 import {
   selectMoviesGenres,
   selectGettingMoviesGenres
@@ -24,9 +31,15 @@ import styles from "./moviesPage.module.css";
 import PortraitCard from "../../components/portraitCard/portraitCard";
 import ToggleButton from "../../components/toggleButton/toggleButton";
 import withSpinner from "../../components/withSpinner/withSpinner";
+import Pagination from "../../components/pagination/pagination";
 
-const MoviesPage = ({ movies, match: { params } }) => {
-  let page = 1;
+const MoviesPage = ({
+  movies,
+  match: { params },
+  currentPage,
+  paginationRange,
+  setPagination
+}) => {
   const [moviesType, setMoviesType] = useState("nowPlayingMovies");
   const [moviesTypeTitle, setMoviesTypeTitle] = useState("Now Playing Movies");
   useEffect(() => {
@@ -55,7 +68,6 @@ const MoviesPage = ({ movies, match: { params } }) => {
         return;
     }
   }, [params.type_path]);
-  const range = [1, 2, 3, 4, 5, 5, 6, 61, 2, 2, 3, 3, 3];
   const newMovies = movies[moviesType] ? movies[moviesType] : [];
   return (
     <div className={styles.moviesPage_container}>
@@ -67,6 +79,12 @@ const MoviesPage = ({ movies, match: { params } }) => {
         <ToggleButton name={"thriller"} />
         <ToggleButton name={"drama"} />
       </div>
+      <Pagination
+        currentPage={currentPage}
+        paginationRange={paginationRange}
+        totalPages={newMovies.total_pages}
+        setPagination={setPagination}
+      />
       <div className={styles.moviesPage_body}>
         {newMovies.length !== 0
           ? newMovies.results.map(movie => (
@@ -74,15 +92,12 @@ const MoviesPage = ({ movies, match: { params } }) => {
             ))
           : null}
       </div>
-      <div className={styles.moviesPage_footer}>
-        <button>Prev</button>
-        <button className={styles.moviesPage_footer_button_active}>1</button>
-        <button>2</button>
-        <button>3</button>
-        <button>4</button>
-        <button>5</button>
-        <button>Next</button>
-      </div>
+      <Pagination
+        currentPage={currentPage}
+        paginationRange={paginationRange}
+        totalPages={newMovies.total_pages}
+        setPagination={setPagination}
+      />
     </div>
   );
 };
@@ -96,11 +111,18 @@ const mapStateToProps = createStructuredSelector({
     selectGettingUpcomingMovies ||
     selectGettingTrendingMovies ||
     selectGettingConfigs,
-  movieGenre: selectMoviesGenres
+  movieGenre: selectMoviesGenres,
+  // PAGINATION
+  currentPage: selectCurrentPage,
+  paginationRange: selectPaginationRange
+});
+
+const mapDispatchToProps = dispatch => ({
+  setPagination: (number, total) => dispatch(setPaginationStart(number, total))
 });
 
 export default compose(
-  connect(mapStateToProps),
+  connect(mapStateToProps, mapDispatchToProps),
   withRouter,
   withSpinner
 )(MoviesPage);

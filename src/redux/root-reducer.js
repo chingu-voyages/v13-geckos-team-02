@@ -12,7 +12,7 @@ import personReducer from "./person/people.reducer";
 const persistConfig = {
   key: "root",
   storage: storage,
-  whitelist: ["configs", "genres", "movies", "series"]
+  whitelist: ["genres", "movies", "series"]
 };
 
 const rootReducer = combineReducers({

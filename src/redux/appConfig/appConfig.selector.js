@@ -13,3 +13,12 @@ export const selectImagePath = createSelector(selectConfigs, configs => {
   const imagePath = `${secure_base_url}${backdrop_sizes[3]}`;
   return imagePath;
 });
+// PAGINATION
+export const selectCurrentPage = createSelector(
+  selectConfigs,
+  configs => configs.currentPage
+);
+export const selectPaginationRange = createSelector(
+  selectConfigs,
+  configs => configs.paginationRange
+);

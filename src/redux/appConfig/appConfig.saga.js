@@ -1,11 +1,13 @@
-import { all, call, put, takeLatest } from "redux-saga/effects";
+import { all, call, put, takeLatest, select } from "redux-saga/effects";
 import axios from "axios";
 
 import AppConfigTypes from "./appConfig.types";
-
+// IMPORTING SELECTOR
+import { selectConfigs } from "./appConfig.selector";
 import {
   getImageConfigSuccess,
-  getImageConfigFailure
+  getImageConfigFailure,
+  setPaginationSuccess
 } from "./appConfig.action";
 
 // api key
@@ -29,6 +31,41 @@ export function* onGetImageConfigs() {
   yield takeLatest(AppConfigTypes.GET_IMAGE_CONFIG_START, getImageConfigs);
 }
 
+// PAGINATION
+export function* settingPagination({ payload: { currentPage, totalPage } }) {
+  const state = yield select(selectConfigs);
+  let range = yield state.paginationRange;
+  let start = 1;
+  if (currentPage <= 1) {
+    currentPage = 1;
+    start = 1;
+  } else if (currentPage >= totalPage) {
+    start = totalPage - 5;
+  }
+  if (currentPage > 2) {
+    start = currentPage - 2;
+    if (currentPage >= totalPage) {
+      start = totalPage - 4;
+      currentPage = totalPage;
+    }
+  }
+  range.splice(0, range.length);
+  let count = 1;
+  while (start <= totalPage) {
+    console.log(start);
+    yield range.push(start);
+    if (count === 5) {
+      break;
+    }
+    count++;
+    start++;
+  }
+  yield put(setPaginationSuccess(currentPage, range));
+}
+export function* onSetPagination() {
+  yield takeLatest(AppConfigTypes.SET_PAGINATION_START, settingPagination);
+}
+
 export function* appConfigSagas() {
-  yield all([call(onGetImageConfigs)]);
+  yield all([call(onGetImageConfigs), call(onSetPagination)]);
 }
