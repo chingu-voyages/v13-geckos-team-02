@@ -3,25 +3,10 @@ import { compose } from "redux";
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
-// IMPORTING REDUX ACTIONS
 // IMPORTING RESELECTS
-import {
-  selectGettingConfigs,
-  selectCurrentPage,
-  selectPaginationRange
-} from "../../redux/appConfig/appConfig.selector";
-import {
-  selectMoviesGenres,
-  selectGettingMoviesGenres
-} from "../../redux/genre/genre.selector";
-import {
-  selectMovies,
-  selectGettingNowPlaying,
-  selectGettingTrendingMovies,
-  selectGettingPopularMovies,
-  selectGettingTopRatedMovies,
-  selectGettingUpcomingMovies
-} from "../../redux/movies/movies.selector";
+import { selectCurrentPage } from "../../redux/appConfig/appConfig.selector";
+import { selectMoviesGenres } from "../../redux/genre/genre.selector";
+import { selectMovies } from "../../redux/movies/movies.selector";
 // IMPORTING REDUX ACTIONS
 import {
   getNowPlayingStart,

@@ -5,8 +5,6 @@ import { createStructuredSelector } from "reselect";
 
 // IMPORTING STYLES AND SVGS
 import styles from "./moviePage.module.css";
-import { ReactComponent as NotWatchListed } from "../../assets/icons/watchlist-icon-empty.svg";
-import { ReactComponent as WatchListed } from "../../assets/icons/watchlist-icon-like.svg";
 // IMPORTING REDUX ACTION
 import { getMovieDetailsStart } from "../../redux/movies/movies.action";
 // IMPORT SELECTORS
