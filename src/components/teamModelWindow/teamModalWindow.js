@@ -15,8 +15,12 @@ import { toggleModalWindow } from "../../redux/person/person.action";
 import WithSpinner from "../withSpinner/withSpinner";
 // IMPORTING STYLES
 import styles from "./teamModalWindow.module.css";
+import TeamPlaceholder from "../../assets/images/team-placeholder@2x.png";
 
 const TeamModalWindow = ({ toggleModalWindow, imagePath, personDetails }) => {
+  const imageUrl = personDetails.profile_path
+    ? `${imagePath}/${personDetails.profile_path}`
+    : TeamPlaceholder;
   return personDetails ? (
     <div className={styles.teamModalWindow}>
       <div className={styles.modal__page}>
@@ -30,7 +34,7 @@ const TeamModalWindow = ({ toggleModalWindow, imagePath, personDetails }) => {
           <div
             className={styles.modal__top__image}
             style={{
-              backgroundImage: `url(${imagePath}/${personDetails.profile_path})`
+              backgroundImage: `url(${imageUrl})`
             }}
           />
           <div className={styles.modal__top__details}>

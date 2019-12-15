@@ -74,38 +74,42 @@ const MoviePage = ({
       </div>
       <div className={styles.moviePage_content_container}>
         <Overview content={movieDetails.overview} />
-        <div className={styles.team_container}>
-          <h2>The Cast</h2>
-          <div className={styles.team_member_card_container}>
-            {movieCast.map(cast => (
-              <Team
-                key={cast.credit_id}
-                id={cast.id}
-                imageUrl={`${imagePath}/${cast.profile_path}`}
-                name={cast.name}
-                job={cast.character}
-                isFetching={gettingMovieCredits}
-              />
-            ))}
+        {movieCast.length !== 0 ? (
+          <div className={styles.team_container}>
+            <h2>The Cast</h2>
+            <div className={styles.team_member_card_container}>
+              {movieCast.map(cast => (
+                <Team
+                  key={cast.credit_id}
+                  id={cast.id}
+                  imageUrl={cast.profile_path}
+                  name={cast.name}
+                  job={cast.character}
+                  isFetching={gettingMovieCredits}
+                />
+              ))}
+            </div>
           </div>
-        </div>
+        ) : null}
         {/* CREW */}
-        <div className={styles.team_container}>
-          <h2>The Crew</h2>
-          <div className={styles.team_member_card_container}>
-            {movieCrew.map(crew => (
-              <Team
-                key={crew.credit_id}
-                id={crew.id}
-                imageUrl={`${imagePath}/${crew.profile_path}`}
-                name={crew.name}
-                job={crew.job}
-                as={false}
-                isFetching={gettingMovieCredits}
-              />
-            ))}
+        {movieCrew.length !== 0 ? (
+          <div className={styles.team_container}>
+            <h2>The Crew</h2>
+            <div className={styles.team_member_card_container}>
+              {movieCrew.map(crew => (
+                <Team
+                  key={crew.credit_id}
+                  id={crew.id}
+                  imageUrl={crew.profile_path}
+                  name={crew.name}
+                  job={crew.job}
+                  as={false}
+                  isFetching={gettingMovieCredits}
+                />
+              ))}
+            </div>
           </div>
-        </div>
+        ) : null}
         {/* PRODUCTION COMPANY */}
         {movieDetails.production_companies.length !== 0 ? (
           <div className={styles.productionCompany}>
