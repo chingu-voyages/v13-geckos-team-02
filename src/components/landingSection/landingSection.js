@@ -68,6 +68,7 @@ const LandingSection = ({ nowPlayingMovies, imagePath }) => {
       <SellAllButton
         position={"absolute"}
         right={"3"}
+        bottom={"1"}
         count={results.length}
         link="/movies/now_playing"
       />
