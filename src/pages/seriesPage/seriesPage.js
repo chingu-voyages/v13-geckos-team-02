@@ -95,7 +95,7 @@ class SeriesPage extends React.Component {
       default:
         return;
     }
-    document.title = `${this.state.seriesCategoryTitle} - Amnet Box`;
+    document.title = `${this.state.seriesCategoryTitle} - AmetBox`;
   };
   render() {
     const newSeries = this.props.series[this.state.seriesCategory]

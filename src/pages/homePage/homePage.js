@@ -40,7 +40,7 @@ class HomePage extends React.Component {
     }
     getOnTheAirSeries();
     getTrendingSeries();
-    document.title = `Amnet Box`;
+    document.title = `AmetBox`;
   }
 
   render() {

@@ -6,7 +6,7 @@ const Footer = () => (
   <footer className={styles.footer}>
     <div className={styles.footer__container}>
       <div className={styles.footer__top}>
-        <h1>Amnet Box</h1>
+        <h1>AmetBox</h1>
       </div>
       <div className={styles.footer__body}>
         <p>This site does not provide it's own data.</p>
