@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, withRouter } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 
 import styles from "./errorBoundary.module.css";
 // IMPORTING IMAGE
