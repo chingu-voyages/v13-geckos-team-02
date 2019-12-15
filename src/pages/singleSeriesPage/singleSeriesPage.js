@@ -28,6 +28,7 @@ import SideBarMovieInfo from "../../components/sideBarMoreInfo/sideBarMoreInfo";
 import Team from "../../components/team/team";
 import CategorySection from "../../components/categorySection/categorySection";
 import BigCard from "../../components/bigCard/bigCard";
+import ProductionCompany from "../../components/productionCompany/productionCompany";
 
 const SingleSeries = ({
   fetchSeriesDetails,
@@ -102,7 +103,7 @@ const SingleSeries = ({
                 <Team
                   key={cast.credit_id}
                   id={cast.id}
-                  imageUrl={`${imagePath}/${cast.profile_path}`}
+                  imageUrl={cast.profile_path}
                   name={cast.name}
                   job={cast.character}
                   isFetching={gettingSeriesCredits}
@@ -119,7 +120,7 @@ const SingleSeries = ({
                   <Team
                     key={crew.credit_id}
                     id={crew.id}
-                    imageUrl={`${imagePath}/${crew.profile_path}`}
+                    imageUrl={crew.profile_path}
                     name={crew.name}
                     job={crew.job}
                     as={false}
@@ -137,7 +138,7 @@ const SingleSeries = ({
                 <Team
                   key={crew.credit_id}
                   id={crew.id}
-                  imageUrl={`${imagePath}/${crew.profile_path}`}
+                  imageUrl={crew.profile_path}
                   name={crew.name}
                   as={false}
                   isFetching={gettingSeriesCredits}
@@ -153,14 +154,12 @@ const SingleSeries = ({
               </h2>
               <ul className={styles.company_list_box}>
                 {seriesDetails.production_companies.map(company => (
-                  <li key={company.id} className={styles.company_list}>
-                    <img
-                      className={styles.company_logo}
-                      src={`${imagePath}/${company.logo_path}`}
-                      alt={company.name}
-                    />
-                    <h6>{company.name}</h6>
-                  </li>
+                  <ProductionCompany
+                    id={company.id}
+                    imagePath={imagePath}
+                    logoPath={company.logo_path}
+                    name={company.name}
+                  />
                 ))}
               </ul>
             </div>
@@ -172,7 +171,8 @@ const SingleSeries = ({
                 heading={`Related To ${seriesDetails.original_name}`}
                 values={similarSeries.results}
                 isFetching={isGettingSimilarSeries}
-                toPage={"movie"}
+                toPageForCard={"series/details"}
+                usedBySimilar={true}
               />
             </div>
           ) : null}
