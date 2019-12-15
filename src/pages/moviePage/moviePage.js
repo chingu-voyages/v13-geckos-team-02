@@ -55,12 +55,14 @@ const MoviePage = ({
       <div className={styles.moviePage_sideBar_container}>
         {/* Container holding more infomations to movies */}
         <div className={styles.sideBar_content_container}>
-          {/* Movie Poster */}
-          <SmallCard
-            imageUrl={`${imagePath}/${movieDetails.backdrop_path}`}
-            height={"150px"}
-            backgroundSize={"cover"}
-          />
+          <div className={styles.sideBar_image_container}>
+            {/* Movie Poster */}
+            <SmallCard
+              imageUrl={`${imagePath}/${movieDetails.backdrop_path}`}
+              height={"200px"}
+              backgroundSize={"cover"}
+            />
+          </div>
           {/* Movie Name */}
           <h2 className={styles.movieName}>{movieDetails.original_title}</h2>
           {/* More Movie Info */}
@@ -136,7 +138,8 @@ const MoviePage = ({
               heading={`Related To ${movieDetails.original_title}`}
               values={similarMovies.results}
               isFetching={isGettingSimilarMovies}
-              toPage={"movie"}
+              toPageForCard={"movie"}
+              usedBySimilar={true}
             />
           </div>
         ) : null}
