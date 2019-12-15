@@ -60,7 +60,7 @@ class HomePage extends React.Component {
             heading={"On Air Series"}
             values={onTheAirSeries.results}
             isFetching={gettingOnTheAirSeries}
-            toPageforCard={"series/details"}
+            toPageForCard={"series/details"}
             toPageForButton={"series/on_the_air"}
           />
         ) : null}
@@ -69,7 +69,7 @@ class HomePage extends React.Component {
             heading={"Trending Movies"}
             values={trendingMovies.results}
             isFetching={gettingTrendingMovies}
-            toPageforCard={"movie"}
+            toPageForCard={"movie"}
             toPageForButton={"movies/trending"}
           />
         ) : null}
@@ -78,7 +78,7 @@ class HomePage extends React.Component {
             heading={"Trending Series"}
             values={trendingSeries.results}
             isFetching={gettingTrendingSeries}
-            toPageforCard={"series/details"}
+            toPageForCard={"series/details"}
             toPageForButton={"series/trending"}
           />
         ) : null}
