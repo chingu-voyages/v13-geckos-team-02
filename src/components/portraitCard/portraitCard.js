@@ -4,14 +4,18 @@ import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
 // IMPORTING RESELECT
 import { selectImagePath } from "../../redux/appConfig/appConfig.selector";
+import PosterPlaceholder from "../../assets/images/movie-poster-placeholder@2x.png";
 
 import styles from "./portraitCard.module.css";
 
 const PortraitCard = ({ imagePath, movie, toPage, history }) => {
+  const imageUrl = movie.poster_path
+    ? `${imagePath}${movie.poster_path}`
+    : PosterPlaceholder;
   return (
     <div
       style={{
-        backgroundImage: `url(${imagePath}${movie.poster_path})`,
+        backgroundImage: `url(${imageUrl})`,
         backgroundPosition: "center",
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat"
