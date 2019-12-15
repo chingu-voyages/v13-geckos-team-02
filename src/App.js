@@ -43,6 +43,7 @@ class App extends React.Component {
             />
           </Switch>
           {this.props.toggleModalWindow ? <TeamModalWindow /> : null}
+              <Footer />
         </ErrorBoundary>
       </div>
     );
