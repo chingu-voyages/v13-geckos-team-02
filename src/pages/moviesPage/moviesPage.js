@@ -96,6 +96,7 @@ class MoviesPage extends React.Component {
       default:
         return;
     }
+    document.title = `${this.state.moviesCategoryTitle} - Amnet Box`;
   };
   render() {
     const newMovies = this.props.movies[this.state.moviesCategory]

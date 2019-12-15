@@ -48,6 +48,7 @@ const MoviePage = ({
   const writers = movieCrew.filter(crew =>
     crew.department.toLowerCase().includes("writing")
   );
+  document.title = `${movieDetails.original_title} - Amnet Box`;
   return (
     <div className={styles.moviePage}>
       <div className={styles.moviePage_sideBar_container}>
