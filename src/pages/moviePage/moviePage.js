@@ -25,6 +25,7 @@ import SmallCard from "../../components/smallCard/smallCard";
 import SideBarMovieInfo from "../../components/sideBarMoreInfo/sideBarMoreInfo";
 import Team from "../../components/team/team";
 import CategorySection from "../../components/categorySection/categorySection";
+import ProductionCompany from "../../components/productionCompany/productionCompany";
 
 const MoviePage = ({
   getMovieDetailsStart,
@@ -118,14 +119,12 @@ const MoviePage = ({
             </h2>
             <ul className={styles.company_list_box}>
               {movieDetails.production_companies.map(company => (
-                <li key={company.id} className={styles.company_list}>
-                  <img
-                    className={styles.company_logo}
-                    src={`${imagePath}/${company.logo_path}`}
-                    alt={company.name}
-                  />
-                  <h6>{company.name}</h6>
-                </li>
+                <ProductionCompany
+                  id={company.id}
+                  imagePath={imagePath}
+                  logoPath={company.logo_path}
+                  name={company.name}
+                />
               ))}
             </ul>
           </div>
