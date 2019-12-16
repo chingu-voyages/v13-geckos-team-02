@@ -1,0 +1,29 @@
+/* ERROR BOUNDARY STYLES */
+.errorBoundary {
+  width: 100%;
+  height: 100%;
+  font-size: 2rem;
+  padding-top: 7rem;
+}
+
+.errorBoundaryImage__container img {
+  height: 40vh;
+}
+.errorBoundaryText__container {
+  margin-top: 2rem;
+}
+
+.errorBoundaryText__container button {
+  font-size: 1.5rem;
+  padding: 1rem 1.5rem;
+  text-transform: uppercase;
+  background-color: rgb(82, 82, 82);
+  border: none;
+  color: #fff;
+  outline: none;
+}
+.errorBoundaryText__container button:hover,
+.errorBoundaryText__container button:active {
+  cursor: pointer;
+  background-color: rgb(91, 30, 117);
+}

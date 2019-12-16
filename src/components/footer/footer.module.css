@@ -1,0 +1,31 @@
+/* FOOTER STYLES */
+.footer {
+  background-color: rgba(33, 33, 33, 0.36);
+  bottom: 0;
+  padding-top: 2rem 1rem;
+  color: #bebebeef;
+}
+.footer a {
+  text-decoration: none;
+  color: #bebebe;
+}
+.footer a:hover,
+.footer a:active {
+  color: #a13cbf;
+}
+.footer__container {
+  height: 100%;
+}
+.footer__top {
+  color: #fff;
+}
+.footer__body {
+  margin: 2rem 0;
+}
+.footer__body p {
+  margin: 0.05rem 0;
+}
+.footer__bottom {
+  border-top: 1px solid rgba(43, 43, 43, 0.495);
+  padding: 0.5rem 0 1rem;
+}

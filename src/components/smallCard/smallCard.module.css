@@ -1,0 +1,29 @@
+/* SMALL CARD STYLES */
+.smallCard {
+  position: relative;
+  text-align: left;
+  width: 400px;
+  height: 280px;
+}
+
+/* Movie name styles */
+.movieName {
+  position: absolute;
+  bottom: 0.1rem;
+  left: 1rem;
+  text-transform: uppercase;
+  color: #fff;
+  width: 50%;
+  text-align: left;
+  font-size: 25px;
+  font-family: "Roboto";
+  font-weight: 300;
+  z-index: 10;
+  transition: all 0.5s;
+}
+
+.movieName:hover,
+.movieName:active {
+  cursor: pointer;
+  transform: scale(1.05);
+}

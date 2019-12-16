@@ -1,0 +1,9 @@
+/* MOVIES PAGE CONTAINER STYLES */
+.moviesPage_container {
+  margin-top: 8rem;
+}
+.moviesPage_container h1 {
+  margin-left: 5rem;
+  text-align: left;
+}
+/* MOVIES PAGE BODY STYLES */

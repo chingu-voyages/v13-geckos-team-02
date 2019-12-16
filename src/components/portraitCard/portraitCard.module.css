@@ -1,0 +1,39 @@
+/* STATIC PORTRAIT CARD STYLES */
+.portraitCard {
+  position: relative;
+  display: inline-block;
+  margin: 1.5rem 0.2rem 1rem 2.5rem;
+  transition: all 0.5s;
+  height: 400px;
+  width: 265px;
+  border-radius: 5px;
+}
+.portraitCard:hover,
+.portraitCard:active {
+  cursor: pointer;
+}
+/* PORTRAIT CARD FOOTER SYLES */
+.portraitCard_footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  text-align: left;
+  background: transparent linear-gradient(180deg, #34343407 0%, #292929f7 100%);
+  transition: all 0.5s;
+  white-space: pre-wrap;
+  opacity: 0;
+}
+.portraitCard_footer_name {
+  margin: 0.8rem 0.8rem;
+}
+.portraitCard:hover .portraitCard_footer {
+  cursor: pointer;
+  opacity: 1;
+}
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+  .portraitCard {
+    margin: 2.5rem 1rem 0;
+  }
+}

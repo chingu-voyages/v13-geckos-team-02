@@ -1,0 +1,90 @@
+/* BIG CARD INFO STYLES */
+.bigCardInfo {
+  position: absolute;
+  bottom: 2rem;
+  left: 3rem;
+  z-index: 10;
+}
+
+/* MOVIE NAME STYLES */
+
+.movieName {
+  text-transform: uppercase;
+  color: #fff;
+  letter-spacing: 4px;
+  line-height: 1;
+  font-family: "Roboto";
+  font-size: 35px;
+  width: 300px;
+  font-weight: 400;
+  margin-bottom: 13px;
+  margin-top: 0;
+  transition: all 0.5s;
+}
+.seriesName {
+  text-transform: uppercase;
+  color: #fff;
+  letter-spacing: 4px;
+  line-height: 1;
+  font-family: "Roboto";
+  font-size: 35px;
+  width: 400px;
+  font-weight: 400;
+  margin-bottom: 13px;
+  margin-top: 0;
+  transition: all 0.5s;
+}
+.movieName:hover,
+.movieName:active {
+  cursor: pointer;
+  transform: scale(1.07);
+}
+
+/* 
+MOVIE INFO STYLES
+ */
+
+.movieInfo {
+  text-transform: lowercase;
+  letter-spacing: 0;
+  color: #fff;
+  font-family: "Roboto";
+  font-weight: 400;
+  font-size: 20px;
+  display: inline;
+}
+
+.movieInfo span:not(.movieGenre) {
+  margin-right: 10px;
+}
+.movieGenre {
+  display: inline;
+  padding: 0;
+}
+
+.movieGenre li {
+  font-weight: 100;
+  display: inline;
+  list-style: none;
+}
+.movieGenre li {
+  display: inline;
+}
+.movieGenre li::after {
+  content: ", ";
+}
+.movieGenre li:last-child::after {
+  margin-left: 10px;
+  content: "+more";
+  font-size: 0.85rem;
+  background-color: #7c7c7c;
+  border-radius: 50px;
+  margin-top: 0;
+  padding: 0.2rem 0.5rem;
+}
+
+.movieRestriction {
+  background-color: #4d4d4d;
+  border-radius: 2px;
+  margin-top: 0;
+}
