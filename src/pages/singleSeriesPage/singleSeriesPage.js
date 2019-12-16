@@ -58,6 +58,7 @@ const SingleSeries = ({
   const writers = seriesCrew.filter(crew =>
     crew.department.toLowerCase().includes("writing")
   );
+  document.title = `${seriesDetails.name} - AmetBox`;
   return seriesDetails ? (
     <div style={{ display: "block" }}>
       {/* LANDING POSTER SECTION */}

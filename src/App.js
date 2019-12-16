@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Suspense } from "react";
 import { connect } from "react-redux";
 import { Switch, Route } from "react-router-dom";
 import "./App.css";
@@ -8,14 +8,22 @@ import { getMoviesGenresStart } from "./redux/genre/genre.action";
 
 // IMPORTING COMPONENTS
 import Header from "./components/header/header";
-import HomePage from "./pages/homePage/homePage";
+// import Footer from "./components/footer/footer";
+import WithSpinner from "./components/withSpinner/withSpinner";
+import ErrorBoundary from "./components/errorBoundary/errorBoundary";
+const Footer = React.lazy(() => import("./components/footer/footer"));
+const HomePage = React.lazy(() => import("./pages/homePage/homePage"));
 // movies
-import MoviesPage from "./pages/moviesPage/moviesPage";
-import MoviePage from "./pages/moviePage/moviePage";
+const MoviesPage = React.lazy(() => import("./pages/moviesPage/moviesPage"));
+const MoviePage = React.lazy(() => import("./pages/moviePage/moviePage"));
 // series
-import SeriesPage from "./pages/seriesPage/seriesPage";
-import SingleSeriesPage from "./pages/singleSeriesPage/singleSeriesPage";
-import TeamModalWindow from "./components/teamModelWindow/teamModalWindow";
+const SeriesPage = React.lazy(() => import("./pages/seriesPage/seriesPage"));
+const SingleSeriesPage = React.lazy(() =>
+  import("./pages/singleSeriesPage/singleSeriesPage")
+);
+const TeamModalWindow = React.lazy(() =>
+  import("./components/teamModelWindow/teamModalWindow")
+);
 
 class App extends React.Component {
   componentDidMount() {
@@ -30,17 +38,22 @@ class App extends React.Component {
       <div className="App">
         <Header />
         <Switch>
-          <Route exact path="/" component={HomePage} />
-          <Route path="/movies/:category" component={MoviesPage} />
-          <Route path="/movie/:movie_id" component={MoviePage} />
-          <Route exact path="/series/:category" component={SeriesPage} />
-          <Route
-            exact
-            path="/series/details/:series_id"
-            component={SingleSeriesPage}
-          />
+          <ErrorBoundary>
+            <Suspense fallback={<WithSpinner />}>
+              <Route exact path="/" component={HomePage} />
+              <Route path="/movies/:category" component={MoviesPage} />
+              <Route path="/movie/:movie_id" component={MoviePage} />
+              <Route exact path="/series/:category" component={SeriesPage} />
+              <Route
+                exact
+                path="/series/details/:series_id"
+                component={SingleSeriesPage}
+              />
+              {this.props.toggleModalWindow ? <TeamModalWindow /> : null}
+              <Footer />
+            </Suspense>
+          </ErrorBoundary>
         </Switch>
-        {this.props.toggleModalWindow ? <TeamModalWindow /> : null}
       </div>
     );
   }

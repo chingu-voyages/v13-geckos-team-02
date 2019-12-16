@@ -1,17 +1,31 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 import styles from "./header.module.css";
 
 const Header = () => {
+  const [headerBackOpacity, setHeaderBackOpacity] = useState(0.025);
+  const listenScrollEvent = () => {
+    if (window.scrollY > 100) {
+      setHeaderBackOpacity(1);
+    } else {
+      setHeaderBackOpacity(0.025);
+    }
+  };
+  useEffect(() => {
+    window.addEventListener("scroll", listenScrollEvent);
+  }, []);
   return (
-    <header className={styles.header}>
+    <header
+      className={styles.header}
+      style={{ backgroundColor: `rgba(0,0,0, ${headerBackOpacity})` }}
+    >
       {/* Header Container */}
       <div className={styles.header_container}>
         {/* Header branch or logo */}
         <div className={styles.header_brand}>
           <div>
-            <Link to="/">ScribFix</Link>
+            <Link to="/">AmetBox</Link>
           </div>
         </div>
         {/* Hader navigations */}
