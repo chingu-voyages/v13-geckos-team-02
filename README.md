@@ -34,6 +34,6 @@ You will need an API key from [TMDB](https://www.themoviedb.org/documentation/ap
 
 # Contributors
 
-[Fintan](https://github.com/miyazakid)
-[Jason](https://github.com/Jc7j)
-[Josh](https://github.com/joshtru)
+- [Fintan](https://github.com/miyazakid)
+- [Jason](https://github.com/Jc7j)
+- [Josh](https://github.com/joshtru)
