@@ -1,8 +1,9 @@
 import React from "react";
+import { withRouter } from "react-router-dom";
 
 import styles from "./errorBoundary.module.css";
 // IMPORTING IMAGE
-import ErrorImage from "../../assets/images/error-boundary-image.JPG";
+import ErrorImage from "../../assets/images/error-boundary.png";
 
 class ErrorBoundary extends React.Component {
   constructor() {
@@ -30,7 +31,17 @@ class ErrorBoundary extends React.Component {
             <img src={ErrorImage} alt="Error boundary" />
           </div>
           <div className={styles.errorBoundaryText__container}>
-            Sorry this page is broken
+            <p>Sorry this Page is not found</p>
+            <p>
+              <button onClick={() => this.props.history.goBack()}>
+                take me back one step
+              </button>
+            </p>
+            <p>
+              <button onClick={() => this.props.history.push("/")}>
+                take me home
+              </button>
+            </p>
           </div>
         </div>
       );
@@ -40,4 +51,4 @@ class ErrorBoundary extends React.Component {
   }
 }
 
-export default ErrorBoundary;
+export default withRouter(ErrorBoundary);

@@ -1,6 +1,6 @@
 import { combineReducers } from "redux";
 import { persistReducer } from "redux-persist";
-import storage from "redux-persist/lib/storage";
+import storage from "redux-persist/lib/storage/session";
 
 // IMPORT REDUCERS
 import genreReducer from "./genre/genre.reducer";
@@ -12,7 +12,7 @@ import personReducer from "./person/people.reducer";
 const persistConfig = {
   key: "root",
   storage: storage,
-  whitelist: ["genres", "movies", "series"]
+  whitelist: ["genres"]
 };
 
 const rootReducer = combineReducers({

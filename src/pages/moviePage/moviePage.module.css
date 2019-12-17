@@ -1,17 +1,14 @@
 /* MOVIE PAGE STYLES */
 .moviePage {
+  width: 100%;
   text-align: left;
-  display: flex;
-  justify-content: space-between;
+  display: block;
 }
 
 /* SIDE BAR CONTAINER STYLES */
 .moviePage_sideBar_container {
-  width: 20%;
-  height: 90vh;
-  position: sticky;
-  position: -webkit-sticky;
-  top: 10%;
+  width: 100%;
+  /* margin-top: 10rem; */
   background-color: #3333335a;
 }
 
@@ -39,7 +36,9 @@
 
 /* CONTENT CONTAINER STYLES */
 .moviePage_content_container {
-  width: 79%;
+  padding-left: 1rem;
+  position: relative;
+  width: 100%;
   margin-top: 5%;
 }
 /* TEAM STYLES */
@@ -83,4 +82,25 @@
 }
 .company_list_box li:not(:last-child) {
   margin-right: 2rem;
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+  .moviePage {
+    display: flex;
+    justify-content: space-between;
+  }
+  .moviePage_sideBar_container {
+    width: 20%;
+    height: 90vh;
+    position: sticky;
+    position: -webkit-sticky;
+    top: 10%;
+    margin-top: 0;
+    background-color: #3333335a;
+  }
+  .moviePage_content_container {
+    width: 79%;
+    margin-top: 5%;
+  }
 }

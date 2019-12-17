@@ -27,11 +27,9 @@ const TeamModalWindow = React.lazy(() =>
 
 class App extends React.Component {
   componentDidMount() {
-    const { getmoviesGenresStart, getImageConfigStart, genres } = this.props;
+    const { getmoviesGenresStart, getImageConfigStart } = this.props;
     getImageConfigStart();
-    if (!genres) {
-      getmoviesGenresStart();
-    }
+    getmoviesGenresStart();
   }
   render() {
     return (

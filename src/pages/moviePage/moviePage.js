@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
+import { compose } from "redux";
 import { createStructuredSelector } from "reselect";
 
 // IMPORTING STYLES AND SVGS
@@ -49,18 +50,21 @@ const MoviePage = ({
   const writers = movieCrew.filter(crew =>
     crew.department.toLowerCase().includes("writing")
   );
-  document.title = `${movieDetails.original_title} - AmetBox`;
-  return (
+  const title = movieDetails ? movieDetails.original_title : "Movie";
+  document.title = `${title} - AmetBox`;
+  return movieDetails !== null ? (
     <div className={styles.moviePage}>
       <div className={styles.moviePage_sideBar_container}>
         {/* Container holding more infomations to movies */}
         <div className={styles.sideBar_content_container}>
-          {/* Movie Poster */}
-          <SmallCard
-            imageUrl={`${imagePath}/${movieDetails.backdrop_path}`}
-            height={"150px"}
-            backgroundSize={"cover"}
-          />
+          <div className={styles.sideBar_image_container}>
+            {/* Movie Poster */}
+            <SmallCard
+              imageUrl={`${imagePath}/${movieDetails.backdrop_path}`}
+              height={"200px"}
+              backgroundSize={"cover"}
+            />
+          </div>
           {/* Movie Name */}
           <h2 className={styles.movieName}>{movieDetails.original_title}</h2>
           {/* More Movie Info */}
@@ -120,6 +124,7 @@ const MoviePage = ({
             <ul className={styles.company_list_box}>
               {movieDetails.production_companies.map(company => (
                 <ProductionCompany
+                  key={company.id}
                   id={company.id}
                   imagePath={imagePath}
                   logoPath={company.logo_path}
@@ -130,22 +135,24 @@ const MoviePage = ({
           </div>
         ) : null}
         {/* SIMILAR TO MOVIES */}
-        {similarMovies.total_results !== 0 ? (
+        {similarMovies ? (
           <div className={styles.team_container}>
             <CategorySection
               heading={`Related To ${movieDetails.original_title}`}
               values={similarMovies.results}
               isFetching={isGettingSimilarMovies}
-              toPage={"movie"}
+              toPageForCard={"movie"}
+              usedBySimilar={true}
             />
           </div>
         ) : null}
       </div>
     </div>
-  );
+  ) : null;
 };
 
 const mapStateToProps = createStructuredSelector({
+  isFetching: selectGettingMoiveDetails,
   imagePath: selectImagePath,
   // MOVIE DETAILS
   getingMovieDetails: selectGettingMoiveDetails,
@@ -164,7 +171,7 @@ const mapDispatchToProps = disaptch => ({
   getMovieDetailsStart: params => disaptch(getMovieDetailsStart(params))
 });
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(withRouter(MoviePage));
+export default compose(
+  connect(mapStateToProps, mapDispatchToProps),
+  withRouter
+)(MoviePage);

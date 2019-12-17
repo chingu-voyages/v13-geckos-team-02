@@ -24,14 +24,13 @@ import SellAllButton from "../see-all-button/see-all-button";
 import WithSpinner from "../withSpinner/withSpinner";
 
 const LandingSection = ({ nowPlayingMovies, imagePath }) => {
-  const { results } = nowPlayingMovies;
-  return results ? (
+  return nowPlayingMovies !== null ? (
     <div className={styles.landingSection}>
       {/* Background providing blurry image effect */}
       <div
         className={styles.blurry}
         style={{
-          background: `url(${imagePath}${results[0].backdrop_path})`,
+          background: `url(${imagePath}${nowPlayingMovies.results[0].backdrop_path})`,
           backgroundRepeat: "no-repeat",
           backgroundPosition: "center",
           backgroundSize: "cover"
@@ -43,16 +42,16 @@ const LandingSection = ({ nowPlayingMovies, imagePath }) => {
         <div className={styles.landingCover}></div>
         <div className={styles.bigSection}>
           <BigCard
-            imageUrl={`${imagePath}${results[0].backdrop_path}`}
-            name={results[0].original_title}
-            rating={results[0].vote_average}
-            genreIds={results[0].genre_ids}
-            id={results[0].id}
+            imageUrl={`${imagePath}${nowPlayingMovies.results[0].backdrop_path}`}
+            name={nowPlayingMovies.results[0].original_title}
+            rating={nowPlayingMovies.results[0].vote_average}
+            genreIds={nowPlayingMovies.results[0].genre_ids}
+            id={nowPlayingMovies.results[0].id}
           />
         </div>
         {/* Container for the small cards */}
         <div className={styles.smallSection}>
-          {results
+          {nowPlayingMovies.results
             .filter((idx, item) => (item > 0) & (item < 4))
             .map(movie => (
               <SmallCard
@@ -68,7 +67,8 @@ const LandingSection = ({ nowPlayingMovies, imagePath }) => {
       <SellAllButton
         position={"absolute"}
         right={"3"}
-        count={results.length}
+        bottom={"1"}
+        count={nowPlayingMovies.results.length}
         link="/movies/now_playing"
       />
     </div>

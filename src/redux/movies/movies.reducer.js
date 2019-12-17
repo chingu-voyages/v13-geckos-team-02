@@ -21,7 +21,7 @@ const INITIAL_STATE = {
   movieDetails: null,
   // MOVIE CREDITS
   gettingMovieCredits: false,
-  movieCredits: null,
+  movieCredits: { cast: [], crew: [] },
   // SIMILAR MOVIES
   gettingSimilarMovies: false,
   similarMovies: null,
