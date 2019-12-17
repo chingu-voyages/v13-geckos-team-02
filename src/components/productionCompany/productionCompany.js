@@ -3,10 +3,10 @@ import React from "react";
 import styles from "./productionCompany.module.css";
 import CompanyPlaceholder from "../../assets/images/company@2x.png";
 
-const ProductionCompany = ({ id, imagePath, name, logoPath }) => {
+const ProductionCompany = ({ imagePath, name, logoPath }) => {
   const imageUrl = logoPath ? `${imagePath}/${logoPath}` : CompanyPlaceholder;
   return (
-    <li key={id} className={styles.company_list}>
+    <li className={styles.company_list}>
       <img className={styles.company_logo} src={`${imageUrl}`} alt={name} />
       <h6>{name}</h6>
     </li>

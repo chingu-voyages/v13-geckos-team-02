@@ -125,7 +125,6 @@ const MoviePage = ({
               {movieDetails.production_companies.map(company => (
                 <ProductionCompany
                   key={company.id}
-                  id={company.id}
                   imagePath={imagePath}
                   logoPath={company.logo_path}
                   name={company.name}
