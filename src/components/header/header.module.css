@@ -95,3 +95,13 @@
 .utilitiesBar span:not(:last-child) {
   margin-right: 1rem;
 }
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+  .header {
+    height: 70px;
+  }
+  .header_brand {
+    display: block;
+  }
+}
