@@ -39,7 +39,6 @@ const LandingSection = ({ nowPlayingMovies, imagePath }) => {
       {/* Backgroun providing gradient dark cover on the landing section */}
       {/* Container for the big card */}
       <div className={styles.cardsContainer}>
-        <div className={styles.landingCover}></div>
         <div className={styles.bigSection}>
           <BigCard
             imageUrl={`${imagePath}${nowPlayingMovies.results[0].backdrop_path}`}
@@ -63,6 +62,7 @@ const LandingSection = ({ nowPlayingMovies, imagePath }) => {
               />
             ))}
         </div>
+        <div className={styles.landingCover}></div>
       </div>
       <SellAllButton
         position={"absolute"}

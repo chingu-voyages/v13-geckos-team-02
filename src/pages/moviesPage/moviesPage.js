@@ -110,7 +110,13 @@ class MoviesPage extends React.Component {
         <div className={styles.moviesPage_body}>
           {newMovies.length !== 0
             ? newMovies.results.map(movie => (
-                <PortraitCard key={movie.id} movie={movie} toPage={"movie"} />
+                <PortraitCard
+                  key={movie.id}
+                  id={movie.id}
+                  title={movie.original_title}
+                  posterPath={movie.poster_path}
+                  toPage={"movie"}
+                />
               ))
             : null}
         </div>

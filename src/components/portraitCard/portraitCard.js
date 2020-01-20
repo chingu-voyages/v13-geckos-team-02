@@ -8,10 +8,15 @@ import PosterPlaceholder from "../../assets/images/movie-poster-placeholder@2x.p
 
 import styles from "./portraitCard.module.css";
 
-const PortraitCard = ({ imagePath, movie, toPage, history }) => {
-  const imageUrl = movie.poster_path
-    ? `${imagePath}${movie.poster_path}`
-    : PosterPlaceholder;
+const PortraitCard = ({
+  id,
+  title,
+  imagePath,
+  posterPath,
+  toPage,
+  history
+}) => {
+  const imageUrl = posterPath ? `${imagePath}${posterPath}` : PosterPlaceholder;
   return (
     <div
       style={{
@@ -21,10 +26,10 @@ const PortraitCard = ({ imagePath, movie, toPage, history }) => {
         backgroundRepeat: "no-repeat"
       }}
       className={styles.portraitCard}
-      onClick={() => history.push(`/${toPage}/${movie.id}`)}
+      onClick={() => history.push(`/${toPage}/${id}`)}
     >
       <div className={styles.portraitCard_footer}>
-        <h3 className={styles.portraitCard_footer_name}>{movie.title}</h3>
+        <h3 className={styles.portraitCard_footer_name}>{title}</h3>
       </div>
     </div>
   );

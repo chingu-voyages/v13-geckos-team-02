@@ -27,6 +27,7 @@ import Overview from "../../components/overview/overview";
 import SideBarMovieInfo from "../../components/sideBarMoreInfo/sideBarMoreInfo";
 import Team from "../../components/team/team";
 import CategorySection from "../../components/categorySection/categorySection";
+import PortraitCard from "../../components/portraitCard/portraitCard";
 import BigCard from "../../components/bigCard/bigCard";
 import ProductionCompany from "../../components/productionCompany/productionCompany";
 
@@ -174,7 +175,19 @@ const SingleSeries = ({
                 isFetching={isGettingSimilarSeries}
                 toPageForCard={"series/details"}
                 usedBySimilar={true}
-              />
+              >
+                {similarSeries.results
+                  .filter((idx, item) => item < 10)
+                  .map(tv => (
+                    <PortraitCard
+                      key={tv.id}
+                      id={tv.id}
+                      title={tv.original_name}
+                      posterPath={tv.poster_path}
+                      toPage={"series/details"}
+                    />
+                  ))}
+              </CategorySection>
             </div>
           ) : null}
         </div>

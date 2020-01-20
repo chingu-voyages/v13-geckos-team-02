@@ -4,11 +4,12 @@
   z-index: 1000;
   top: 0;
   width: 100%;
-  height: 60px;
+  padding-bottom: 1rem;
 }
 .header_container {
   padding: 1rem 3rem;
   color: #fff;
+  text-align: center;
 }
 
 /* Header branch or logo styles */
@@ -32,7 +33,7 @@
 .header_nav {
   float: left;
   margin-top: 0;
-  margin-left: 2.5rem;
+  /* margin-left: 2.5rem; */
   font-size: 1.5rem;
 }
 .header_nav a {
