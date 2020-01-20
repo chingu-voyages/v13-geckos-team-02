@@ -151,7 +151,7 @@ const MoviePage = ({
                     id={movie.id}
                     title={movie.original_title}
                     posterPath={movie.poster_path}
-                    toPage={"series/details"}
+                    toPage={"movie"}
                   />
                 ))}
             </CategorySection>
