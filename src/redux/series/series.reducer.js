@@ -21,7 +21,7 @@ const INITIAL_STATE = {
   seriesDetails: null,
   // CREDITS
   gettingSeriesCredits: false,
-  seriesCredits: null,
+  seriesCredits: { cast: [], crew: [] },
   // SIMILAR
   gettingSimilarSeries: false,
   similarSeries: null,

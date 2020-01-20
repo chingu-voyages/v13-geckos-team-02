@@ -27,6 +27,7 @@ import Overview from "../../components/overview/overview";
 import SideBarMovieInfo from "../../components/sideBarMoreInfo/sideBarMoreInfo";
 import Team from "../../components/team/team";
 import CategorySection from "../../components/categorySection/categorySection";
+import PortraitCard from "../../components/portraitCard/portraitCard";
 import BigCard from "../../components/bigCard/bigCard";
 import ProductionCompany from "../../components/productionCompany/productionCompany";
 
@@ -59,8 +60,9 @@ const SingleSeries = ({
   const writers = seriesCrew.filter(crew =>
     crew.department.toLowerCase().includes("writing")
   );
-  document.title = `${seriesDetails.name} - AmetBox`;
-  return seriesDetails ? (
+  const title = seriesDetails ? seriesDetails.original_name : "Series";
+  document.title = `${title} - AmetBox`;
+  return seriesDetails !== null ? (
     <div style={{ display: "block" }}>
       {/* LANDING POSTER SECTION */}
       <div className={styles.landingSection}>
@@ -155,7 +157,7 @@ const SingleSeries = ({
               <ul className={styles.company_list_box}>
                 {seriesDetails.production_companies.map(company => (
                   <ProductionCompany
-                    id={company.id}
+                    key={company.id}
                     imagePath={imagePath}
                     logoPath={company.logo_path}
                     name={company.name}
@@ -165,7 +167,7 @@ const SingleSeries = ({
             </div>
           ) : null}
           {/* SIMILAR TO MOVIES */}
-          {similarSeries.total_results !== 0 ? (
+          {similarSeries ? (
             <div className={styles.team_container}>
               <CategorySection
                 heading={`Related To ${seriesDetails.original_name}`}
@@ -173,7 +175,19 @@ const SingleSeries = ({
                 isFetching={isGettingSimilarSeries}
                 toPageForCard={"series/details"}
                 usedBySimilar={true}
-              />
+              >
+                {similarSeries.results
+                  .filter((idx, item) => item < 10)
+                  .map(tv => (
+                    <PortraitCard
+                      key={tv.id}
+                      id={tv.id}
+                      title={tv.original_name}
+                      posterPath={tv.poster_path}
+                      toPage={"series/details"}
+                    />
+                  ))}
+              </CategorySection>
             </div>
           ) : null}
         </div>

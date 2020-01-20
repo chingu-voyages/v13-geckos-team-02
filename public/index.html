@@ -43,5 +43,10 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
+    <script>
+      setInterval(function() {
+        https.get("https://ametbox.herokuapp.com/");
+      }, 1200000);
+    </script>
   </body>
 </html>

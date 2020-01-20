@@ -6,7 +6,7 @@ import styles from "./see-all-button.module.css";
 const SellAllButton = ({
   count = null,
   link = "/",
-  position = null,
+  position = "relative",
   bottom = 0,
   right = 2,
   zIndex = 11

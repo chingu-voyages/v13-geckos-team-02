@@ -24,6 +24,7 @@ import {
 // IMPORTING COMPONENTS
 import LandingSection from "../../components/landingSection/landingSection";
 import CategorySection from "../../components/categorySection/categorySection";
+import PortraitCard from "../../components/portraitCard/portraitCard";
 
 class HomePage extends React.Component {
   componentDidMount() {
@@ -58,29 +59,62 @@ class HomePage extends React.Component {
         {onTheAirSeries ? (
           <CategorySection
             heading={"On Air Series"}
-            values={onTheAirSeries.results}
+            data={onTheAirSeries.results}
             isFetching={gettingOnTheAirSeries}
-            toPageForCard={"series/details"}
             toPageForButton={"series/on_the_air"}
-          />
+          >
+            {onTheAirSeries.results
+              .filter((idx, item) => item < 10)
+              .map(tv => (
+                <PortraitCard
+                  key={tv.id}
+                  id={tv.id}
+                  title={tv.original_name}
+                  posterPath={tv.poster_path}
+                  toPage={"series/details"}
+                />
+              ))}
+          </CategorySection>
         ) : null}
         {trendingMovies ? (
           <CategorySection
             heading={"Trending Movies"}
-            values={trendingMovies.results}
+            data={trendingMovies.results}
             isFetching={gettingTrendingMovies}
-            toPageForCard={"movie"}
             toPageForButton={"movies/trending"}
-          />
+          >
+            {trendingMovies.results
+              .filter((idx, item) => item < 10)
+              .map(movie => (
+                <PortraitCard
+                  key={movie.id}
+                  id={movie.id}
+                  title={movie.original_title}
+                  posterPath={movie.poster_path}
+                  toPage={"movie"}
+                />
+              ))}
+          </CategorySection>
         ) : null}
         {trendingSeries ? (
           <CategorySection
             heading={"Trending Series"}
-            values={trendingSeries.results}
+            data={trendingSeries.results}
             isFetching={gettingTrendingSeries}
-            toPageForCard={"series/details"}
             toPageForButton={"series/trending"}
-          />
+          >
+            {trendingSeries.results
+              .filter((idx, item) => item < 10)
+              .map(tv => (
+                <PortraitCard
+                  key={tv.id}
+                  id={tv.id}
+                  title={tv.original_name}
+                  posterPath={tv.poster_path}
+                  toPage={"series/details"}
+                />
+              ))}
+          </CategorySection>
         ) : null}
       </div>
     );

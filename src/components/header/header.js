@@ -24,9 +24,7 @@ const Header = () => {
       <div className={styles.header_container}>
         {/* Header branch or logo */}
         <div className={styles.header_brand}>
-          <div>
-            <Link to="/">AmetBox</Link>
-          </div>
+          <Link to="/">AmetBox</Link>
         </div>
         {/* Hader navigations */}
         <div className={styles.header_nav}>
@@ -41,7 +39,6 @@ const Header = () => {
               <Link to="/movies/popular">popular</Link>
             </div>
           </div>
-          {/* <li className={styles.header_nav_menu_link}> */}
           <div className={styles.dropdown}>
             <div className={styles.dropdown_button}>Series</div>
             <div className={styles.dropdown_content}>

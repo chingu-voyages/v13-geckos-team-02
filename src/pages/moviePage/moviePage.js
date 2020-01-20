@@ -26,6 +26,7 @@ import SmallCard from "../../components/smallCard/smallCard";
 import SideBarMovieInfo from "../../components/sideBarMoreInfo/sideBarMoreInfo";
 import Team from "../../components/team/team";
 import CategorySection from "../../components/categorySection/categorySection";
+import PortraitCard from "../../components/portraitCard/portraitCard";
 import ProductionCompany from "../../components/productionCompany/productionCompany";
 
 const MoviePage = ({
@@ -125,7 +126,6 @@ const MoviePage = ({
               {movieDetails.production_companies.map(company => (
                 <ProductionCompany
                   key={company.id}
-                  id={company.id}
                   imagePath={imagePath}
                   logoPath={company.logo_path}
                   name={company.name}
@@ -139,11 +139,22 @@ const MoviePage = ({
           <div className={styles.team_container}>
             <CategorySection
               heading={`Related To ${movieDetails.original_title}`}
-              values={similarMovies.results}
               isFetching={isGettingSimilarMovies}
               toPageForCard={"movie"}
               usedBySimilar={true}
-            />
+            >
+              {similarMovies.results
+                .filter((idx, item) => item < 10)
+                .map(movie => (
+                  <PortraitCard
+                    key={movie.id}
+                    id={movie.id}
+                    title={movie.original_title}
+                    posterPath={movie.poster_path}
+                    toPage={"movie"}
+                  />
+                ))}
+            </CategorySection>
           </div>
         ) : null}
       </div>

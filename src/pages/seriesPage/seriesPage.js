@@ -117,7 +117,9 @@ class SeriesPage extends React.Component {
             ? newSeries.results.map(movie => (
                 <PortraitCard
                   key={movie.id}
-                  movie={movie}
+                  id={movie.id}
+                  title={movie.original_name}
+                  posterPath={movie.poster_path}
                   toPage={"series/details"}
                 />
               ))

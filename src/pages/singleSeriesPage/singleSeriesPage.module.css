@@ -8,7 +8,7 @@
 .seriesLandingCover {
   position: absolute;
   background: transparent
-    linear-gradient(180deg, rgba(52, 52, 52, 0.027) 50%, rgb(0, 0, 0) 100%);
+    linear-gradient(180deg, rgba(15, 15, 15, 0.5) 50%, rgb(0, 0, 0) 100%);
   top: 0;
   opacity: 0.8;
   z-index: 5;
@@ -26,7 +26,7 @@
 /* SIDE BAR CONTAINER STYLES */
 .seriesPage_sideBar_container {
   width: 100%;
-  margin-top: 10rem;
+  margin-top: 5rem;
   background-color: #3333335a;
 }
 
