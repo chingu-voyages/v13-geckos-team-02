@@ -60,7 +60,7 @@ const SingleSeries = ({
   const writers = seriesCrew.filter(crew =>
     crew.department.toLowerCase().includes("writing")
   );
-  const title = seriesDetails ? seriesDetails.original_title : "Series";
+  const title = seriesDetails ? seriesDetails.original_name : "Series";
   document.title = `${title} - AmetBox`;
   return seriesDetails !== null ? (
     <div style={{ display: "block" }}>
