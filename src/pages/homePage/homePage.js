@@ -61,7 +61,6 @@ class HomePage extends React.Component {
             heading={"On Air Series"}
             data={onTheAirSeries.results}
             isFetching={gettingOnTheAirSeries}
-            toPageForCard={"series/details"}
             toPageForButton={"series/on_the_air"}
           >
             {onTheAirSeries.results
@@ -82,7 +81,6 @@ class HomePage extends React.Component {
             heading={"Trending Movies"}
             data={trendingMovies.results}
             isFetching={gettingTrendingMovies}
-            toPageForCard={"movie"}
             toPageForButton={"movies/trending"}
           >
             {trendingMovies.results
@@ -93,7 +91,7 @@ class HomePage extends React.Component {
                   id={movie.id}
                   title={movie.original_title}
                   posterPath={movie.poster_path}
-                  toPage={"series/details"}
+                  toPage={"movie"}
                 />
               ))}
           </CategorySection>
@@ -103,7 +101,6 @@ class HomePage extends React.Component {
             heading={"Trending Series"}
             data={trendingSeries.results}
             isFetching={gettingTrendingSeries}
-            toPageForCard={"series/details"}
             toPageForButton={"series/trending"}
           >
             {trendingSeries.results
